@@ -17,7 +17,7 @@ import java.util.stream.Collectors;
 
 import static java.lang.Math.min;
 
-public class MainLeetCode {
+public class MainString {
 
     // Write a function to find the longest common prefix string amongst an array of strings.
     //
@@ -228,8 +228,7 @@ public class MainLeetCode {
     }
 
     // Given an input string, write a function that returns the Run Length Encoded string for the input string.
-    //For example, if the input string is “wwwwaaadexxxxxx”, then the function should return “4w3a1d1e6x”
-
+    // For example, if the input string is “wwwwaaadexxxxxx”, then the function should return “4w3a1d1e6x”
     protected String runLengthEncoding(String input) {
         StringBuilder sb = new StringBuilder();
         Map<Character, Integer> map = new HashMap<>();

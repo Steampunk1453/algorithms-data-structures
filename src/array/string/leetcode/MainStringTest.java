@@ -6,12 +6,12 @@ import java.text.ParseException;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MainLeetCodeTest {
+class MainStringTest {
 
     @Test
     void getLongestCommonPrefix() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String[] input = {"flower","flow","flight"};
         // When
         String result = main.getLongestCommonPrefixHorizontal(input);
@@ -24,7 +24,7 @@ class MainLeetCodeTest {
     @Test
     void dontGetLongestCommonPrefix() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String[] input = {"dog","racecar","car"};
         // When
         String result = main.getLongestCommonPrefixHorizontal(input);
@@ -37,7 +37,7 @@ class MainLeetCodeTest {
     @Test
     void getLengthLastWord() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "Hello World Spanish";
         // When
         int result = main.getLengthLastWord(input);
@@ -48,7 +48,7 @@ class MainLeetCodeTest {
     @Test
     void dontExistLastWord() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "";
         // When
         int result = main.getLengthLastWord(input);
@@ -59,7 +59,7 @@ class MainLeetCodeTest {
     @Test
     void isValidPalindrome() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "A man, a plan, a canal: Panama";
         // When
         boolean result = main.isValidPalindrome(input);
@@ -70,7 +70,7 @@ class MainLeetCodeTest {
     @Test
     void isNotValidPalindrome() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "race a car";
         // When
         boolean result = main.isValidPalindrome(input);
@@ -81,7 +81,7 @@ class MainLeetCodeTest {
     @Test
     void reverseVowels() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "hello";
         // When
         String result = main.reverseVowels(input);
@@ -92,7 +92,7 @@ class MainLeetCodeTest {
     @Test
     void detectCapital() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "USA";
         // When
         boolean result = main.detectCapital(input);
@@ -105,7 +105,7 @@ class MainLeetCodeTest {
     @Test
     void detectCapital1() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "leetcode";
         // When
         boolean result = main.detectCapital(input);
@@ -118,7 +118,7 @@ class MainLeetCodeTest {
     @Test
     void detectCapital2() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "Google";
         // When
         boolean result = main.detectCapital(input);
@@ -132,7 +132,7 @@ class MainLeetCodeTest {
     @Test
     void isNotCapital() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "FlaG";
         // When
         boolean result = main.detectCapital(input);
@@ -145,7 +145,7 @@ class MainLeetCodeTest {
     @Test
     void runLengthEncoding() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "wwwwaaadexxxxxx";
         // When
         String result = main.runLengthEncoding(input);
@@ -158,7 +158,7 @@ class MainLeetCodeTest {
     @Test
     void runLengthEncoding1() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "BBBBBBBBBBBBNBBBBBBBBBBBBNNNBBBBBBBBBBBBBBBBBBBBBBBBNBBBBBBBBBBBBBB";
         // When
         String result = main.lengthEncoding(input);
@@ -169,7 +169,7 @@ class MainLeetCodeTest {
     @Test
     void getStringCompression() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "aabcccccaaa";
         // When
         String result = main.getStringCompression(input);
@@ -180,7 +180,7 @@ class MainLeetCodeTest {
     @Test
     void getMostCommonWordWithOneBanned() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "Bob hit a ball, the hit BALL flew far after it was  hit.";
         String[] banned = {"hit"};
         // When
@@ -193,7 +193,7 @@ class MainLeetCodeTest {
     @Test
     void getMostCommonWordWithTwoBanned() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "Bob hit a ball, the hit BALL flew far after it was was hit.";
         String[] banned = {"hit", "ball"};
         // When
@@ -206,7 +206,7 @@ class MainLeetCodeTest {
     @Test
     void getConsecutiveCharacters() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "hooraaaaaaaaaaay";
         // When
         int result = main.getConsecutiveCharacters(input);
@@ -219,7 +219,7 @@ class MainLeetCodeTest {
     @Test
     void getConsecutiveCharacters1() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "tourist";
         // When
         int result = main.getConsecutiveCharacters(input);
@@ -232,7 +232,7 @@ class MainLeetCodeTest {
     @Test
     void getThousandSeparator() throws ParseException {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         int input = 987;
         int input1 = 1234;
         int input2 = 123456789;
@@ -256,7 +256,7 @@ class MainLeetCodeTest {
     @Test
     void getTruePathCrossing() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         char[] path ={ 'N', 'E', 'S', 'W', 'W' };
         String paths = "NESWW";
         // When
@@ -272,7 +272,7 @@ class MainLeetCodeTest {
     @Test
     void getFalsePathCrossing() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         char[] path ={ 'N', 'E', 'S'};
         String paths = "NES";
         // When
@@ -288,7 +288,7 @@ class MainLeetCodeTest {
     @Test
     void isEquivalent() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String[] word = {"abc", "d", "defg"};
         String[] word1 = {"abcddefg"};
         // When
@@ -300,7 +300,7 @@ class MainLeetCodeTest {
     @Test
     void isNotEquivalent() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String[] word = {"a", "cb"};
         String[] word1 = {"ab", "c"};
         // When
@@ -312,7 +312,7 @@ class MainLeetCodeTest {
     @Test
     void getGoalParserInterpretation() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "G()(al)";
         String input1 = "G()()()()(al)";
         String input2 = "(al)G(al)()()G";
@@ -328,7 +328,7 @@ class MainLeetCodeTest {
 
     @Test
     void getReformatPhoneNumber() {
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "1-23-45 6";
         String input1 = "123 4-567";
         String input2 = "123 4-5678";
@@ -351,7 +351,7 @@ class MainLeetCodeTest {
     @Test
     void mergeStringsAlternately() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "abc";
         String input1 = "pqr";
         String input2 = "abcd";
@@ -371,7 +371,7 @@ class MainLeetCodeTest {
     @Test
     void getSecondLargestDigit() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "dfa12321afd";
         // When
         int result = main.getSecondLargestDigit(input);
@@ -382,7 +382,7 @@ class MainLeetCodeTest {
     @Test
     void getSecondLargestDigit1() {
         // Given
-        MainLeetCode main = new MainLeetCode();
+        MainString main = new MainString();
         String input = "abc1111";
         // When
         int result = main.getSecondLargestDigit(input);

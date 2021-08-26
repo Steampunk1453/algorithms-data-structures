@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-public class MainString {
+public class Main {
 
     public static void main(String[] args) {
         // 1.1 Is Unique
