@@ -3,6 +3,7 @@ package linked.list.leetcode;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class MainLinkedListTest {
 
@@ -54,7 +55,6 @@ class MainLinkedListTest {
     void deleteNodes() {
         // Given
         MainLinkedList linkedList = new MainLinkedList();
-        MainLinkedList.Node node = new MainLinkedList.Node();
         // When
         linkedList.insertFirstNode(1);
         linkedList.insertLastNode(2);
@@ -63,9 +63,23 @@ class MainLinkedListTest {
         linkedList.insertLastNode(4);
         linkedList.insertLastNode(5);
         linkedList.insertLastNode(6);
-        linkedList.deleteNodes(6);
+        MainLinkedList.Node result = linkedList.deleteNodes(6);
         // Then
-        assertEquals(linkedList.head.next.next.data, 3);
+        assertEquals(result.next.next.data, 3);
+    }
+
+    @Test
+    void deleteNodes1() {
+        // Given
+        MainLinkedList linkedList = new MainLinkedList();
+        // When
+        linkedList.insertFirstNode(7);
+        linkedList.insertLastNode(7);
+        linkedList.insertLastNode(7);
+        linkedList.insertLastNode(7);
+        MainLinkedList.Node result = linkedList.deleteNodes(7);
+        // Then
+        assertNull(result);
     }
 
 }
