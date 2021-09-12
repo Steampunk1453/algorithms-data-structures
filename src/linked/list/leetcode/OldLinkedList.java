@@ -1,6 +1,6 @@
 package linked.list.leetcode;
 
-public class MainLinkedList {
+public class OldLinkedList {
 
     Node head;
 
@@ -82,11 +82,6 @@ public class MainLinkedList {
         return ret;
     }
 
-    // 206. Reverse Linked List
-   // Given the head of a singly linked list, reverse the list, and return the reversed list.
-    protected Node reverseList(Node head) {
-        return null;
-    }
 
     // 237. Delete Node in a Linked List
     // Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list,

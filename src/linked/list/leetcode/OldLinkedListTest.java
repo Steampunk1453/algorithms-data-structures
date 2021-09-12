@@ -5,13 +5,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class MainLinkedListTest {
+class OldLinkedListTest {
 
     @Test
     void deleteNode() {
         // Given
-        MainLinkedList linkedList = new MainLinkedList();
-        MainLinkedList.Node node = new MainLinkedList.Node();
+        OldLinkedList linkedList = new OldLinkedList();
+        OldLinkedList.Node node = new OldLinkedList.Node();
         node.data = 5;
         // When
         linkedList.insertFirstNode(4);
@@ -26,8 +26,8 @@ class MainLinkedListTest {
     @Test
     void deleteNode1() {
         // Given
-        MainLinkedList linkedList = new MainLinkedList();
-        MainLinkedList.Node node = new MainLinkedList.Node();
+        OldLinkedList linkedList = new OldLinkedList();
+        OldLinkedList.Node node = new OldLinkedList.Node();
         node.data = 0;
         // When
         linkedList.insertFirstNode(0);
@@ -39,8 +39,8 @@ class MainLinkedListTest {
     @Test
     void deleteNode2() {
         // Given
-        MainLinkedList linkedList = new MainLinkedList();
-        MainLinkedList.Node node = new MainLinkedList.Node();
+        OldLinkedList linkedList = new OldLinkedList();
+        OldLinkedList.Node node = new OldLinkedList.Node();
         node.data = -3;
         // When
         linkedList.insertFirstNode(-3);
@@ -54,7 +54,7 @@ class MainLinkedListTest {
     @Test
     void deleteNodes() {
         // Given
-        MainLinkedList linkedList = new MainLinkedList();
+        OldLinkedList linkedList = new OldLinkedList();
         // When
         linkedList.insertFirstNode(1);
         linkedList.insertLastNode(2);
@@ -63,7 +63,7 @@ class MainLinkedListTest {
         linkedList.insertLastNode(4);
         linkedList.insertLastNode(5);
         linkedList.insertLastNode(6);
-        MainLinkedList.Node result = linkedList.deleteNodes(6);
+        OldLinkedList.Node result = linkedList.deleteNodes(6);
         // Then
         assertEquals(result.next.next.data, 3);
     }
@@ -71,13 +71,13 @@ class MainLinkedListTest {
     @Test
     void deleteNodes1() {
         // Given
-        MainLinkedList linkedList = new MainLinkedList();
+        OldLinkedList linkedList = new OldLinkedList();
         // When
         linkedList.insertFirstNode(7);
         linkedList.insertLastNode(7);
         linkedList.insertLastNode(7);
         linkedList.insertLastNode(7);
-        MainLinkedList.Node result = linkedList.deleteNodes(7);
+        OldLinkedList.Node result = linkedList.deleteNodes(7);
         // Then
         assertNull(result);
     }
