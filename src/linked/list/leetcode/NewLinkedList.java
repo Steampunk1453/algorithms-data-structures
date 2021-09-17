@@ -109,10 +109,19 @@ public class NewLinkedList {
     // Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
     // Return the linked list sorted as well.
     protected Node removeDuplicates(Node head) {
-        int position = 0;
-        while (position != -1 && head != null) {
-            position = nodeIndexOf(head, head.data);
-            head = removeByNodeAndPosition(head, position);
+        Node current = head;
+        Node previous;
+        while (current.next != null) {
+            if (current.data == current.next.data) {
+                previous = current;
+                while (current.data == current.next.data) {
+                    current = current.next;
+                    this.size--;
+                }
+                previous.next = current;
+                head = previous.next;
+            }
+            current = current.next;
         }
         return head;
     }

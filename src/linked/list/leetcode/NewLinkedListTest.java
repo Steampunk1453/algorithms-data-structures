@@ -22,11 +22,11 @@ class NewLinkedListTest {
     void insertValues() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
+        // When
         boolean result = linkedList.insertElement(4, 10);
         // Then
         assertTrue(result);
@@ -38,11 +38,11 @@ class NewLinkedListTest {
     void insertNotExistValue() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
+        // When
         boolean result = linkedList.insertElement(3, 10);
         // Then
         assertTrue(result);
@@ -54,11 +54,11 @@ class NewLinkedListTest {
     void removeByPosition() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
+        // When
         linkedList.removeByPosition(3);
         // Then
         assertEquals(linkedList.size, 3);
@@ -69,15 +69,48 @@ class NewLinkedListTest {
     void removeByValue() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
+        // When
         linkedList.removeByValue(3);
         // Then
         assertEquals(linkedList.size, 3);
         assertEquals(linkedList.indexOf(4), 2);
+    }
+
+    // 83. Remove Duplicates from Sorted List
+    @Test
+    void removeDuplicates() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        // When
+        NewLinkedList.Node head = linkedList.head;
+        NewLinkedList.Node result = linkedList.removeDuplicates(head);
+        // Then
+        assertEquals(linkedList.size, 2);
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void removeDuplicates1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(3);
+        // When
+        NewLinkedList.Node head = linkedList.head;
+        NewLinkedList.Node result = linkedList.removeDuplicates(head);
+        // Then
+        assertEquals(linkedList.size, 3);
+        assertEquals(result.data, 1);
     }
 
     // 203. Remove Linked List Elements
@@ -85,7 +118,6 @@ class NewLinkedListTest {
     void deleteNodes() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(6);
@@ -94,6 +126,7 @@ class NewLinkedListTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         NewLinkedList.Node head = linkedList.head;
+        // When
         NewLinkedList.Node result = linkedList.removeByNodeAndValue(head, 6);
         // Then
         assertEquals(linkedList.size, 5);
@@ -104,8 +137,8 @@ class NewLinkedListTest {
     void deleteNodes1() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         NewLinkedList.Node head = linkedList.head;
+        // When
         NewLinkedList.Node result = linkedList.removeByNodeAndValue(head, 1);
         // Then
         assertEquals(linkedList.size, 0);
@@ -116,12 +149,12 @@ class NewLinkedListTest {
     void deleteNodes2() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         NewLinkedList.Node head = linkedList.head;
+        // When
         NewLinkedList.Node result = linkedList.removeByNodeAndValue(head, 7);
         // Then
         assertEquals(linkedList.size, 0);
@@ -132,14 +165,14 @@ class NewLinkedListTest {
     void reverseLinkedList() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
         linkedList.appendElement(5);
-        // Then
+        // When
         linkedList.reverseList(linkedList.head);
+        // Then
         assertEquals(linkedList.head.data, 5);
     }
 
@@ -148,21 +181,22 @@ class NewLinkedListTest {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
         // When
-        // Then
         linkedList.reverseList(linkedList.head);
+        // Then
         assertEquals(linkedList.size, 0);
         assertNull(linkedList.head);
     }
+
     @Test
     void iterativeReverseLinkedList() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
-        // Then
+        // When
         NewLinkedList.Node result = linkedList.iterativeReverseList(linkedList.head);
+        // Then
         assertEquals(result.data, 3);
     }
 
@@ -170,13 +204,14 @@ class NewLinkedListTest {
     void recursiveReverseLinkedList() {
         // Given
         NewLinkedList linkedList = new NewLinkedList();
-        // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
-        // Then
+        // When
         NewLinkedList.Node result = linkedList.recursiveReverseList(linkedList.head);
+        // Then
         assertEquals(result.data, 3);
     }
+
 
 }
