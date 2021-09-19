@@ -46,4 +46,54 @@ class NumbersTest {
         assertEquals(result, 5);
     }
 
+    @Test
+    void pow() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.pow(3, 6);
+        // Then
+        assertEquals(result, 729);
+    }
+
+    @Test
+    void pow1() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.pow1(3, 6);
+        // Then
+        assertEquals(result, 729);
+    }
+
+    @Test
+    void factorial() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.factorial(3);
+        // Then
+        assertEquals(result, 6);
+    }
+
+    @Test
+    void factorial1() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.factorial1(7);
+        // Then
+        assertEquals(result, 5040);
+    }
+
+    @Test
+    void factorial2() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.factorial2(7);
+        // Then
+        assertEquals(result, 5040);
+    }
+
 }

@@ -61,4 +61,52 @@ public class Numbers {
         return result;
     }
 
+    protected int pow(int num, int exp) {
+        int result = num;
+        while (exp > 1) {
+            result *= num;
+            exp--;
+        }
+        return result;
+    }
+
+    protected int pow1(int num, int exp) {
+        int result = 1;
+        while (exp > 0) {
+            result *= num;
+            exp--;
+        }
+        return result;
+    }
+
+    protected int factorial(int num) {
+        if (num == 0 || num == 1) {
+            return 1;
+        }
+        return num * factorial(num - 1);
+    }
+
+    protected int factorial1(int num) {
+        if (num == 0) {
+            return 1;
+        }
+        int result = num;
+        while (num > 1) {
+            num--;
+            result *= num;
+        }
+        return result;
+    }
+
+    protected int factorial2(int num) {
+        if (num == 0) {
+            return 1;
+        }
+        int result = 1;
+        for (int i = 1; i <= num; i++) {
+            result *= i;
+        }
+        return result;
+    }
+
 }
