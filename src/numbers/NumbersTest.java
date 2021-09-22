@@ -96,4 +96,44 @@ class NumbersTest {
         assertEquals(result, 5040);
     }
 
+    @Test
+    void isPerfectNumber() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        boolean result = numbers.isPerfectNumber(28);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isAmicableNumbers() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        boolean result = numbers.isAmicableNumbers(220, 284);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPrime() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        boolean result = numbers.isPrime(29);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isCool() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        boolean result = numbers.isCool(28);
+        // Then
+        assertTrue(result);
+    }
+
 }

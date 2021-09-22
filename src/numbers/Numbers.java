@@ -80,7 +80,7 @@ public class Numbers {
     }
 
     protected int factorial(int num) {
-        if (num == 0 || num == 1) {
+        if (num <= 1) {
             return 1;
         }
         return num * factorial(num - 1);
@@ -107,6 +107,54 @@ public class Numbers {
             result *= i;
         }
         return result;
+    }
+
+    protected boolean isPerfectNumber(int num) {
+        int sum = 1;
+        for (int i = 2; i <= num/2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        return num == sum;
+    }
+
+    protected boolean isAmicableNumbers(int num, int num1) {
+        int sum = 1;
+        int sum1 = 1;
+        for (int i = 2; i <= num/2; i++) {
+            if (num % i == 0) {
+                sum += i;
+            }
+        }
+        for (int i = 2; i <= num1/2; i++) {
+            if (num1 % i == 0) {
+                sum1 += i;
+            }
+        }
+        return sum == num1 && sum1 == num;
+    }
+
+    boolean isPrime(int number) {
+        boolean prime = true;
+        for (int i = 2; i <= number/2; i++) {
+            if (number % i == 0) {
+                prime = false;
+                break;
+            }
+        }
+       return prime;
+    }
+
+    boolean isCool(int number) {
+        int sum = 1;
+        for (int i = 2; i < number/2; i++) {
+            sum += i;
+            if (number == sum) {
+                return true;
+            }
+        }
+        return false;
     }
 
 }
