@@ -2,7 +2,8 @@ package numbers;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class NumbersTest {
 
@@ -134,6 +135,16 @@ class NumbersTest {
         boolean result = numbers.isCool(28);
         // Then
         assertTrue(result);
+    }
+
+    @Test
+    void calculateArrayValues() {
+        // Given
+        Numbers numbers = new Numbers();
+        double[] array = {5.2, 2.2, 7.7, 4.0, 6.4};
+        // When
+        numbers.calculateArrayValues(array);
+        // Then
     }
 
 }

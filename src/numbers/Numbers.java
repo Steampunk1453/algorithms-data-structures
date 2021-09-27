@@ -157,4 +157,40 @@ public class Numbers {
         return false;
     }
 
+    void calculateArrayValues(double[] array) {
+        double min = array[0];
+        double max = array[0];
+        double sum = 0;
+
+        for (double value : array) {
+            if (value < min) {
+                min = value;
+            }
+            if (value > max) {
+                max = value;
+            }
+            sum += value;
+        }
+
+        System.out.println("min: " + min);
+        System.out.println("max: " + max);
+        System.out.println("med: " + sum / array.length);
+    }
+
+    void calculateArrayValues1(double[] array) {
+        double min = array[0];
+        double max = array[0];
+        double sum = 0;
+
+        for (double value : array) {
+            min = Math.min(min, value);
+            max = Math.max(max, value);
+            sum += value;
+        }
+
+        System.out.println("min: " + min);
+        System.out.println("max: " + max);
+        System.out.println("med: " + sum / array.length);
+    }
+
 }
