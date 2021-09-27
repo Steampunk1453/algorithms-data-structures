@@ -112,6 +112,20 @@ public class MainString {
         return alphanumeric.equals(sb.toString());
     }
 
+    // Given a string s, determine if it is a palindrome
+    boolean isPalindrome(String word) {
+        char[] charsWord = word.toCharArray();
+        char[] compare = new char[charsWord.length];
+        int last = charsWord.length -1;
+        int index = 0;
+        for (int i = last; i >= 0; i--) {
+            compare[index] = charsWord[i];
+            index ++;
+            continue;
+        }
+        return Arrays.equals(charsWord, compare);
+    }
+
     // Given a string s, reverse only all the vowels in the string and return it.
     //
     //The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.

@@ -78,6 +78,19 @@ class MainStringTest {
         assertFalse(result);
     }
 
+
+    @Test
+    void isPalindrome() {
+        // Given
+        MainString main = new MainString();
+        String input = "allivessevilla";
+        // When
+        boolean result = main.isPalindrome(input);
+        // Then
+        assertTrue(result);
+    }
+
+
     @Test
     void reverseVowels() {
         // Given
