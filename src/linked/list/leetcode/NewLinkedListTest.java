@@ -213,5 +213,62 @@ class NewLinkedListTest {
         assertEquals(result.data, 3);
     }
 
+    @Test
+    void getIntersectionNode() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        linkedList.appendElement(1);
+        linkedList.appendElement(8);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(4);
+        linkedList1.appendElement(1);
+        linkedList1.appendElement(8);
+        linkedList1.appendElement(4);
+        linkedList1.appendElement(5);
+        // When
+        NewLinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void getIntersectionNode1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(9);
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(4);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(3);
+        linkedList1.appendElement(2);
+        linkedList1.appendElement(4);
+        // When
+        NewLinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 2);
+    }
+
+    @Test
+    void getIntersectionNode2() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(2);
+        linkedList.appendElement(6);
+        linkedList.appendElement(4);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(1);
+        linkedList1.appendElement(5);
+        // When
+        NewLinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        // Then
+        assertNull(result);
+
+    }
 
 }

@@ -1,5 +1,7 @@
 package linked.list.leetcode;
 
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Stack;
 
 public class NewLinkedList {
@@ -109,21 +111,59 @@ public class NewLinkedList {
     // Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
     // Return the linked list sorted as well.
     protected Node removeDuplicates(Node head) {
-        Node current = head;
-        Node previous;
-        while (current.next != null) {
-            if (current.data == current.next.data) {
-                previous = current;
-                while (current.data == current.next.data) {
-                    current = current.next;
-                    this.size--;
-                }
-                previous.next = current;
-                head = previous.next;
+        if (head == null) return null;
+
+        Node previous = head;
+        Node current = head.next;
+
+        while (current != null) {
+            if (previous.data == current.data){
+                //skipping the duplicate node
+                current = current.next;
+                this.size--;
             }
-            current = current.next;
+            else{
+                // if not duplicates then make the link
+                previous.next = current;
+                previous = current;
+                current = current.next;
+            }
         }
+        previous.next = current;
         return head;
+    }
+
+    // 160. Intersection of Two Linked Lists
+    // Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect.
+    // If the two linked lists have no intersection at all, return null.
+    // Could you write a solution that runs in O(n) time and use only O(1) memory
+    protected Node getIntersectionNode(@NotNull Node headA, @NotNull Node headB) {
+        Node headAOriginal = headA;
+
+        while (headA != null && headB.next != null) {
+            if (headA.data == headB.data && headA.next.data == headB.next.data) {
+              return headA;
+            }
+            headA = headA.next;
+        }
+        headB = headB.next;
+
+        if (headB == null) {
+            return null;
+        }
+
+        return getIntersectionNode(headAOriginal, headB);
+    }
+
+    protected Node getIntersectionNodeSolution(Node headA, Node headB) {
+        if (headA == null || headB == null) return null;
+        Node A = headA;
+        Node B = headB;
+        while(A != B){
+            A = (A == null) ? headB : A.next;
+            B = (B == null) ? headA : B.next;
+        }
+        return A;
     }
 
     // 203. Remove Linked List Elements
