@@ -268,7 +268,84 @@ class NewLinkedListTest {
         NewLinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertNull(result);
+    }
 
+    @Test
+    void mergeTwoLists() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(4);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(1);
+        linkedList1.appendElement(3);
+        linkedList1.appendElement(4);
+        // When
+        NewLinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void mergeTwoLists1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        linkedList.appendElement(7);
+        linkedList.appendElement(8);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(7);
+        linkedList1.appendElement(8);
+        linkedList1.appendElement(11);
+        linkedList1.appendElement(12);
+        // When
+        NewLinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 5);
+    }
+
+    @Test
+    void mergeTwoLists2() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(3);
+        linkedList.appendElement(7);
+        linkedList.appendElement(8);
+        linkedList.appendElement(10);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(1);
+        linkedList1.appendElement(4);
+        linkedList1.appendElement(5);
+        linkedList1.appendElement(7);
+        // When
+        NewLinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void mergeTwoLists3() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        NewLinkedList linkedList1 = new NewLinkedList();
+        // When
+        NewLinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        // Then
+        assertNull(result);
+    }
+
+    @Test
+    void mergeTwoLists4() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(0);
+        // When
+        NewLinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 0);
     }
 
 }

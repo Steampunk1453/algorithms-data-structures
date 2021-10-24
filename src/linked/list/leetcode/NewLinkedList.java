@@ -107,6 +107,54 @@ public class NewLinkedList {
         return this.size;
     }
 
+    // 21. Merge Two Sorted Lists
+    // Merge two sorted linked lists and return it as a sorted list. The list should be made by splicing together
+    // the nodes of the first two lists
+    // This is because he's using Java and everything is considered an object here.
+    // When he did tail = dummy, he stored the reference (pointer) for dummy variable into tail. Now every time the tail
+    // variable is changed, it'd also affect the dummy variable
+    public Node mergeTwoLists(Node l1, Node l2) {
+        Node dummy = new Node();
+        Node tail = dummy;
+        while (l1 != null && l2 != null) {
+            if (l1.data > l2.data) {
+                tail.next = l2;
+                tail = tail.next;
+                l2 = l2.next;
+            } else {
+                tail.next = l1;
+                tail = tail.next;
+                l1 = l1.next;
+            }
+        }
+
+        if (l1 != null) {
+            tail.next =  l1;
+        }
+
+        if (l2 != null) {
+            tail.next =  l2;
+        }
+
+        return dummy.next;
+    }
+
+    protected Node mergeTwoListsRecursive(Node l1, Node l2) {
+        if (l1 == null && l2 == null)
+            return null;
+        if (l1 == null)
+            return l2;
+        if (l2 == null)
+            return l1;
+
+        if (l1.data <= l2.data) {
+            l1.next = mergeTwoListsRecursive(l1.next, l2);
+            return l1;
+        }
+        l2.next = mergeTwoListsRecursive(l1, l2.next);
+        return l2;
+    }
+
     // 83. Remove Duplicates from Sorted List
     // Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
     // Return the linked list sorted as well.
