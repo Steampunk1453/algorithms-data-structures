@@ -348,4 +348,112 @@ class NewLinkedListTest {
         assertEquals(result.data, 0);
     }
 
+    @Test
+    void isPalindromeLinkedList() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(2);
+        linkedList.appendElement(1);
+        // When
+        boolean result = linkedList.isPalindrome(linkedList.head);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeLinkedList1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        // When
+        boolean result = linkedList.isPalindrome(linkedList.head);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void deleteNode() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(1);
+        linkedList.appendElement(9);
+        NewLinkedList.Node node = new NewLinkedList.Node();
+        node.data = 5;
+
+        // When
+        NewLinkedList.Node result = linkedList.deleteNode(node);
+        // Then
+        assertEquals(result.data, 4);
+    }
+
+    @Test
+    void deleteNode1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(1);
+        linkedList.appendElement(9);
+        NewLinkedList.Node node = new NewLinkedList.Node();
+        node.data = 1;
+
+        // When
+        NewLinkedList.Node result = linkedList.deleteNode(node);
+        // Then
+        assertEquals(result.data, 4);
+    }
+
+    @Test
+    void deleteNode2() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        NewLinkedList.Node node = new NewLinkedList.Node();
+        node.data = 3;
+
+        // When
+        NewLinkedList.Node result = linkedList.deleteNode(node);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void deleteNode3() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(0);
+        linkedList.appendElement(1);
+        NewLinkedList.Node node = new NewLinkedList.Node();
+        node.data = 0;
+
+        // When
+        NewLinkedList.Node result = linkedList.deleteNode(node);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void deleteNode4() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(-3);
+        linkedList.appendElement(5);
+        linkedList.appendElement(-99);
+        NewLinkedList.Node node = new NewLinkedList.Node();
+        node.data = -3;
+
+        // When
+        NewLinkedList.Node result = linkedList.deleteNode(node);
+        // Then
+        assertEquals(result.data, 5);
+    }
+
 }

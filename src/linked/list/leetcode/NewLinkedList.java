@@ -311,4 +311,41 @@ public class NewLinkedList {
         return solve(curr, temp, next);
     }
 
+    // 234. Palindrome Linked List
+    // Given the head of a singly linked list, return true if it is a palindrome
+    protected boolean isPalindrome(Node head) {
+        boolean result = false;
+        Stack<Integer> stack = new Stack<>();
+        Node current = head;
+        while (current != null) {
+            stack.push(current.data);
+            current = current.next;
+        }
+        current = head;
+        while (current != null) {
+            if (current.data == stack.pop()) {
+                result = true;
+            } else {
+                return false;
+            }
+            current = current.next;
+        }
+        return result;
+    }
+
+    // 237. Delete Node in a Linked List
+    // Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list,
+    // instead you will be given access to the node to be deleted directly.
+    // It is guaranteed that the node to be deleted is not a tail node in the list.
+    protected Node deleteNode(Node node) {
+        Node current = head;
+        while (current.data != node.data) {
+            current = current.next;
+        }
+        if (current.next != null) {
+            current.data = current.next.data;
+            current.next = current.next.next;
+        }
+        return head;
+    }
 }
