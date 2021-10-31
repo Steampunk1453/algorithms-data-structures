@@ -456,4 +456,35 @@ class NewLinkedListTest {
         assertEquals(result.data, 5);
     }
 
+    @Test
+    void getMiddleNode() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        // When
+        NewLinkedList.Node result = linkedList.getMiddleNode(linkedList.head);
+        // Then
+        assertEquals(result.data, 3);
+    }
+
+    @Test
+    void getMiddleNode1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        // When
+        NewLinkedList.Node result = linkedList.getMiddleNode(linkedList.head);
+        // Then
+        assertEquals(result.data, 4);
+    }
+
 }

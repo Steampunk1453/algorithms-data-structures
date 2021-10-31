@@ -348,4 +348,52 @@ public class NewLinkedList {
         }
         return head;
     }
+
+    // 876. Middle of the Linked List
+    protected Node getMiddleNode(Node node) {
+        Node current = node;
+
+        int size = 1;
+        while (current != null) {
+            current = current.next;
+            size++;
+        }
+
+        int mediumIndex = size / 2;
+
+        current = node;
+        Node medium = new Node();
+
+        int index = 0;
+        while (current != null) {
+            if (index == mediumIndex) {
+                medium = current;
+            }
+            current = current.next;
+            index++;
+        }
+
+        return medium;
+    }
+
+    public Node middleNode(Node head) {
+        Node slow = head;
+        Node fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    public Node middleNode1(Node head) {
+        Node[] A = new Node[100];
+        int t = 0;
+        while (head != null) {
+            A[t++] = head;
+            head = head.next;
+        }
+        return A[t / 2];
+    }
+
 }
