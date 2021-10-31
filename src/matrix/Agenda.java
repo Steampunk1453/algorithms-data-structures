@@ -1,6 +1,6 @@
 package matrix;
 
-public class TwoDimensional {
+public class Agenda {
 
     protected int[][] createAgenda() {
         int[][] months = new int[12][];

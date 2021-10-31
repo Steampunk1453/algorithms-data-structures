@@ -1,3 +1,5 @@
+package stack;
+
 // Driver code
 class Main {
     public static void main(String[] args) {
@@ -13,7 +15,7 @@ class Main {
 class Stack {
     static final int MAX = 1000;
     int top;
-    int[] a = new int[MAX]; // Maximum size of Stack
+    int[] a = new int[MAX]; // Maximum size of stack.Stack
 
     boolean isEmpty() {
         return (top < 0);
@@ -25,7 +27,7 @@ class Stack {
 
     void push(int x) {
         if (top >= (MAX - 1)) {
-            System.out.println("Stack Overflow");
+            System.out.println("stack.Stack Overflow");
         } else {
             a[++top] = x;
             System.out.println(x + " pushed into stack");
@@ -34,7 +36,7 @@ class Stack {
 
     int pop() {
         if (top < 0) {
-            System.out.println("Stack Underflow");
+            System.out.println("stack.Stack Underflow");
             return 0;
         } else {
             return a[top--];
@@ -43,7 +45,7 @@ class Stack {
 
     int peek() {
         if (top < 0) {
-            System.out.println("Stack Underflow");
+            System.out.println("stack.Stack Underflow");
             return 0;
         } else {
             return a[top];
