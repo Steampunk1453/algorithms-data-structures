@@ -90,7 +90,7 @@ class NewLinkedListTest {
         linkedList.appendElement(2);
         // When
         NewLinkedList.Node head = linkedList.head;
-        NewLinkedList.Node result = linkedList.removeDuplicates(head);
+        NewLinkedList.Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 2);
         assertEquals(result.data, 1);
@@ -107,7 +107,7 @@ class NewLinkedListTest {
         linkedList.appendElement(3);
         // When
         NewLinkedList.Node head = linkedList.head;
-        NewLinkedList.Node result = linkedList.removeDuplicates(head);
+        NewLinkedList.Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 3);
         assertEquals(result.data, 1);
@@ -466,7 +466,7 @@ class NewLinkedListTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        NewLinkedList.Node result = linkedList.getMiddleNode(linkedList.head);
+        NewLinkedList.Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -482,9 +482,107 @@ class NewLinkedListTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         // When
-        NewLinkedList.Node result = linkedList.getMiddleNode(linkedList.head);
+        NewLinkedList.Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 4);
+    }
+
+    @Test
+    void removeDuplicatesFromUnsortedList() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(1);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(2);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        // When
+        NewLinkedList.Node result = linkedList.deleteDups(linkedList.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void removeDuplicatesFromUnsortedList1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(1);
+        linkedList.appendElement(3);
+        linkedList.appendElement(2);
+        // When
+        NewLinkedList.Node result = linkedList.deleteDups(linkedList.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void getLastNode() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        // When
+        int result = linkedList.getLastNodeIndex(linkedList.head);
+        // Then
+        assertEquals(result, 6);
+    }
+
+    @Test
+    void getLastNode1() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        // When
+        int result = linkedList.printKthToLast(linkedList.head, 6);
+        // Then
+        assertEquals(result, 6);
+    }
+
+    @Test
+    void deleteMiddleNode() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        linkedList.appendElement(6);
+        // When
+        NewLinkedList.Node result = linkedList.deleteMiddleNode(linkedList.head);
+        // Then
+        assertEquals(result.data, 1);
+    }
+
+    @Test
+    void sumTwoList() {
+        // Given
+        NewLinkedList linkedList = new NewLinkedList();
+        linkedList.appendElement(7);
+        linkedList.appendElement(1);
+        linkedList.appendElement(6);
+        NewLinkedList linkedList1 = new NewLinkedList();
+        linkedList1.appendElement(5);
+        linkedList1.appendElement(9);
+        linkedList1.appendElement(2);
+        // When
+        NewLinkedList.Node result = linkedList.sumLists(linkedList.head, linkedList1.head);
+        // Then
+        assertEquals(result.data, 2);
     }
 
 }

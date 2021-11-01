@@ -2,6 +2,8 @@ package linked.list.leetcode;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.HashSet;
+import java.util.Hashtable;
 import java.util.Stack;
 
 public class NewLinkedList {
@@ -129,11 +131,11 @@ public class NewLinkedList {
         }
 
         if (l1 != null) {
-            tail.next =  l1;
+            tail.next = l1;
         }
 
         if (l2 != null) {
-            tail.next =  l2;
+            tail.next = l2;
         }
 
         return dummy.next;
@@ -158,19 +160,18 @@ public class NewLinkedList {
     // 83. Remove Duplicates from Sorted List
     // Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
     // Return the linked list sorted as well.
-    protected Node removeDuplicates(Node head) {
+    protected Node removeDuplicatesFromSortedList(Node head) {
         if (head == null) return null;
 
         Node previous = head;
         Node current = head.next;
 
         while (current != null) {
-            if (previous.data == current.data){
+            if (previous.data == current.data) {
                 //skipping the duplicate node
                 current = current.next;
                 this.size--;
-            }
-            else{
+            } else {
                 // if not duplicates then make the link
                 previous.next = current;
                 previous = current;
@@ -190,7 +191,7 @@ public class NewLinkedList {
 
         while (headA != null && headB.next != null) {
             if (headA.data == headB.data && headA.next.data == headB.next.data) {
-              return headA;
+                return headA;
             }
             headA = headA.next;
         }
@@ -207,7 +208,7 @@ public class NewLinkedList {
         if (headA == null || headB == null) return null;
         Node A = headA;
         Node B = headB;
-        while(A != B){
+        while (A != B) {
             A = (A == null) ? headB : A.next;
             B = (B == null) ? headA : B.next;
         }
@@ -376,17 +377,25 @@ public class NewLinkedList {
         return medium;
     }
 
-    public Node middleNode(Node head) {
+    // The "Runner" Technique or second pointer
+    protected Node middleNode(Node head) {
         Node slow = head;
         Node fast = head;
         while (fast != null && fast.next != null) {
             slow = slow.next;
             fast = fast.next.next;
         }
+        // Rearrange CCI --> p. 93
+//        fast = head;
+//        while (fast != null) {
+//            fast.next = slow;
+//            fast = fast.next.next;
+//        }
+
         return slow;
     }
 
-    public Node middleNode1(Node head) {
+    protected Node middleNode1(Node head) {
         Node[] A = new Node[100];
         int t = 0;
         while (head != null) {
@@ -395,5 +404,176 @@ public class NewLinkedList {
         }
         return A[t / 2];
     }
+
+    // 2.1 Remove Dups! Write code to remove duplicates from an unsorted linked list
+    protected Node removeDuplicatesFromUnsortedList(Node head) {
+        Node current = head;
+        Hashtable<Integer, Integer> table = new Hashtable<>();
+
+        while (current != null) {
+            int index = 1;
+            if (table.containsKey(current.data)) {
+                index += 1;
+            }
+            table.put(current.data, index);
+            current = current.next;
+        }
+
+        current = head;
+        Node previous = null;
+        boolean flag = false;
+        while (current != null) {
+            if (table.get(current.data) == 2) {
+                if (previous.data == head.data) {
+                    flag = true;
+                }
+                previous.next = current.next;
+                table.put(current.data, 1);
+            }
+            previous = current;
+            current = current.next;
+        }
+        if (flag) {
+            head = head.next;
+        }
+
+        return head;
+    }
+
+    protected Node deleteDups(Node head) {
+        Node current = head;
+        Node previous = null;
+        HashSet<Integer> set = new HashSet<>();
+
+        while (current != null) {
+            if (set.contains(current.data)) {
+                previous.next = current.next;
+            } else {
+                set.add(current.data);
+                previous = current;
+            }
+            current = current.next;
+        }
+        return head;
+    }
+
+    // 2.2 Return Kth to Last: Implement an algorithm to find the kth to last element of a singly linked list
+    protected int getLastNodeIndex(Node head) {
+        Node current = head;
+//        Node previous = null;
+        int index = 0;
+        while (current != null) {
+//            previous = current;
+            current = current.next;
+            index += 1;
+        }
+        return index;
+    }
+
+    protected int printKthToLast(Node head, int k) {
+        if (head == null) {
+            return 0;
+        }
+        int index = printKthToLast(head.next, k) + 1;
+        if (index == k) {
+            System.out.println(k + "th to last node is " + head.data);
+        }
+        return index;
+    }
+
+    // 2.3 Delete Middle Node: Implement an algorithm to delete a node in the middle (i.e., any node but the first and
+    // last node, not necessarily the exact middle) of a singly linked list, given only access to that node
+    protected Node deleteMiddleNode(Node head) {
+        Node current = head;
+        Node slow = head;
+        Node fast = head;
+        Node previous = head;
+        Node middle = new Node();
+
+        while (fast != null) {
+            middle = slow;
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+
+        while (current != null) {
+            if (current.data == middle.data) {
+                previous.next = slow;
+            }
+            previous = current;
+            current = current.next;
+        }
+
+        return head;
+    }
+
+    // 2.5 Sum Lists: You have two numbers represented by a linked list, where each node contains a single digit.
+    // The digits are stored in reverse order, such that the 1 's digit is at the head of the list.
+    // Write a function that adds the two numbers and returns the sum as a linked list.
+    protected Node sumLists(Node list1, Node list2) {
+        Node current1 = list1;
+        Node current2 = list2;
+        Node total = new Node();
+
+        boolean hasRemainder = false;
+        int index = 0;
+        while (current1 != null) {
+            int result;
+            int sum = current1.data + current2.data;
+            if (hasRemainder) {
+                sum += 1;
+            }
+            if (sum > 9) {
+                result = sum - 10;
+                hasRemainder = true;
+            } else {
+                result = sum;
+                hasRemainder = false;
+            }
+
+            if (index == 0) {
+                total.data = result;
+            }
+
+            else if (index > 0) {
+                Node newNode = new Node();
+                newNode.data = result;
+                if (total.next != null) {
+                    total.next.next = newNode;
+                } else {
+                    total.next = newNode;
+                }
+            }
+            current1 = current1.next;
+            current2 = current2.next;
+            index++;
+        }
+        return total;
+    }
+
+    public Node addTwoNumbers(Node l1, Node l2) {
+        Node dummy = new Node();
+        Node cur = dummy;
+        int carry = 0;
+        while (l1 != null || l2 != null) {
+            int x = l1 == null ? 0 : l1.data;
+            int y = l2 == null ? 0 : l2.data;
+            int sum = x + y + carry;
+            carry = sum / 10;
+            Node node = new Node();
+            node.data = sum % 10;
+            cur.next = node;
+            cur = cur.next;
+            if (l1 != null) l1 = l1.next;
+            if (l2 != null) l2 = l2.next;
+        }
+        if (carry > 0)  {
+            Node node = new Node();
+            node.data = carry;
+            cur.next = node;
+        }
+        return dummy.next;
+    }
+
 
 }
