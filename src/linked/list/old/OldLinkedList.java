@@ -1,4 +1,4 @@
-package linked.list.leetcode;
+package linked.list.old;
 
 public class OldLinkedList {
 

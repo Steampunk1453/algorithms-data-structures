@@ -1,4 +1,4 @@
-package linked.list.leetcode;
+package linked.list.old;
 
 import org.junit.jupiter.api.Test;
 

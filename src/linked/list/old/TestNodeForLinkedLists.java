@@ -1,4 +1,4 @@
-package linked.list;
+package linked.list.old;
 
 public class TestNodeForLinkedLists {
     public static void main(String[] args) {

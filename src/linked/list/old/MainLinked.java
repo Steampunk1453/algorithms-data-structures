@@ -1,4 +1,4 @@
-package linked.list;
+package linked.list.old;
 
 public class MainLinked {
 
