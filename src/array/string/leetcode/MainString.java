@@ -336,7 +336,6 @@ public class MainString {
     }
 
     protected String mostCommon(String paragraph, String[] banned) {
-
         // 1). replace the punctuations with spaces,
         // and put all letters in lower case
         String normalizedStr = paragraph.replaceAll("[^a-zA-Z0-9 ]", " ").toLowerCase();
