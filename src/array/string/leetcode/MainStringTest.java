@@ -403,5 +403,38 @@ class MainStringTest {
         assertEquals(result, -1);
     }
 
+    @Test
+    void firstUniqChar() {
+        // Given
+        MainString main = new MainString();
+        String input = "leetcode";
+        // When
+        int result = main.firstUniqChar(input);
+        // Then
+        assertEquals(result, 0);
+    }
+
+    @Test
+    void firstUniqChar1() {
+        // Given
+        MainString main = new MainString();
+        String input = "loveleetcode";
+        // When
+        int result = main.firstUniqChar(input);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void firstUniqChar2() {
+        // Given
+        MainString main = new MainString();
+        String input = "aabb";
+        // When
+        int result = main.firstUniqChar(input);
+        // Then
+        assertEquals(result, -1);
+    }
+
 
 }

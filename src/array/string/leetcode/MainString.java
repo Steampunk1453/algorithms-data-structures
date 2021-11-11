@@ -672,7 +672,6 @@ public class MainString {
     }
 
     // 1768. Merge Strings Alternately
-
     protected String mergeStringsAlternately(String word, String word1) {
         StringBuilder sb = new StringBuilder(word);
         int minLength = min(word.length(), word1.length());
@@ -753,4 +752,21 @@ public class MainString {
     // 1047. Remove All Adjacent Duplicates In String
     // 1544. Make The String Great
 
+    // 387. First Unique Character in a String
+    public int firstUniqChar(String s) {
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = s.toCharArray();
+
+        for (char cha : chars) {
+            map.put(cha, map.getOrDefault(cha, 0) + 1);
+        }
+
+        for (int i = 0; i < chars.length; i++) {
+            if (map.get(chars[i]) == 1) {
+                return i;
+            }
+        }
+
+        return - 1;
+    }
 }
