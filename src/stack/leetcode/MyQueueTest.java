@@ -1,4 +1,4 @@
-package queue.leetcode;
+package stack.leetcode;
 
 import org.junit.jupiter.api.Test;
 
