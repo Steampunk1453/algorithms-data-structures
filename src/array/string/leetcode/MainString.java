@@ -769,4 +769,30 @@ public class MainString {
 
         return - 1;
     }
+
+    // 20. Valid Parentheses
+    // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+    public boolean isValidParentheses(String input) {
+        char[] parentheses = input.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (Character cha: parentheses) {
+            if (cha.equals('(')) {
+                stack.push(')');
+            }
+            else if (cha.equals('{')) {
+                stack.push('}');
+            }
+            else if (cha.equals('[')) {
+                stack.push(']');
+            }  else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else if (!cha.equals(stack.pop())) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
 }

@@ -436,5 +436,59 @@ class MainStringTest {
         assertEquals(result, -1);
     }
 
+    @Test
+    void isValidParentheses() {
+        // Given
+        MainString main = new MainString();
+        String input = "()";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isValidParentheses1() {
+        // Given
+        MainString main = new MainString();
+        String input = "()[]{}";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isValidParentheses2() {
+        // Given
+        MainString main = new MainString();
+        String input = "(]";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isValidParentheses3() {
+        // Given
+        MainString main = new MainString();
+        String input = "([)]";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isValidParentheses4() {
+        // Given
+        MainString main = new MainString();
+        String input = "{[]}";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
 
 }
