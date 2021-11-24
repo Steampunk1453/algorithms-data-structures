@@ -1,16 +1,15 @@
-package stack;
+package stack.cracking;
 
 import org.junit.jupiter.api.Test;
-import stack.leetcode.MyQueue;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class MinStackCrackingTest {
+class MinStackTest {
 
     @Test
     void push() {
         // Given
-        MinStackCracking stack = new MinStackCracking();
+        MinStack stack = new MinStack();
         // When
         stack.push(7);
         stack.push(4);
@@ -26,7 +25,7 @@ class MinStackCrackingTest {
     @Test
     void pop() {
         // Given
-        MinStackCracking stack = new MinStackCracking();
+        MinStack stack = new MinStack();
         stack.push(7);
         stack.push(4);
         stack.push(9);
@@ -43,7 +42,7 @@ class MinStackCrackingTest {
     @Test
     void min() {
         // Given
-        MinStackCracking stack = new MinStackCracking();
+        MinStack stack = new MinStack();
         stack.push(7);
         stack.push(4);
         stack.push(9);
@@ -64,7 +63,7 @@ class MinStackCrackingTest {
     @Test
     void min1() {
         // Given
-        MinStackCracking stack = new MinStackCracking();
+        MinStack stack = new MinStack();
         stack.push(2);
         stack.push(1);
         stack.push(3);
