@@ -68,31 +68,50 @@ class NumbersTest {
     }
 
     @Test
+    void countDown() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        numbers.countDown(5);
+        // Then
+    }
+
+    @Test
     void factorial() {
         // Given
         Numbers numbers = new Numbers();
         // When
-        int result = numbers.factorial(3);
+        int result = numbers.factorial(5);
+        // Then
+        assertEquals(result, 120);
+    }
+
+    @Test
+    void factorialJJ() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.factorialJJ(3);
         // Then
         assertEquals(result, 6);
     }
 
     @Test
-    void factorial1() {
+    void factorialWhile() {
         // Given
         Numbers numbers = new Numbers();
         // When
-        int result = numbers.factorial1(7);
+        int result = numbers.factorialWhile(7);
         // Then
         assertEquals(result, 5040);
     }
 
     @Test
-    void factorial2() {
+    void factorialFor() {
         // Given
         Numbers numbers = new Numbers();
         // When
-        int result = numbers.factorial2(7);
+        int result = numbers.factorialFor(7);
         // Then
         assertEquals(result, 5040);
     }
@@ -145,6 +164,26 @@ class NumbersTest {
         // When
         numbers.calculateArrayValues(array);
         // Then
+    }
+
+    @Test
+    void fibonacci() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.fibonacciNum(5);
+        // Then
+        assertEquals(result, 5);
+    }
+
+    @Test
+    void recursiveMulti() {
+        // Given
+        Numbers numbers = new Numbers();
+        // When
+        int result = numbers.recursiveMulti(3, 3);
+        // Then
+        assertEquals(result, 9);
     }
 
 }

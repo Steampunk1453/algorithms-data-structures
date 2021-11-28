@@ -79,6 +79,13 @@ public class Numbers {
         return result;
     }
 
+    protected void countDown(int num) {
+        if (num >= 0) {
+            System.out.println(num);
+            countDown(num - 1);
+        }
+    }
+
     protected int factorial(int num) {
         if (num <= 1) {
             return 1;
@@ -86,7 +93,24 @@ public class Numbers {
         return num * factorial(num - 1);
     }
 
-    protected int factorial1(int num) {
+    protected int factorialJJ(int num) {
+        if (num <= 1) {
+            return 1;
+        }
+        num = num * factorial(num - 1);
+        return num;
+    }
+
+    protected int factorialJJ1(int num) {
+        if (num > 1) {
+            int aux;
+            aux = factorialJJ(num - 1);
+            num = num + aux;
+        }
+        return num;
+    }
+
+    protected int factorialWhile(int num) {
         if (num == 0) {
             return 1;
         }
@@ -98,7 +122,7 @@ public class Numbers {
         return result;
     }
 
-    protected int factorial2(int num) {
+    protected int factorialFor(int num) {
         if (num == 0) {
             return 1;
         }
@@ -191,6 +215,35 @@ public class Numbers {
         System.out.println("min: " + min);
         System.out.println("max: " + max);
         System.out.println("med: " + sum / array.length);
+    }
+
+    // 509. Fibonacci Number
+    protected int fibonacciNum(int num) {
+        if (num == 0) {
+            return 0;
+        }
+        if (num == 1) {
+            return 1;
+        }
+        return fibonacciNum(num - 1) + fibonacciNum(num - 2);
+    }
+
+    protected int recursiveMulti(int num1, int num2) {
+        int aux = num1;
+        if (num2 == 1) {
+            return num1;
+        }
+        aux += recursiveMulti(num1, num2 - 1);
+        return aux;
+    }
+
+    protected int recursiveMultiJJ(int num1, int num2) {
+        if (num2 == 1) {
+            return num1;
+        } else {
+           num1 += recursiveMultiJJ(num1, num2 - 1);
+        }
+        return num1;
     }
 
 }
