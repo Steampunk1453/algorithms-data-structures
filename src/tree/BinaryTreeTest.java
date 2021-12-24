@@ -2,6 +2,8 @@ package tree;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
@@ -71,10 +73,11 @@ class BinaryTreeTest {
         binaryTree.add(82);
         binaryTree.add(95);
         // When
-        binaryTree.remove( 50);
+        binaryTree.remove(50);
         // Then
         assertEquals(binaryTree.root.value, 52);
     }
+
     @Test
     void inOrderTraversal() {
         // Given
@@ -98,7 +101,7 @@ class BinaryTreeTest {
     }
 
     @Test
-    void preOrderTraversal() {
+    void inOrderTraversalIterative() {
         // Given
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.add(50);
@@ -114,9 +117,124 @@ class BinaryTreeTest {
         binaryTree.add(82);
         binaryTree.add(95);
         // When
+        List<Integer> result = binaryTree.inOrderTraversalIterative(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 12);
+        assertEquals(result.get(0), 11);
+    }
+
+    @Test
+    void inOrderTraversalIterative1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        List<Integer> result = binaryTree.inOrderTraversalIterative1(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 12);
+        assertEquals(result.get(0), 11);
+    }
+
+    @Test
+    void preOrderTraversal() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
         binaryTree.preOrderTraversal(binaryTree.root);
         // Then
         assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
+    void preOrderTraversalIterative() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        List<Integer> result = binaryTree.preOrderTraversalIterative(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 12);
+        assertEquals(result.get(0), 50);
+    }
+    @Test
+    void preOrderTraversalIterative1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        binaryTree.preOrderTraversalIterative1();
+        // Then
+        assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
+    void preOrderTraversalIterative2() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        List<Integer> result = binaryTree.preOrderTraversalIterative2(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 12);
+        assertEquals(result.get(0), 50);
     }
 
     @Test
@@ -137,6 +255,29 @@ class BinaryTreeTest {
         binaryTree.add(95);
         // When
         binaryTree.postOrderTraversal(binaryTree.root);
+        // Then
+        assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
+    void potsOrderTraversalIterative() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        binaryTree.potsOrderTraversalIterative();
         // Then
         assertEquals(binaryTree.root.value, 50);
     }
