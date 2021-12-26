@@ -5,7 +5,9 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BinaryTreeTest {
 
@@ -191,6 +193,7 @@ class BinaryTreeTest {
         assertEquals(result.size(), 12);
         assertEquals(result.get(0), 50);
     }
+
     @Test
     void preOrderTraversalIterative1() {
         // Given
@@ -280,6 +283,40 @@ class BinaryTreeTest {
         binaryTree.potsOrderTraversalIterative();
         // Then
         assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
+    void isSameTree() {
+        // Given
+        BinaryTree binaryTree1 = new BinaryTree();
+        binaryTree1.add(1);
+        binaryTree1.add(2);
+        binaryTree1.add(3);
+        BinaryTree binaryTree2 = new BinaryTree();
+        binaryTree2.add(1);
+        binaryTree2.add(2);
+        binaryTree2.add(3);
+        // When
+        boolean result = binaryTree1.isSameTree2(binaryTree1.root, binaryTree2.root);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isNotSameTree() {
+        // Given
+        BinaryTree binaryTree1 = new BinaryTree();
+        binaryTree1.add(1);
+        binaryTree1.add(2);
+        binaryTree1.add(3);
+        BinaryTree binaryTree2 = new BinaryTree();
+        binaryTree2.add(5);
+        binaryTree2.add(2);
+        binaryTree2.add(3);
+        // When
+        boolean result = binaryTree1.isSameTree(binaryTree1.root, binaryTree2.root);
+        // Then
+        assertFalse(result);
     }
 
 }

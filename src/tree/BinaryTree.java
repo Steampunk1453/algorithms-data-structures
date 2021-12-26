@@ -1,6 +1,9 @@
 package tree;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Stack;
 
@@ -125,7 +128,7 @@ public class BinaryTree {
             if (current != null) {
                 stack.push(current);
                 current = current.left;
-            }  else {
+            } else {
                 current = stack.pop();
                 values.add(current.value);
                 current = current.right;
@@ -165,7 +168,7 @@ public class BinaryTree {
                 values.add(current.value);
                 stack.push(current);
                 current = current.left;
-            }  else {
+            } else {
                 current = stack.pop();
                 current = current.right;
             }
@@ -235,4 +238,113 @@ public class BinaryTree {
         }
     }
 
+    // 100. Same Tree
+    // Given the roots of two binary trees p and q, write a function to check if they are the same or not.
+    // Two binary trees are considered the same if they are structurally identical, and the nodes have the same value.
+
+    // O(n)
+    protected boolean isSameTree(Node root1, Node root2) {
+        if (root2 != null) {
+            isSameTree(root1, root2.left);
+            if (isPresent(root1, root2.value)) {
+                isSameTree(root1, root2.right);
+            } else {
+                return false;
+            }
+
+        }
+        return true;
+    }
+
+    private boolean isPresent(Node current, int value) {
+        if (current.value == value) {
+            return true;
+        } else if (value < current.value) {
+            return current.left != null && isPresent(current.left, value);
+        } else {
+            return current.right != null && isPresent(current.right, value);
+        }
+    }
+
+    // O(n)
+    protected boolean isSameTree1(Node p, Node q) {
+        // p and q are both null
+        if (p == null && q == null) return true;
+        // one of p and q is null
+        if (q == null || p == null) return false;
+        if (p.value != q.value) return false;
+        return isSameTree1(p.right, q.right) && isSameTree1(p.left, q.left);
+    }
+
+    public boolean isSameTree2(Node p, Node q) {
+        Deque<Node> queue = new LinkedList<>();
+        queue.add(p);
+        queue.add(q);
+
+        while(!queue.isEmpty()) {
+            p = queue.poll();
+            q = queue.poll();
+
+            if (p == null && q == null) continue;
+            if (p == null || q == null) return false;
+            if (p.value != q.value) return false;
+
+            queue.add(p.left);
+            queue.add(q.left);
+            queue.add(p.right);
+            queue.add(q.right);
+        }
+        return true;
+    }
+
+    // O(n)
+    protected boolean isSameTree3(Node p, Node q) {
+        if (p == null && q == null) return true;
+        if (check(p, q)) return false;
+
+        // init deques
+        ArrayDeque<Node> deqP = new ArrayDeque<>();
+        ArrayDeque<Node> deqQ = new ArrayDeque<>();
+        deqP.addLast(p);
+        deqQ.addLast(q);
+
+        while (!deqP.isEmpty()) {
+            p = deqP.removeFirst();
+            q = deqQ.removeFirst();
+
+            if (check(p, q)) return false;
+            // in Java nulls are not allowed in Deque
+            if (check(p.left, q.left)) return false;
+            if (p.left != null) {
+                deqP.addLast(p.left);
+                deqQ.addLast(q.left);
+            }
+            if (check(p.right, q.right)) return false;
+            if (p.right != null) {
+                deqP.addLast(p.right);
+                deqQ.addLast(q.right);
+            }
+        }
+        return true;
+    }
+
+    private boolean check(Node p, Node q) {
+        // p and q are null
+        if (p == null && q == null) return true;
+        // one of p and q is null
+        if (q == null || p == null) return false;
+        return p.value == q.value;
+    }
+
+//    private boolean check(Node p, Node q) {
+//        // p and q are null
+//        if (p == null && q == null) return true;
+//        // one of p and q is null
+//        if (q == null || p == null) return false;
+//        if (p.value != q.value) return false;
+//        return true;
+//    }
+
+
 }
+
