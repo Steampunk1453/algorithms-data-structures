@@ -81,6 +81,28 @@ class BinaryTreeTest {
     }
 
     @Test
+    void traverseLevelOrder() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        binaryTree.traverseLevelOrder(binaryTree.root);
+        // Then
+        assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
     void inOrderTraversal() {
         // Given
         BinaryTree binaryTree = new BinaryTree();
@@ -263,7 +285,7 @@ class BinaryTreeTest {
     }
 
     @Test
-    void potsOrderTraversalIterative() {
+    void postOrderTraversalIterative() {
         // Given
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.add(50);
@@ -315,6 +337,67 @@ class BinaryTreeTest {
         binaryTree2.add(3);
         // When
         boolean result = binaryTree1.isSameTree(binaryTree1.root, binaryTree2.root);
+        // Then
+        assertFalse(result);
+    }
+
+
+    @Test
+    void maxDepth() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        int result = binaryTree.maxDepth(binaryTree.root);
+        // Then
+        assertEquals(result, 4);
+    }
+
+    @Test
+    void sortedArrayToBST() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        int[] nums = {-10,-3,0,5,9};
+        // When
+        BinaryTree.Node result = binaryTree.sortedArrayToBST(nums);
+        // Then
+        assertEquals(result.value, 0);
+    }
+    @Test
+    void isBalancedBinaryTree() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(20);
+        binaryTree.add(10);
+        binaryTree.add(30);
+        // When
+        boolean result = binaryTree.isBalancedBinaryTree(binaryTree.root);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isNotBalancedBinaryTree() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(30);
+        binaryTree.add(20);
+        binaryTree.add(50);
+        binaryTree.add(10);
+        binaryTree.add(11);
+        // When
+        boolean result = binaryTree.isBalancedBinaryTree(binaryTree.root);
         // Then
         assertFalse(result);
     }

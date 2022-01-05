@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 public class BinaryTree {
@@ -104,6 +105,26 @@ public class BinaryTree {
             postOrderTraversal(current.left);
             postOrderTraversal(current.right);
             visit(current.value);
+        }
+    }
+
+    protected void traverseLevelOrder(Node current) {
+        Queue<Node> nodes = new LinkedList<>();
+        nodes.add(current);
+
+        while (!nodes.isEmpty()) {
+
+            Node node = nodes.remove();
+
+            visit(node.value);
+
+            if (node.left != null) {
+                nodes.add(node.left);
+            }
+
+            if (node.right != null) {
+                nodes.add(node.right);
+            }
         }
     }
 
@@ -281,7 +302,7 @@ public class BinaryTree {
         queue.add(p);
         queue.add(q);
 
-        while(!queue.isEmpty()) {
+        while (!queue.isEmpty()) {
             p = queue.poll();
             q = queue.poll();
 
@@ -345,6 +366,102 @@ public class BinaryTree {
 //        return true;
 //    }
 
+    // 101. Symmetric Tree
+    // Given the root of a binary tree, check whether it is a mirror of itself (i.e., symmetric around its center).
+    protected boolean symmetricTree(Node root) {
+        return isSymmetricTree(root.left, root.right);
+    }
+
+    protected boolean isSymmetricTree(Node left, Node right) {
+        if (right == null && left == null) {
+            return true;
+        }
+        if (right == null || left == null) {
+            return false;
+        }
+        if (right.value == left.value) {
+            return isSymmetricTree(left.left, right.right) && isSymmetricTree(left.right, right.left);
+        } else {
+            return false;
+        }
+    }
+
+    // 104. Maximum Depth of Binary Tree
+    // Given the root of a binary tree, return its maximum depth.
+    // A binary tree's maximum depth is the number of nodes along
+    // the longest path from the root node down to the farthest leaf node.
+    protected int maxDepth(Node root) {
+        if (root == null) return 0;
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+
+    protected int maxDepth1(Node root) {
+        if (root == null) return 0;
+        int leftDepth = maxDepth1(root.left);
+        int rightDepth = maxDepth1(root.right);
+        return Math.max(leftDepth, rightDepth) + 1;
+    }
+
+
+    protected int maxDepth2(Node root) {
+        // Root being null means tree doesn't exist.
+        if (root == null)
+            return 0;
+        // Get the depth of the left and right subtree
+        // using recursion.
+        int leftDepth = maxDepth2(root.left);
+        int rightDepth = maxDepth2(root.right);
+
+        // Choose the larger one and add the root to it.
+        if (leftDepth > rightDepth)
+            return (leftDepth + 1);
+        else
+            return (rightDepth + 1);
+    }
+
+    // 108. Convert Sorted Array to Binary Search Tree
+    // Given an integer array nums where the elements are sorted in ascending order,
+    // convert it to a height-balanced binary search tree.
+    // A height-balanced binary tree is a binary tree in which the depth of the
+    // two subtrees of every node never differs by more than one.
+    protected Node sortedArrayToBST(int[] nums) {
+        int start = 0;
+        int end = nums.length - 1;
+        return createBinaryTree(nums, start, end);
+    }
+
+    private Node createBinaryTree(int[] array, int start, int end) {
+        if (start > end) {
+            return null;
+        }
+
+        int mid = (start + end) / 2;
+        Node node = new Node(array[mid]);
+
+        node.left = createBinaryTree(array, start, mid - 1);
+        node.right = createBinaryTree(array, mid + 1, end);
+
+        return node;
+    }
+
+    // 110. Balanced Binary Tree
+    // Given a binary tree, determine if it is height-balanced.
+    // For this problem, a height-balanced binary tree is defined as:
+    // a binary tree in which the left and right subtrees of every node differ in height by no more than 1.
+    protected boolean isBalancedBinaryTree(Node root) {
+        int left = depth(root.left) + 1;
+        int right = depth(root.right) + 1;
+        int result = Math.max(left, right) - Math.min(left, right);
+        return result <= 1;
+    }
+
+    protected int depth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        return Math.max(depth(root.left), depth(root.right)) + 1;
+    }
 
 }
+
 
