@@ -177,8 +177,16 @@ public class BinaryTree {
         }
         return values;
     }
-
+    // 144. Binary Tree Preorder Traversal
     // O(n)
+    private void preOrderTraversaList(Node root, List<Integer>result) {
+        if(root != null) {
+            result.add(root.value);
+            preOrderTraversaList(root.left, result);
+            preOrderTraversaList(root.right, result);
+        }
+    }
+
     protected List<Integer> preOrderTraversalIterative(Node root) {
         List<Integer> values = new ArrayList<>();
         Stack<Node> stack = new Stack<>();
@@ -233,7 +241,7 @@ public class BinaryTree {
         return values;
     }
 
-    protected void potsOrderTraversalIterative() {
+    protected void postOrderTraversalIterative() {
         Stack<Node> stack = new Stack<>();
         Node prev = root;
         Node current = root;
@@ -257,6 +265,23 @@ public class BinaryTree {
                 }
             }
         }
+    }
+    // 145. Binary Tree Postorder Traversal
+    public List<Integer> postOrderTraversalList(Node root) {
+        LinkedList<Integer> list = new LinkedList<>();
+        Stack<Node>stack = new Stack<>();
+        Node current = root;
+        while (current != null || !stack.isEmpty()) {
+            while (current != null){
+                list.addFirst(current.value);
+                stack.push(current);
+                current = current.right;
+            }
+            current = stack.pop();
+            current = current.left;
+        }
+
+        return list;
     }
 
     // 100. Same Tree
@@ -460,6 +485,36 @@ public class BinaryTree {
             return 0;
         }
         return Math.max(depth(root.left), depth(root.right)) + 1;
+    }
+
+    // 111. Minimum Depth of Binary Tree
+    // Given a binary tree, find its minimum depth.
+    // The minimum depth is the number of nodes along the shortest path from the root node down to the nearest leaf node.
+    // Note: A leaf is a node with no children.
+    protected int minDepth(Node root) {
+        if (root == null) {
+            return 0;
+        }
+        if (root.left == null) {
+            return minDepth(root.right) + 1;
+        } else if (root.right == null) {
+            return minDepth(root.left) + 1;
+        }
+        return Math.min(minDepth(root.left), minDepth(root.right)) + 1;
+    }
+
+    // 112. Path Sum
+    // Given the root of a binary tree and an integer targetSum, return true if the tree has a root-to-leaf path such
+    // that adding up all the values along the path equals targetSum
+    // A leaf is a node with no children
+    protected boolean hasPathSum(Node root, int targetSum) {
+        if (root == null) {
+            return false;
+        }
+        if (root.left == null && root.right == null && root.value == targetSum) {
+            return true;
+        }
+        return hasPathSum(root.left, targetSum - root.value) || hasPathSum(root.right, targetSum - root.value);
     }
 
 }

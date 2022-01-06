@@ -302,9 +302,33 @@ class BinaryTreeTest {
         binaryTree.add(82);
         binaryTree.add(95);
         // When
-        binaryTree.potsOrderTraversalIterative();
+        binaryTree.postOrderTraversalIterative();
         // Then
         assertEquals(binaryTree.root.value, 50);
+    }
+
+    @Test
+    void postOrderTraversalList() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        List<Integer> result = binaryTree.postOrderTraversalList(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 12);
+        assertEquals(result.get(0), 11);
     }
 
     @Test
@@ -398,6 +422,79 @@ class BinaryTreeTest {
         binaryTree.add(11);
         // When
         boolean result = binaryTree.isBalancedBinaryTree(binaryTree.root);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void minDepth() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(2);
+        binaryTree.add(1);
+        binaryTree.add(3);
+        binaryTree.add(4);
+        binaryTree.add(5);
+        // When
+        int result = binaryTree.minDepth(binaryTree.root);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void minDepth1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(1);
+        binaryTree.add(2);
+        binaryTree.add(3);
+        // When
+        int result = binaryTree.minDepth(binaryTree.root);
+        // Then
+        assertEquals(result, 3);
+    }
+
+
+    @Test
+    void hasPathSum() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        boolean result = binaryTree.hasPathSum(binaryTree.root, 138);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void notHasPathSum() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        boolean result = binaryTree.hasPathSum(binaryTree.root, 87);
         // Then
         assertFalse(result);
     }
