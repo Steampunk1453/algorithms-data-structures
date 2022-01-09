@@ -177,10 +177,11 @@ public class BinaryTree {
         }
         return values;
     }
+
     // 144. Binary Tree Preorder Traversal
     // O(n)
-    private void preOrderTraversaList(Node root, List<Integer>result) {
-        if(root != null) {
+    private void preOrderTraversaList(Node root, List<Integer> result) {
+        if (root != null) {
             result.add(root.value);
             preOrderTraversaList(root.left, result);
             preOrderTraversaList(root.right, result);
@@ -266,13 +267,14 @@ public class BinaryTree {
             }
         }
     }
+
     // 145. Binary Tree Postorder Traversal
     public List<Integer> postOrderTraversalList(Node root) {
         LinkedList<Integer> list = new LinkedList<>();
-        Stack<Node>stack = new Stack<>();
+        Stack<Node> stack = new Stack<>();
         Node current = root;
         while (current != null || !stack.isEmpty()) {
-            while (current != null){
+            while (current != null) {
                 list.addFirst(current.value);
                 stack.push(current);
                 current = current.right;
@@ -515,6 +517,87 @@ public class BinaryTree {
             return true;
         }
         return hasPathSum(root.left, targetSum - root.value) || hasPathSum(root.right, targetSum - root.value);
+    }
+
+    // 226. Invert Binary Tree
+    // Given the root of a binary tree, invert the tree, and return its root
+
+    // We need temp because node.left gets modified before node.right.
+    protected Node invertBinaryTree(Node node) {
+        if (node == null) {
+            return null;
+        }
+
+        Node temp = node.left;
+
+        node.left = invertBinaryTree(node.right);
+        node.right = invertBinaryTree(temp);
+
+        return node;
+    }
+
+    // 235. Lowest Common Ancestor of a Binary Search Tree
+    // Given a binary search tree (BST), find the lowest common ancestor (LCA) of two given nodes in the BST.
+    // According to the definition of LCA on Wikipedia: “The lowest common ancestor is defined between
+    // two nodes p and q as the lowest node in T that has both p and q as descendants
+    // (where we allow a node to be a descendant of itself).”
+
+    /* Function to find LCA of n1 and n2. The function assumes that both
+      n1 and n2 are present in BST */
+    protected Node lowestCommonAncestor(Node node, int n1, int n2) {
+        if (node == null)
+            return null;
+
+        // If both n1 and n2 are smaller than root, then LCA lies in left
+        if (node.value > n1 && node.value > n2)
+            return lowestCommonAncestor(node.left, n1, n2);
+
+        // If both n1 and n2 are greater than root, then LCA lies in right
+        if (node.value < n1 && node.value < n2)
+            return lowestCommonAncestor(node.right, n1, n2);
+
+        return node;
+    }
+
+    protected Node lowestCommonAncestorIterative(Node root, int n1, int n2) {
+        while (root != null) {
+            // If both n1 and n2 are smaller
+            // than root, then LCA lies in left
+            if (root.value > n1 && root.value > n2)
+                root = root.left;
+
+                // If both n1 and n2 are greater
+                // than root, then LCA lies in right
+            else if (root.value < n1 && root.value < n2)
+                root = root.right;
+
+            else break;
+        }
+        return root;
+    }
+
+    // 257. Binary Tree Paths
+    // Given the root of a binary tree, return all root-to-leaf paths in any order.
+    //A leaf is a node with no children
+    public List<String> binaryTreePaths(Node root) {
+        if(root == null) return null;
+        List<String> result = new ArrayList<>();
+        String path = "";
+        traverse(root, path, result);
+        return result;
+    }
+
+    public void traverse(Node root, String path, List<String> result) {
+        path += root.value;
+        if(root.left == null && root.right == null) {
+            result.add(path);
+        }
+        if(root.left != null) {
+            traverse(root.left, path + "->", result);
+        }
+        if(root.right != null) {
+            traverse(root.right, path + "->", result);
+        }
     }
 
 }

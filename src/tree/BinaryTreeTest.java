@@ -398,6 +398,7 @@ class BinaryTreeTest {
         // Then
         assertEquals(result.value, 0);
     }
+
     @Test
     void isBalancedBinaryTree() {
         // Given
@@ -497,6 +498,85 @@ class BinaryTreeTest {
         boolean result = binaryTree.hasPathSum(binaryTree.root, 87);
         // Then
         assertFalse(result);
+    }
+
+    @Test
+    void invertBinaryTree() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        BinaryTree.Node result = binaryTree.invertBinaryTree(binaryTree.root);
+        // Then
+        assertEquals(result.value, 50);
+    }
+
+    @Test
+    void lowestCommonAncestor() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(6);
+        binaryTree.add(2);
+        binaryTree.add(8);
+        binaryTree.add(0);
+        binaryTree.add(4);
+        binaryTree.add(7);
+        binaryTree.add(9);
+        binaryTree.add(3);
+        binaryTree.add(5);
+        // When
+        BinaryTree.Node result = binaryTree.lowestCommonAncestor(binaryTree.root, 2, 8);
+        // Then
+        assertEquals(result.value, 6);
+    }
+
+    @Test
+    void lowestCommonAncestorIterative() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(6);
+        binaryTree.add(2);
+        binaryTree.add(8);
+        binaryTree.add(0);
+        binaryTree.add(4);
+        binaryTree.add(7);
+        binaryTree.add(9);
+        binaryTree.add(3);
+        binaryTree.add(5);
+        // When
+        BinaryTree.Node result = binaryTree.lowestCommonAncestorIterative(binaryTree.root, 2, 4);
+        // Then
+        assertEquals(result.value, 2);
+    }
+
+    @Test
+    void binaryTreePaths() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(6);
+        binaryTree.add(2);
+        binaryTree.add(8);
+        binaryTree.add(0);
+        binaryTree.add(4);
+        binaryTree.add(7);
+        binaryTree.add(9);
+        binaryTree.add(3);
+        binaryTree.add(5);
+        // When
+        List<String> result = binaryTree.binaryTreePaths(binaryTree.root);
+        // Then
+        assertEquals(result.size(), 5);
     }
 
 }
