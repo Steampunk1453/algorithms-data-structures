@@ -84,6 +84,10 @@ public class BinaryTree {
         return current;
     }
 
+    private int findSmallestValue(Node node) {
+        return node.left == null ? node.value : findSmallestValue(node.left);
+    }
+
     protected void inOrderTraversal(Node current) {
         if (current != null) {
             inOrderTraversal(current.left);
@@ -130,10 +134,6 @@ public class BinaryTree {
 
     private void visit(int value) {
         System.out.println(value);
-    }
-
-    private int findSmallestValue(Node node) {
-        return node.left == null ? node.value : findSmallestValue(node.left);
     }
 
     // 94. Binary Tree Inorder Traversal
@@ -580,24 +580,53 @@ public class BinaryTree {
     // Given the root of a binary tree, return all root-to-leaf paths in any order.
     //A leaf is a node with no children
     public List<String> binaryTreePaths(Node root) {
-        if(root == null) return null;
+        if (root == null) return null;
         List<String> result = new ArrayList<>();
         String path = "";
         traverse(root, path, result);
         return result;
     }
 
-    public void traverse(Node root, String path, List<String> result) {
+    private void traverse(Node root, String path, List<String> result) {
         path += root.value;
-        if(root.left == null && root.right == null) {
+        if (root.left == null && root.right == null) {
             result.add(path);
         }
-        if(root.left != null) {
+        if (root.left != null) {
             traverse(root.left, path + "->", result);
         }
-        if(root.right != null) {
+        if (root.right != null) {
             traverse(root.right, path + "->", result);
         }
+    }
+
+    // 404. Sum of Left Leaves
+    // Given the root of a binary tree, return the sum of all left leaves
+    protected int sumLeftLeaves(Node root) {
+        // Initialize result
+        int result = 0;
+        // Update result if root is not NULL
+        if (root != null) {
+            // If left of root is NULL, then add key of left child
+            if (isLeaf(root.left)) {
+                result += root.left.value;
+            } else {
+                // Else recur for left child of root
+                result += sumLeftLeaves(root.left);
+            }
+            // Recur for right child of root and update result
+            result += sumLeftLeaves(root.right);
+        }
+        // return result
+        return result;
+    }
+
+    // A utility function to check if a given node is leaf or not
+    private boolean isLeaf(Node current) {
+        if (current == null) {
+            return false;
+        }
+        return current.left == null && current.right == null;
     }
 
 }

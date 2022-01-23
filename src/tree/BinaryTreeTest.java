@@ -579,4 +579,23 @@ class BinaryTreeTest {
         assertEquals(result.size(), 5);
     }
 
+    @Test
+    void sumLeftLeaves() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(6);
+        binaryTree.add(2);
+        binaryTree.add(8);
+        binaryTree.add(1);
+        binaryTree.add(4);
+        binaryTree.add(7);
+        binaryTree.add(9);
+        binaryTree.add(3);
+        binaryTree.add(5);
+        // When
+        int result = binaryTree.sumLeftLeaves(binaryTree.root);
+        // Then
+        assertEquals(result, 11);
+    }
+
 }
