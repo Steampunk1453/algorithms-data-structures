@@ -16,4 +16,5 @@ class InsertionSortTest {
         // Then
         assertEquals(result[0], 1);
     }
+
 }

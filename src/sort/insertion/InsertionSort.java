@@ -2,7 +2,7 @@ package sort.insertion;
 
 public class InsertionSort {
 
-   protected int[] insertion(int[] array) {
+    protected int[] insertion(int[] array) {
         for (int step = 1; step < array.length; step++) {
             int tempValue = array[step];
             int position = step - 1;
