@@ -69,5 +69,4 @@ class MainTest {
         assertFalse(result2);
     }
 
-
 }

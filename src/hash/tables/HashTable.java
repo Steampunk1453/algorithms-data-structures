@@ -68,7 +68,7 @@ public class HashTable {
         char[] inputChars = input.toCharArray();
         Map<Character, Integer> map = new HashMap<>();
 
-        for (char ch : inputChars) {
+        for (Character ch : inputChars) {
             if (map.getOrDefault(ch, 0) == 0) {
                 map.put(ch, 1);
             } else {
