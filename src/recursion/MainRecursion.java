@@ -1,10 +1,18 @@
 package recursion;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 public class MainRecursion {
+
+    protected void countDown(int num) {
+        System.out.println(num);
+        if (num == 0) {
+            return;
+        }
+        countDown(num - 1);
+    }
 
     protected int factorial(int num) {
         if (num <= 1) {
@@ -85,19 +93,51 @@ public class MainRecursion {
         }
     }
 
-    // Check
-    protected List<Integer> evenNumbers(int[] array) {
-        List<Integer> results = new ArrayList<>();
+    protected List<Integer> evenNumbers(int[] array, List<Integer> results) {
+         if (array[0] % 2 == 0) {
+            results.add(array[0]);
+        }
         if (array.length == 1) {
-            if (array[0] % 2 == 0) {
-                results.add(array[0]);
-            }
-            if (array[0] % 2 == 0) {
-                results.add(array[0]);
-            }
-            evenNumbers(Arrays.copyOfRange(array, 1, array.length));
             return results;
         }
+        evenNumbers(Arrays.copyOfRange(array, 1, array.length), results);
         return results;
     }
+
+    protected int triangularNumber(int num) {
+        if (num == 1) {
+            return num;
+        }
+        return num + triangularNumber(num - 1 );
+    }
+
+    protected int getIndex(String input) {
+        if (Objects.equals(input.substring(0, 1), "x")) {
+            return 0;
+        }
+        return getIndex(input.substring(1)) + 1 ;
+    }
+
+    protected int getIndex1(char[] array, int index, char value) {
+        if (array.length -1 == index) {
+            if (array[index] == value) {
+                return index;
+            } else {
+                return 0;
+            }
+        }
+        else if (array[index]  == value) {
+            return index;
+        }
+        return getIndex1(array, index + 1, value);
+    }
+
+    protected int uniquePaths(int rows, int columns) {
+        if (rows == 1 || columns == 1) {
+            return 1;
+        }
+        return uniquePaths(rows -1, columns) + uniquePaths(rows, columns -1);
+
+    }
+
 }
