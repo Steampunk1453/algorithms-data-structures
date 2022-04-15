@@ -1,4 +1,4 @@
-package hash.tables;
+package hash.table;
 
 import org.junit.jupiter.api.Test;
 

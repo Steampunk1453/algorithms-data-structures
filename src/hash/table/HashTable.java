@@ -1,4 +1,4 @@
-package hash.tables;
+package hash.table;
 
 import java.util.ArrayList;
 import java.util.HashMap;
