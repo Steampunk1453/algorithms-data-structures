@@ -74,6 +74,7 @@ class BinaryTreeTest {
         binaryTree.add(52);
         binaryTree.add(82);
         binaryTree.add(95);
+        binaryTree.add(55);
         // When
         binaryTree.remove(50);
         // Then
@@ -596,6 +597,46 @@ class BinaryTreeTest {
         int result = binaryTree.sumLeftLeaves(binaryTree.root);
         // Then
         assertEquals(result, 11);
+    }
+
+    @Test
+    void maxValue() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        Integer result = binaryTree.maxValue(binaryTree.root);
+        // Then
+        assertEquals(result, 95);
+    }
+
+    @Test
+    void maxValue1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(5);
+        binaryTree.add(4);
+        binaryTree.add(-2);
+        binaryTree.add(0);
+        binaryTree.add(3);
+        binaryTree.add(9);
+        binaryTree.add(8);
+        binaryTree.add(6);
+        // When
+        Integer result = binaryTree.maxValue(binaryTree.root);
+        // Then
+        assertEquals(result, 9);
     }
 
 }

@@ -621,6 +621,15 @@ public class BinaryTree {
         return result;
     }
 
+    // Book
+    // Write an algorithm that finds the greatest value within a binary search tree
+    protected Integer maxValue(Node current) {
+        if (current.right == null) {
+            return current.value;
+        }
+       return maxValue(current.right);
+    }
+
     // A utility function to check if a given node is leaf or not
     private boolean isLeaf(Node current) {
         if (current == null) {
