@@ -1,4 +1,4 @@
-package array.string;
+package array;
 
 import org.w3c.dom.Node;
 
@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
 
-public class Main {
+public class CrackingMain {
 
     public static void main(String[] args) {
         // 1.1 Is Unique
