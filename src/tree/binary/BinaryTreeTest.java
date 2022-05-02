@@ -1,4 +1,4 @@
-package tree;
+package tree.binary;
 
 import org.junit.jupiter.api.Test;
 
