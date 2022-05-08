@@ -1,6 +1,7 @@
 package stack.array;
 
 import org.junit.jupiter.api.Test;
+import stack.array.MinStack;
 
 import static org.junit.jupiter.api.Assertions.*;
 

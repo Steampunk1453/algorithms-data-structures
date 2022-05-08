@@ -1,4 +1,4 @@
-package array;
+package array.string;
 
 import org.w3c.dom.Node;
 
@@ -25,7 +25,7 @@ public class CrackingMain {
         String value = "aabcccccaaa";
         System.out.println(getCompression(value));
 
-        Node next= null;
+        Node next = null;
     }
 
     private static boolean isUnique(String value) {

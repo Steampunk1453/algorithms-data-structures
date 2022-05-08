@@ -11,7 +11,7 @@ public class HashTable {
     // The intersection is a third array that contains all values contained with the first two arrays.
     // Intersection of [1,2,3,4,5] and [0,2,4,6,8] is [2,4].
     // Complexity must be O(N)
-    protected List<Integer> getIntersection(int[] array1, int[] array2) {
+    public List<Integer> getIntersection(int[] array1, int[] array2) {
         List<Integer> intersections = new ArrayList<>();
         Map<Integer, Boolean> map = new HashMap<>();
         for (int num : array1) {
@@ -28,7 +28,7 @@ public class HashTable {
     // Write a function that accepts an array of strings and returns the first duplicate value it finds.
     // ["a","b","c","d","c","e","f"] function should return "c" since duplicated within the array.
     // Complexity must be O(N)
-    protected String getFirstDuplicate(String[] array) {
+    public String getFirstDuplicate(String[] array) {
         Map<String, Boolean> map = new HashMap<>();
         for (String value : array) {
             if (map.getOrDefault(value, false)) {
@@ -44,7 +44,7 @@ public class HashTable {
     // and returns the missing letter. The string "the quick brown box jumps over a lazy dog" contains all
     // the letters of the alphabet except the letter "f"
     // Complexity must be O(N)
-    protected String getMissingLetter(String input) {
+    public String getMissingLetter(String input) {
         char[] inputChars = input.toCharArray();
         char[] alphabet = "abcdefghijklmnopqrstuvwxyz".toCharArray();
         Map<Character, Boolean> map = new HashMap<>();
@@ -64,7 +64,7 @@ public class HashTable {
     // The string "minimum" has two characters that only exist once the "n" and the "u"
     // so your function should return the "n", since it occurs first.
     // Complexity must be O(N)
-    protected String getFirstNonDuplicatedCharacter(String input) {
+    public String getFirstNonDuplicatedCharacter(String input) {
         char[] inputChars = input.toCharArray();
         Map<Character, Integer> map = new HashMap<>();
 

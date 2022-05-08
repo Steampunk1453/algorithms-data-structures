@@ -1,4 +1,4 @@
-package numbers;
+package number;
 
 public class Numbers {
 
