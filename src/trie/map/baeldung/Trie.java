@@ -1,4 +1,4 @@
-package tree.trie.map.baeldung;
+package trie.map.baeldung;
 
 public class Trie {
 

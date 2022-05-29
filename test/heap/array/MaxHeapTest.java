@@ -1,5 +1,6 @@
-package tree.heap.array;
+package heap.array;
 
+import heap.array.MaxHeap;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

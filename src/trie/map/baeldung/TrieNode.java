@@ -1,4 +1,4 @@
-package tree.trie.map.baeldung;
+package trie.map.baeldung;
 
 import java.util.HashMap;
 import java.util.Map;

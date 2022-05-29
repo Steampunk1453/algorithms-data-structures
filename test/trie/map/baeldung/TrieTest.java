@@ -1,6 +1,7 @@
-package tree.trie.map.baeldung;
+package trie.map.baeldung;
 
 import org.junit.jupiter.api.Test;
+import trie.map.baeldung.Trie;
 
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;

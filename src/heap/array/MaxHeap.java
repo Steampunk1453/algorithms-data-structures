@@ -1,4 +1,4 @@
-package tree.heap.array;
+package heap.array;
 
 public class MaxHeap {
     public static final int FRONT = 0;

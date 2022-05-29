@@ -1,4 +1,4 @@
-package tree.heap.array;
+package heap.array;
 
 class MinHeap {
     // Member variables of this class

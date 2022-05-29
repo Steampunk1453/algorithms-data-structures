@@ -1,4 +1,4 @@
-package tree.trie.array;
+package trie.array;
 
 public class Trie {
 

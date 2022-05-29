@@ -1,4 +1,4 @@
-package tree.heap.array;
+package heap.array;
 
 public class Main {
 

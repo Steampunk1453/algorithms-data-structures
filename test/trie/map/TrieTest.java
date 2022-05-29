@@ -1,6 +1,7 @@
-package tree.trie.map;
+package trie.map;
 
 import org.junit.jupiter.api.Test;
+import trie.map.Trie;
 
 import java.util.List;
 

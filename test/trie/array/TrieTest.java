@@ -1,6 +1,7 @@
-package tree.trie.array;
+package trie.array;
 
 import org.junit.jupiter.api.Test;
+import trie.array.Trie;
 
 import static org.junit.jupiter.api.Assertions.*;
 

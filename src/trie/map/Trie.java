@@ -1,4 +1,4 @@
-package tree.trie.map;
+package trie.map;
 
 import java.util.ArrayList;
 import java.util.HashMap;
