@@ -3,32 +3,20 @@ package graph;
 import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
-import java.util.LinkedHashSet;
 import java.util.Map;
-import java.util.Set;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 class GraphTest {
 
     @Test
-    void addAdjacentVertex() {
+    void addVertex() {
         // Given
         Graph graph = new Graph();
         buildGraph(graph);
         // Then
         assertEquals("Alice", graph.root.value);
-    }
-
-    @Test
-    void dfsTraverseRecursive() {
-        // Given
-        Graph graph = new Graph();
-        buildGraph(graph);
-        Map<String, Boolean> visited = new HashMap<>();
-        Set<String> list = new LinkedHashSet<>();
-        // When
-        graph.dfsTraverseRecursive(graph.root, visited);
     }
 
     @Test
@@ -38,9 +26,71 @@ class GraphTest {
         buildGraph(graph);
         Map<String, Boolean> visited = new HashMap<>();
         // When
-//        Map<String, Boolean> result = graph.dfsTraverseRecursive(graph.root, visited);
+        graph.dfsTraverse(graph.root, visited);
+    }
+
+    @Test
+    void dfsTraverseSearch() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        Map<String, Boolean> visited = new HashMap<>();
+        // When
+        Graph.Vertex vertex = graph.dfsTraverseSearch(graph.root, "Helen", visited);
         // Then
-//        assertEquals("[Alice, Bob, Fred, Helen, Candy, Derek, Elaine, Gina, Irena]", result.keySet().toString());
+        assertEquals("Helen", vertex.value);
+    }
+
+    @Test
+    void dfsTraverseSearchReturnNull() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        Map<String, Boolean> visited = new HashMap<>();
+        // When
+        Graph.Vertex vertex = graph.dfsTraverseSearch(graph.root, "James", visited);
+        // Then
+        assertNull(vertex);
+    }
+
+    @Test
+    void dfsTraverseIterative() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        // When
+        graph.dfsTraverseIterative(graph.root);
+    }
+
+    @Test
+    void bfsTraverse() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        // When
+        graph.bfsTraverse(graph.root);
+    }
+
+    @Test
+    void bfsTraverseSearch() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        // When
+        Graph.Vertex vertex = graph.bfsTraverseSearch(graph.root, "Helen");
+        // Then
+        assertEquals("Helen", vertex.value);
+    }
+
+    @Test
+    void bfsTraverseReturnNull() {
+        // Given
+        Graph graph = new Graph();
+        buildGraph(graph);
+        // When
+        Graph.Vertex vertex = graph.bfsTraverseSearch(graph.root, "James");
+        // Then
+        assertNull(vertex);
     }
 
     private void buildGraph(Graph graph) {
