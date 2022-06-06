@@ -729,7 +729,7 @@ public class MainString {
                 .orElse(-1);
     }
 
-    public int secondHighest(String s) {
+    protected int secondHighest(String s) {
         int len = s.length();
         List<Integer> nums = new ArrayList<>();
 
@@ -753,7 +753,7 @@ public class MainString {
     // 1544. Make The String Great
 
     // 387. First Unique Character in a String
-    public int firstUniqChar(String s) {
+    protected int firstUniqChar(String s) {
         Map<Character, Integer> map = new HashMap<>();
         char[] chars = s.toCharArray();
 
@@ -772,7 +772,7 @@ public class MainString {
 
     // 20. Valid Parentheses
     // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-    public boolean isValidParentheses(String input) {
+    protected boolean isValidParentheses(String input) {
         char[] parentheses = input.toCharArray();
         Stack<Character> stack = new Stack<>();
         for (Character cha: parentheses) {
@@ -793,6 +793,16 @@ public class MainString {
             }
         }
         return stack.isEmpty();
+    }
+
+    // Book: create a new function to reverse an array that takes up just O(1) extra space.
+    protected int[] reverseArray(int[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            int aux = array[(array.length -1) - i];
+            array[(array.length - 1) - i] = array[i];
+            array[i] = aux;
+        }
+        return array;
     }
 
 }
