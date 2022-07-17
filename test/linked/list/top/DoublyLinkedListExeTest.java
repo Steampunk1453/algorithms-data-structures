@@ -1,10 +1,10 @@
-package linked.list.book;
+package linked.list.top;
 
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class DoublyLinkedListTest {
+class DoublyLinkedListExeTest {
 
     @Test
     void insert() {

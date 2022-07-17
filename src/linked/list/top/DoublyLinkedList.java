@@ -1,4 +1,4 @@
-package linked.list.book;
+package linked.list.top;
 
 public class DoublyLinkedList {
 

@@ -148,5 +148,20 @@ public class Main {
         return longestWord;
     }
 
+    // First Recurring Character
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected Integer firstRecurringCharacter(int[] nums) {
+        Map<Integer, Boolean> numsMap = new HashMap<>();
+
+        for (int num: nums) {
+            if (numsMap.getOrDefault(num, false)) {
+                return num;
+            }
+            numsMap.put(num, true);
+        }
+
+        return null;
+    }
 
 }

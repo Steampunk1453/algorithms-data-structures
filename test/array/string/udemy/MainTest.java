@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class MainTest {
@@ -236,6 +237,50 @@ public class MainTest {
         String result = main.getLongestWord(input);
         // Then
         assertEquals(result, "time");
+    }
+
+    @Test
+    void firstRecurringCharacter() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,5,1,2,3,5,1,2,4};
+        // When
+        Integer result = main.firstRecurringCharacter(array);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void firstRecurringCharacter1() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,1,1,2,3,5,1,2,4};
+        // When
+        Integer result = main.firstRecurringCharacter(array);
+        // Then
+        assertEquals(result, 1);
+    }
+
+    @Test
+    void firstRecurringCharacter2() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,5,5,2,3,5,1,2,4};
+        // When
+        Integer result = main.firstRecurringCharacter(array);
+        // Then
+        assertEquals(result, 5);
+    }
+
+    @Test
+    void firstRecurringCharacter3() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,3,4,5};
+        // When
+        Integer result = main.firstRecurringCharacter(array);
+        // Then
+        assertNull(result);
     }
 
 }

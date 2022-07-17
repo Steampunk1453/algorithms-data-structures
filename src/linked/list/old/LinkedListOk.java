@@ -56,7 +56,7 @@ public class LinkedListOk {
 
         // For printing Linked List
         public void printLinkedList() {
-            System.out.println("Printing LinkedList (head --> last) ");
+            System.out.println("Printing LinkedListExe (head --> last) ");
             Node current = head;
             while (current != null) {
                 current.displayNodeData();

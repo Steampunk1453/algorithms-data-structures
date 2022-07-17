@@ -1,4 +1,4 @@
-package linked.list;
+package linked.list.top;
 
 import org.jetbrains.annotations.NotNull;
 
@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.IdentityHashMap;
 import java.util.Objects;
 
-public class LinkedList {
+public class LinkedListExe {
 
     Node head;
     int size = 0;
@@ -339,7 +339,7 @@ public class LinkedList {
 
     // 237. Delete Node in a Linked List
     // Write a function to delete a node in a singly-linked list. You will not be given access to the head of the list,
-    // instead you will be given access to the node to be deleted directly.
+    // instead you will be given access to the node to be deleted directl,y.
     // It is guaranteed that the node to be deleted is not a tail node in the list.
     protected Node deleteNode(Node node) {
         Node current = head;

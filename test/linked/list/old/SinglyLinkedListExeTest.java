@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class SinglyLinkedListTest {
+class SinglyLinkedListExeTest {
 
     @Test
     void populateLinkedList() {
@@ -42,9 +42,9 @@ class SinglyLinkedListTest {
     private void printList(SinglyLinkedList list) {
        SinglyLinkedList.Node currNode = list.head;
 
-        System.out.print("LinkedList: ");
+        System.out.print("LinkedListExe: ");
 
-        // Traverse through the LinkedList
+        // Traverse through the LinkedListExe
         while (currNode != null) {
             // Print the data at current node
             System.out.print(currNode.data + " ");

@@ -1,7 +1,7 @@
 package linked.list.old;
 
 public class SinglyLinkedList {
-    // TODO Mix between LinkedList and LinkedListOk classes
+    // TODO Mix between LinkedListExe and LinkedListOk classes
 
     Node head; // head of list
 

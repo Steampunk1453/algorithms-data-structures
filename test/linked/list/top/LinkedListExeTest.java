@@ -1,15 +1,18 @@
-package linked.list;
+package linked.list.top;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-class LinkedListTest {
+class LinkedListExeTest {
 
     @Test
     void addNodes() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         // When
         linkedList.appendElement(1);
         linkedList.appendElement(2);
@@ -21,7 +24,7 @@ class LinkedListTest {
     @Test
     void insertValues() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -37,7 +40,7 @@ class LinkedListTest {
     @Test
     void insertNotExistValue() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -53,7 +56,7 @@ class LinkedListTest {
     @Test
     void removeByPosition() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -68,7 +71,7 @@ class LinkedListTest {
     @Test
     void removeByValue() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -84,13 +87,13 @@ class LinkedListTest {
     @Test
     void removeDuplicates() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         // When
-        LinkedList.Node head = linkedList.head;
-        LinkedList.Node result = linkedList.removeDuplicatesFromSortedList(head);
+        LinkedListExe.Node head = linkedList.head;
+        LinkedListExe.Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 2);
         assertEquals(result.data, 1);
@@ -99,15 +102,15 @@ class LinkedListTest {
     @Test
     void removeDuplicates1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(3);
         // When
-        LinkedList.Node head = linkedList.head;
-        LinkedList.Node result = linkedList.removeDuplicatesFromSortedList(head);
+        LinkedListExe.Node head = linkedList.head;
+        LinkedListExe.Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 3);
         assertEquals(result.data, 1);
@@ -117,7 +120,7 @@ class LinkedListTest {
     @Test
     void deleteNodes() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(6);
@@ -125,9 +128,9 @@ class LinkedListTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         linkedList.appendElement(6);
-        LinkedList.Node head = linkedList.head;
+        LinkedListExe.Node head = linkedList.head;
         // When
-        LinkedList.Node result = linkedList.removeByNodeAndValue(head, 6);
+        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 6);
         // Then
         assertEquals(linkedList.size, 5);
         assertEquals(result.data, 1);
@@ -136,10 +139,10 @@ class LinkedListTest {
     @Test
     void deleteNodes1() {
         // Given
-        LinkedList linkedList = new LinkedList();
-        LinkedList.Node head = linkedList.head;
+        LinkedListExe linkedList = new LinkedListExe();
+        LinkedListExe.Node head = linkedList.head;
         // When
-        LinkedList.Node result = linkedList.removeByNodeAndValue(head, 1);
+        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 1);
         // Then
         assertEquals(linkedList.size, 0);
         assertNull(result);
@@ -148,14 +151,14 @@ class LinkedListTest {
     @Test
     void deleteNodes2() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         linkedList.appendElement(7);
-        LinkedList.Node head = linkedList.head;
+        LinkedListExe.Node head = linkedList.head;
         // When
-        LinkedList.Node result = linkedList.removeByNodeAndValue(head, 7);
+        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 7);
         // Then
         assertEquals(linkedList.size, 0);
         assertNull(result);
@@ -164,7 +167,7 @@ class LinkedListTest {
     @Test
     void reverseLinkedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -179,7 +182,7 @@ class LinkedListTest {
     @Test
     void reverseEmptyLinkedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         // When
         linkedList.reverseList(linkedList.head);
         // Then
@@ -190,12 +193,12 @@ class LinkedListTest {
     @Test
     void iterativeReverseLinkedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         // When
-        LinkedList.Node result = linkedList.iterativeReverseList(linkedList.head);
+        LinkedListExe.Node result = linkedList.iterativeReverseList(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -203,12 +206,12 @@ class LinkedListTest {
     @Test
     void recursiveReverseLinkedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         // When
-        LinkedList.Node result = linkedList.recursiveReverseList(linkedList.head);
+        LinkedListExe.Node result = linkedList.recursiveReverseList(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -216,21 +219,21 @@ class LinkedListTest {
     @Test
     void getIntersectionNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         linkedList.appendElement(1);
         linkedList.appendElement(8);
         linkedList.appendElement(4);
         linkedList.appendElement(5);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(4);
         linkedList1.appendElement(1);
         linkedList1.appendElement(8);
         linkedList1.appendElement(4);
         linkedList1.appendElement(5);
         // When
-        LinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -238,18 +241,18 @@ class LinkedListTest {
     @Test
     void getIntersectionNode1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(9);
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(4);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(3);
         linkedList1.appendElement(2);
         linkedList1.appendElement(4);
         // When
-        LinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 2);
     }
@@ -257,15 +260,15 @@ class LinkedListTest {
     @Test
     void getIntersectionNode2() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(2);
         linkedList.appendElement(6);
         linkedList.appendElement(4);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(1);
         linkedList1.appendElement(5);
         // When
-        LinkedList.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertNull(result);
     }
@@ -273,16 +276,16 @@ class LinkedListTest {
     @Test
     void mergeTwoLists() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(4);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(1);
         linkedList1.appendElement(3);
         linkedList1.appendElement(4);
         // When
-        LinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -290,18 +293,18 @@ class LinkedListTest {
     @Test
     void mergeTwoLists1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         linkedList.appendElement(7);
         linkedList.appendElement(8);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(7);
         linkedList1.appendElement(8);
         linkedList1.appendElement(11);
         linkedList1.appendElement(12);
         // When
-        LinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 5);
     }
@@ -309,18 +312,18 @@ class LinkedListTest {
     @Test
     void mergeTwoLists2() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(3);
         linkedList.appendElement(7);
         linkedList.appendElement(8);
         linkedList.appendElement(10);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(1);
         linkedList1.appendElement(4);
         linkedList1.appendElement(5);
         linkedList1.appendElement(7);
         // When
-        LinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -328,10 +331,10 @@ class LinkedListTest {
     @Test
     void mergeTwoLists3() {
         // Given
-        LinkedList linkedList = new LinkedList();
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
+        LinkedListExe linkedList1 = new LinkedListExe();
         // When
-        LinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertNull(result);
     }
@@ -339,11 +342,11 @@ class LinkedListTest {
     @Test
     void mergeTwoLists4() {
         // Given
-        LinkedList linkedList = new LinkedList();
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(0);
         // When
-        LinkedList.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 0);
     }
@@ -351,7 +354,7 @@ class LinkedListTest {
     @Test
     void isPalindromeLinkedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(2);
@@ -365,7 +368,7 @@ class LinkedListTest {
     @Test
     void isPalindromeLinkedList1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         // When
@@ -377,16 +380,16 @@ class LinkedListTest {
     @Test
     void deleteNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         linkedList.appendElement(1);
         linkedList.appendElement(9);
-        LinkedList.Node node = new LinkedList.Node();
+        LinkedListExe.Node node = new LinkedListExe.Node();
         node.data = 5;
 
         // When
-        LinkedList.Node result = linkedList.deleteNode(node);
+        LinkedListExe.Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 4);
     }
@@ -394,16 +397,16 @@ class LinkedListTest {
     @Test
     void deleteNode1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         linkedList.appendElement(1);
         linkedList.appendElement(9);
-        LinkedList.Node node = new LinkedList.Node();
+        LinkedListExe.Node node = new LinkedListExe.Node();
         node.data = 1;
 
         // When
-        LinkedList.Node result = linkedList.deleteNode(node);
+        LinkedListExe.Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 4);
     }
@@ -411,16 +414,16 @@ class LinkedListTest {
     @Test
     void deleteNode2() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
-        LinkedList.Node node = new LinkedList.Node();
+        LinkedListExe.Node node = new LinkedListExe.Node();
         node.data = 3;
 
         // When
-        LinkedList.Node result = linkedList.deleteNode(node);
+        LinkedListExe.Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 1);
     }
@@ -428,14 +431,14 @@ class LinkedListTest {
     @Test
     void deleteNode3() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(0);
         linkedList.appendElement(1);
-        LinkedList.Node node = new LinkedList.Node();
+        LinkedListExe.Node node = new LinkedListExe.Node();
         node.data = 0;
 
         // When
-        LinkedList.Node result = linkedList.deleteNode(node);
+        LinkedListExe.Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 1);
     }
@@ -443,15 +446,15 @@ class LinkedListTest {
     @Test
     void deleteNode4() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(-3);
         linkedList.appendElement(5);
         linkedList.appendElement(-99);
-        LinkedList.Node node = new LinkedList.Node();
+        LinkedListExe.Node node = new LinkedListExe.Node();
         node.data = -3;
 
         // When
-        LinkedList.Node result = linkedList.deleteNode(node);
+        LinkedListExe.Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 5);
     }
@@ -459,14 +462,14 @@ class LinkedListTest {
     @Test
     void getMiddleNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        LinkedList.Node result = linkedList.middleNode(linkedList.head);
+        LinkedListExe.Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -474,7 +477,7 @@ class LinkedListTest {
     @Test
     void getMiddleNode1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -482,7 +485,7 @@ class LinkedListTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         // When
-        LinkedList.Node result = linkedList.middleNode(linkedList.head);
+        LinkedListExe.Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 4);
     }
@@ -490,7 +493,7 @@ class LinkedListTest {
     @Test
     void removeDuplicatesFromUnsortedList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(1);
@@ -500,7 +503,7 @@ class LinkedListTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        LinkedList.Node result = linkedList.deleteDups(linkedList.head);
+        LinkedListExe.Node result = linkedList.deleteDups(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -508,14 +511,14 @@ class LinkedListTest {
     @Test
     void removeDuplicatesFromUnsortedList1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(1);
         linkedList.appendElement(3);
         linkedList.appendElement(2);
         // When
-        LinkedList.Node result = linkedList.deleteDups(linkedList.head);
+        LinkedListExe.Node result = linkedList.deleteDups(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -523,7 +526,7 @@ class LinkedListTest {
     @Test
     void getLastNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -539,7 +542,7 @@ class LinkedListTest {
     @Test
     void getLastNode1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -555,7 +558,7 @@ class LinkedListTest {
     @Test
     void deleteMiddleNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -563,7 +566,7 @@ class LinkedListTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         // When
-        LinkedList.Node result = linkedList.deleteMiddleNode(linkedList.head);
+        LinkedListExe.Node result = linkedList.deleteMiddleNode(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -571,16 +574,16 @@ class LinkedListTest {
     @Test
     void sumTwoList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(7);
         linkedList.appendElement(1);
         linkedList.appendElement(6);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(5);
         linkedList1.appendElement(9);
         linkedList1.appendElement(2);
         // When
-        LinkedList.Node result = linkedList.addTwoNumbers(linkedList.head, linkedList1.head);
+        LinkedListExe.Node result = linkedList.addTwoNumbers(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 2);
     }
@@ -588,7 +591,7 @@ class LinkedListTest {
     @Test
     void isPalindromeList() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(0);
         linkedList.appendElement(1);
         linkedList.appendElement(2);
@@ -603,7 +606,7 @@ class LinkedListTest {
     @Test
     void isPalindromeList1() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
@@ -617,14 +620,14 @@ class LinkedListTest {
     @Test
     void getIntersectingNode() {
         // Given
-        LinkedList linkedList = new LinkedList();
+        LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(7);
         linkedList.appendElement(1);
         linkedList.appendElement(6);
         linkedList.appendElement(5);
         linkedList.appendElement(9);
         // When
-        LinkedList.Node result = linkedList.getIntersectingNode(linkedList.head, linkedList.head.next.next);
+        LinkedListExe.Node result = linkedList.getIntersectingNode(linkedList.head, linkedList.head.next.next);
         // Then
         assertEquals(result.data, 6);
     }
@@ -632,11 +635,11 @@ class LinkedListTest {
     @Test
     void getIntersectingNode1() {
         // Given
-        LinkedList linkedList = new LinkedList();
-        linkedList.appendElement(7);
-        linkedList.appendElement(1);
-        linkedList.appendElement(6);
-        LinkedList linkedList1 = new LinkedList();
+        LinkedListExe linkedListExe = new LinkedListExe();
+        linkedListExe.appendElement(7);
+        linkedListExe.appendElement(1);
+        linkedListExe.appendElement(6);
+        LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(5);
         linkedList1.appendElement(9);
         linkedList1.appendElement(2);
@@ -644,7 +647,7 @@ class LinkedListTest {
         linkedList1.appendElement(2);
         linkedList1.appendElement(2);
         // When
-        LinkedList.Node result = linkedList.getIntersectingNode(linkedList.head, linkedList1.head.next);
+        LinkedListExe.Node result = linkedListExe.getIntersectingNode(linkedListExe.head, linkedList1.head.next);
         // Then
         assertNull(result);
     }

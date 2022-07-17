@@ -47,13 +47,13 @@ public class LinkedList {
         return list;
     }
 
-    // Method to print the LinkedList.
+    // Method to print the LinkedListExe.
     public static void printList(LinkedList list) {
         Node currNode = list.head;
 
-        System.out.print("LinkedList: ");
+        System.out.print("LinkedListExe: ");
 
-        // Traverse through the LinkedList
+        // Traverse through the LinkedListExe
         while (currNode != null) {
             // Print the data at current node
             System.out.print(currNode.data + " ");
@@ -82,7 +82,7 @@ public class LinkedList {
         insert(list, 7);
         insert(list, 8);
 
-        // Print the LinkedList
+        // Print the LinkedListExe
         printList(list);
     }
 }
