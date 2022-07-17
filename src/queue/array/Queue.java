@@ -14,14 +14,14 @@ public class Queue {
         this.capacity = capacity;
     }
 
-    protected void add(int data) {
+    protected void enqueue(int data) {
         if (size < capacity) {
             items[size] = data;
             size++;
         }
     }
 
-    protected Integer remove() {
+    protected Integer dequeue() {
         if (size == 0) {
             throw new NoSuchElementException();
         }

@@ -11,10 +11,10 @@ class QueueTest {
         // Given
         Queue<Integer> queue = new Queue<>();
         // When
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // Then
         assertEquals(queue.first.data, 1);
         assertEquals(queue.last.data, 4);
@@ -26,10 +26,10 @@ class QueueTest {
         // Given
         Queue<String> queue = new Queue<>();
         // When
-        queue.add("Google");
-        queue.add("Amazon");
-        queue.add("Microsoft");
-        queue.add("Facebook");
+        queue.enqueue2("Google");
+        queue.enqueue2("Amazon");
+        queue.enqueue2("Microsoft");
+        queue.enqueue2("Facebook");
         // Then
         assertEquals(queue.first.data, "Google");
         assertEquals(queue.last.data, "Facebook");
@@ -40,12 +40,12 @@ class QueueTest {
     void removeInt() {
         // Given
         Queue<Integer> queue = new Queue<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
-        int result = queue.remove();
+        int result = queue.dequeue();
         // Then
         assertEquals(result, 1);
         assertEquals(queue.first.data, 2);
@@ -58,12 +58,12 @@ class QueueTest {
     void removeString() {
         // Given
         Queue<String> queue = new Queue<>();
-        queue.add("Google");
-        queue.add("Amazon");
-        queue.add("Microsoft");
-        queue.add("Facebook");
+        queue.enqueue("Google");
+        queue.enqueue("Amazon");
+        queue.enqueue("Microsoft");
+        queue.enqueue("Facebook");
         // When
-        String result = queue.remove();
+        String result = queue.dequeue();
         // Then
         assertEquals(result, "Google");
         assertEquals(queue.first.data, "Amazon");
@@ -75,10 +75,10 @@ class QueueTest {
     void peekInt() {
         // Given
         Queue<Integer> queue = new Queue<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
         int result = queue.peek();
         // Then
@@ -90,10 +90,10 @@ class QueueTest {
     void  peekString() {
         // Given
         Queue<String> queue = new Queue<>();
-        queue.add("Google");
-        queue.add("Amazon");
-        queue.add("Microsoft");
-        queue.add("Facebook");
+        queue.enqueue("Google");
+        queue.enqueue("Amazon");
+        queue.enqueue("Microsoft");
+        queue.enqueue("Facebook");
         // When
         String result = queue.peek();
         // Then
@@ -105,14 +105,14 @@ class QueueTest {
     void peekIntIsEmpty() {
         // Given
         Queue<Integer> queue = new Queue<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.remove();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
         // When
         boolean result = queue.isEmpty();
         // Then
@@ -124,10 +124,10 @@ class QueueTest {
     void peekIntIsNotEmpty() {
         // Given
         Queue<Integer> queue = new Queue<>();
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
         boolean result = queue.isEmpty();
         // Then
@@ -139,14 +139,14 @@ class QueueTest {
     void  peekStringIsEmpty() {
         // Given
         Queue<String> queue = new Queue<>();
-        queue.add("Google");
-        queue.add("Amazon");
-        queue.add("Microsoft");
-        queue.add("Facebook");
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.remove();
+        queue.enqueue("Google");
+        queue.enqueue("Amazon");
+        queue.enqueue("Microsoft");
+        queue.enqueue("Facebook");
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
         // When
         boolean result = queue.isEmpty();
         // Then
@@ -158,10 +158,10 @@ class QueueTest {
     void  peekStringIsNotEmpty() {
         // Given
         Queue<String> queue = new Queue<>();
-        queue.add("Google");
-        queue.add("Amazon");
-        queue.add("Microsoft");
-        queue.add("Facebook");
+        queue.enqueue("Google");
+        queue.enqueue("Amazon");
+        queue.enqueue("Microsoft");
+        queue.enqueue("Facebook");
         // When
         boolean result = queue.isEmpty();
         // Then

@@ -16,7 +16,7 @@ class StackTest {
         stack.push(3);
         stack.push(4);
         // Then
-        assertEquals(stack.top.data, 4);
+        assertEquals(stack.peek(), 4);
         assertEquals(stack.size, 4);
     }
 
@@ -29,7 +29,7 @@ class StackTest {
         stack.push("Microsoft");
         stack.push("Facebook");
         // Then
-        assertEquals(stack.top.data, "Facebook");
+        assertEquals(stack.peek(), "Facebook");
         assertEquals(stack.size, 4);
     }
 

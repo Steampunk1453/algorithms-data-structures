@@ -17,7 +17,7 @@ public class Queue<T> {
         }
     }
 
-    protected void add(T item) {
+    protected void enqueue(T item) {
         QueueNode<T> node = new QueueNode<>(item);
         if (last == null) {
             first = last = node;
@@ -27,7 +27,18 @@ public class Queue<T> {
         size++;
     }
 
-    protected T remove() {
+    protected void enqueue2(T item) {
+        QueueNode<T> node = new QueueNode<>(item);
+        if (size == 0) {
+            first = node;
+        } else {
+            last.next = node;
+        }
+        last = node;
+        size++;
+    }
+
+    protected T dequeue() {
         if (first == null) {
             throw new NoSuchElementException();
         }

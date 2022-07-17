@@ -11,10 +11,10 @@ class QueueTest {
         // Given
        Queue queue = new Queue(5);
         // When
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // Then
         assertEquals(queue.items[0], 1);
         assertEquals(queue.size, 4);
@@ -24,12 +24,12 @@ class QueueTest {
     void remove() {
         // Given
         Queue queue = new Queue(5);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
-        Integer result = queue.remove();
+        Integer result = queue.dequeue();
         // Then
         assertEquals(result, 1);
         assertEquals(queue.items[0], 2);
@@ -40,10 +40,10 @@ class QueueTest {
     void peek() {
         // Given
         Queue queue = new Queue(5);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
         Integer result = queue.peek();
         // Then
@@ -55,14 +55,14 @@ class QueueTest {
     void isEmpty() {
         // Given
         Queue queue = new Queue(5);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
-        queue.remove();
-        queue.remove();
-        queue.remove();
-        queue.remove();
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
+        queue.dequeue();
         // When
         boolean result = queue.isEmpty();
         // Then
@@ -74,10 +74,10 @@ class QueueTest {
     void isNoEmpty() {
         // Given
         Queue queue = new Queue(5);
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        queue.enqueue(1);
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
         // When
         boolean result = queue.isEmpty();
         // Then
