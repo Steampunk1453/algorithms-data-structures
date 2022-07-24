@@ -5,8 +5,7 @@ import java.util.PriorityQueue;
 
 class MaxHeap {
 
-    // MaxHeap driver method
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 
         // Creating empty priority queue
         PriorityQueue<Integer> pQueue = new PriorityQueue<>(Collections.reverseOrder());
@@ -14,9 +13,9 @@ class MaxHeap {
         // Adding items to our priority queue
         // using add() method
         pQueue.add(10);
+        pQueue.add(400);
         pQueue.add(30);
         pQueue.add(20);
-        pQueue.add(400);
 
         // Printing the most priority element
         System.out.println("Head value using peek function: " + pQueue.peek());
@@ -28,11 +27,13 @@ class MaxHeap {
         // Removing the top priority element (or head) and
         // printing the modified pQueue using poll()
         pQueue.poll();
+        System.out.println("Head value using peek function: " + pQueue.peek());
         System.out.println("After removing an element with poll function:");
         for (Integer item : pQueue) System.out.println(item);
 
         // Removing 30 using remove() method
         pQueue.remove(30);
+        System.out.println("Head value using peek function: " + pQueue.peek());
         System.out.println("after removing 30 with remove function:");
 
         for (Integer item : pQueue) System.out.println(item);

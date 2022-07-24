@@ -2,9 +2,9 @@ package trie.array;
 
 public class Trie {
 
-    // Using trie has only O(m) time complexity, where mm is the key length.
+    // Using trie has only O(m) time complexity, where m is the key length.
     // Searching for a key in a balanced tree costs O(mlogn) time complexity.
-
+    // Leetcode impl
     public static final int ALPHABET_SIZE = 26;
 
     private final TrieNode root;
