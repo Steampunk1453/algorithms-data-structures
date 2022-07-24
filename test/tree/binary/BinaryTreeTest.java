@@ -43,7 +43,7 @@ class BinaryTreeTest {
     }
 
     @Test
-    void getNode1() {
+    void getNodeReturnsNull() {
         // Given
         BinaryTree binaryTree = new BinaryTree();
         binaryTree.add(8);
@@ -57,6 +57,7 @@ class BinaryTreeTest {
         // Then
         assertNull(result);
     }
+
 
     @Test
     void removeNode() {

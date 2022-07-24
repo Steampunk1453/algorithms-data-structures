@@ -45,12 +45,12 @@ public class BinaryTree {
     }
 
     protected Node getNode(Node current, int value) {
-        if (value == current.value) {
+        if (current == null || current.value == value) {
             return current;
         } else if (value < current.value) {
-            return current.left != null ? getNode(current.left, value) : null;
+            return current.left = getNode(current.left, value);
         }
-        return current.right != null ? getNode(current.right, value) : null;
+        return current.right = getNode(current.right, value);
     }
 
     protected Node removeNode(Node current, int value) {
