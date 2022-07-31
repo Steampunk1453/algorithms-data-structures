@@ -7,12 +7,12 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-class MainRecursionTest {
+class RecursionTest {
 
     @Test
     void countDown() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         recursion.countDown(10);
     }
@@ -20,7 +20,7 @@ class MainRecursionTest {
     @Test
     void factorial() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         long result = recursion.factorial(5);
         // Then
@@ -28,9 +28,28 @@ class MainRecursionTest {
     }
 
     @Test
+    void findFactorialIterative() {
+        // Given
+        Recursion recursion = new Recursion();
+        // When
+        long result = recursion.findFactorialIterative(5);
+        // Then
+        assertEquals(result, 120);
+    }
+    @Test
+    void findFactorialIterative1() {
+        // Given
+        Recursion recursion = new Recursion();
+        // When
+        long result = recursion.findFactorialIterative1(5);
+        // Then
+        assertEquals(result, 120);
+    }
+
+    @Test
     void factorialWithOutRecursion() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         long result = recursion.factorialWithOutRecursion(5);
         // Then
@@ -40,7 +59,7 @@ class MainRecursionTest {
     @Test
     void arrayDouble() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         int[] array = {1, 2, 3, 4};
         // When
         int[] result = recursion.arrayDouble(array, 0);
@@ -51,7 +70,7 @@ class MainRecursionTest {
     @Test
     void arrayDouble1() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         int[] array = {1, 2, 3, 4};
         // When
         recursion.arrayDouble1(array, 0);
@@ -60,7 +79,7 @@ class MainRecursionTest {
     @Test
     void arraySum() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         int array[] = {1, 2, 3, 4, 5};
         // When
         int result = recursion.arraySum(array);
@@ -71,7 +90,7 @@ class MainRecursionTest {
     @Test
     void reverse() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         String input ="abcde";
         // When
         String result = recursion.reverse(input);
@@ -82,7 +101,7 @@ class MainRecursionTest {
     @Test
     void counting() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         int result = recursion.counting("axbxcxd");
         // Then
@@ -92,7 +111,7 @@ class MainRecursionTest {
     @Test
     void arrayCharacters() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         String[] array = {"ab", "c", "def", "ghij"};
         // When
         int result = recursion.arrayCharacters(array);
@@ -103,7 +122,7 @@ class MainRecursionTest {
     @Test
     void evenNumbers() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         int[] array = {1, 2, 3, 4, 5, 6, 7};
         List<Integer> list = new ArrayList<>();
         // When
@@ -115,7 +134,7 @@ class MainRecursionTest {
     @Test
     void triangularNumber() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         int result = recursion.triangularNumber(7);
         // Then
@@ -125,7 +144,7 @@ class MainRecursionTest {
     @Test
     void getIndex() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         String input = "abcdefghijklmnopqrstuvwxyz";
         // When
         int result = recursion.getIndex(input);
@@ -137,7 +156,7 @@ class MainRecursionTest {
     @Test
     void getIndex1() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         String input = "abcdefghijklmnopqrstuvwxyz";
         char[] alphabet = input.toCharArray();
         // When
@@ -149,12 +168,53 @@ class MainRecursionTest {
     @Test
     void uniquePaths() {
         // Given
-        MainRecursion recursion = new MainRecursion();
+        Recursion recursion = new Recursion();
         // When
         int result = recursion.uniquePaths(3, 7);
         // Then
         assertEquals(result, 28);
     }
 
+    @Test
+    void fibonacciRecursive() {
+        // Given
+        Recursion recursion = new Recursion();
+        // When
+        int result = recursion.fibonacciRecursive(10);
+        // Then
+        assertEquals(result, 55);
+    }
+
+    @Test
+    void fibonacciIterative() {
+        // Given
+        Recursion recursion = new Recursion();
+        // When
+        int result = recursion.fibonacciIterative(9);
+        // Then
+        assertEquals(result, 34);
+    }
+
+    @Test
+    void reverseStringRecursive() {
+        // Given
+        Recursion recursion = new Recursion();
+        String input ="abcde";
+        // When
+        String result = recursion.reverseStringRecursive(input);
+        // Then
+        assertEquals(result, "edcba");
+    }
+
+    @Test
+    void reverseStringIterative() {
+        // Given
+        Recursion recursion = new Recursion();
+        String input ="abcde";
+        // When
+        String result = recursion.reverseStringIterative(input);
+        // Then
+        assertEquals(result, "edcba");
+    }
 
 }
