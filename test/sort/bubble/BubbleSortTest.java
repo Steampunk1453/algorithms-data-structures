@@ -1,19 +1,33 @@
 package sort.bubble;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 class BubbleSortTest {
 
     @Test
-    void sort() {
+    void sortWithWhile() {
         // Given
-        BubbleSort main = new BubbleSort();
-        int[] array = {4, 2, 7, 1, 3};
+        BubbleSort bubble = new BubbleSort();
+        int[] actual = {4, 2, 7, 1, 3};
+        int[] expected = {1, 2, 3, 4, 7};
         // When
-        int[] result = main.sort(array);
+        int[] result = bubble.sortWithWhile(actual);
         // Then
-        assertEquals(result[0], 1);
+        assertArrayEquals(result, expected);
     }
+
+    @Test
+    void sortWithFor() {
+        // Given
+        BubbleSort bubble = new BubbleSort();
+        int[] actual = {4, 2, 7, 1, 3};
+        int[] expected = {1, 2, 3, 4, 7};
+        // When
+        int[] result = bubble.sortWithFor(actual);
+        // Then
+        assertArrayEquals(result, expected);
+    }
+
 }

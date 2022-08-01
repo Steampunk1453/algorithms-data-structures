@@ -2,7 +2,7 @@ package sort.bubble;
 
 public class BubbleSort {
 
-    protected int[] sort(int[] array) {
+    protected int[] sortWithWhile(int[] array) {
         boolean swapped = true;
         while (swapped) {
             swapped = false;
@@ -15,6 +15,19 @@ public class BubbleSort {
                 }
             }
         }
+        return array;
+    }
+
+    protected int[] sortWithFor(int[] array) {
+        int arrayLength = array.length;
+        for (int i = 0; i < arrayLength - 1; i++)
+            for (int j = 0; j < arrayLength - i - 1; j++)
+                if (array[j] > array[j + 1]) {
+                    // swap arr[j+1] and arr[j]
+                    int temp = array[j];
+                    array[j] = array[j + 1];
+                    array[j + 1] = temp;
+                }
         return array;
     }
 
