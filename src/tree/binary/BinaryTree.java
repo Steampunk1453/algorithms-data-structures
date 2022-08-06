@@ -112,6 +112,7 @@ public class BinaryTree {
         }
     }
 
+    // BFS
     protected void traverseLevelOrder(Node current) {
         Queue<Node> nodes = new LinkedList<>();
         nodes.add(current);
@@ -131,6 +132,25 @@ public class BinaryTree {
             }
         }
     }
+
+    // BFS
+    protected Node traverseLevelOrderRecursive(Node node, Queue<Node> queue) {
+        if (queue.isEmpty()) {
+            return node;
+        }
+        Node currentNode = queue.remove();
+        visit(currentNode.value);
+
+        if (currentNode.left != null) {
+            queue.add(currentNode.left);
+        }
+        if (currentNode.right != null) {
+            queue.add(currentNode.right);
+        }
+
+        return traverseLevelOrderRecursive(node, queue);
+    }
+
 
     private void visit(int value) {
         System.out.println(value);
@@ -180,11 +200,11 @@ public class BinaryTree {
 
     // 144. Binary Tree Preorder Traversal
     // O(n)
-    private void preOrderTraversaList(Node root, List<Integer> result) {
+    private void preOrderTraversalList(Node root, List<Integer> result) {
         if (root != null) {
             result.add(root.value);
-            preOrderTraversaList(root.left, result);
-            preOrderTraversaList(root.right, result);
+            preOrderTraversalList(root.left, result);
+            preOrderTraversalList(root.right, result);
         }
     }
 

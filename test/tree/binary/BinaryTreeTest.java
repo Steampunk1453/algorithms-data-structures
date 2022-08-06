@@ -1,13 +1,15 @@
 package tree.binary;
 
-import org.junit.jupiter.api.Test;
-
-import java.util.List;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+import org.junit.jupiter.api.Test;
+import tree.binary.BinaryTree.Node;
 
 class BinaryTreeTest {
 
@@ -80,28 +82,6 @@ class BinaryTreeTest {
         binaryTree.remove(50);
         // Then
         assertEquals(binaryTree.root.value, 52);
-    }
-
-    @Test
-    void traverseLevelOrder() {
-        // Given
-        BinaryTree binaryTree = new BinaryTree();
-        binaryTree.add(50);
-        binaryTree.add(25);
-        binaryTree.add(75);
-        binaryTree.add(11);
-        binaryTree.add(33);
-        binaryTree.add(61);
-        binaryTree.add(89);
-        binaryTree.add(30);
-        binaryTree.add(40);
-        binaryTree.add(52);
-        binaryTree.add(82);
-        binaryTree.add(95);
-        // When
-        binaryTree.traverseLevelOrder(binaryTree.root);
-        // Then
-        assertEquals(binaryTree.root.value, 50);
     }
 
     @Test
@@ -331,6 +311,53 @@ class BinaryTreeTest {
         // Then
         assertEquals(result.size(), 12);
         assertEquals(result.get(0), 11);
+    }
+
+    @Test
+    void traverseLevelOrder() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        // When
+        binaryTree.traverseLevelOrder(binaryTree.root);
+        // Then
+        assertEquals(binaryTree.root.value, 50);
+    }
+
+
+    @Test
+    void traverseLevelOrderRecursive() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(50);
+        binaryTree.add(25);
+        binaryTree.add(75);
+        binaryTree.add(11);
+        binaryTree.add(33);
+        binaryTree.add(61);
+        binaryTree.add(89);
+        binaryTree.add(30);
+        binaryTree.add(40);
+        binaryTree.add(52);
+        binaryTree.add(82);
+        binaryTree.add(95);
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(binaryTree.root);
+        // When
+        binaryTree.traverseLevelOrderRecursive(binaryTree.root, queue);
+        // Then
+        assertEquals(binaryTree.root.value, 50);
     }
 
     @Test
