@@ -1,11 +1,10 @@
 package recursion;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import org.junit.jupiter.api.Test;
 
 class RecursionTest {
 
@@ -80,7 +79,7 @@ class RecursionTest {
     void arraySum() {
         // Given
         Recursion recursion = new Recursion();
-        int array[] = {1, 2, 3, 4, 5};
+        int[] array = {1, 2, 3, 4, 5};
         // When
         int result = recursion.arraySum(array);
         // Then
