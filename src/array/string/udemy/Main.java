@@ -122,11 +122,11 @@ public class Main {
     protected boolean hasDuplicates(int[] nums) {
         Map<Integer, Boolean> numsMap = new HashMap<>();
 
-        for (int num: nums) {
+        for (int num : nums) {
             if (numsMap.getOrDefault(num, false)) {
                 return true;
             }
-           numsMap.put(num, true);
+            numsMap.put(num, true);
         }
 
         return false;
@@ -136,10 +136,10 @@ public class Main {
     // Time complexity: O(n)
     // Space complexity: O(n)
     protected String getLongestWord(String word) {
-       String[] words = word.split(" ");
-       String longestWord = "";
+        String[] words = word.split(" ");
+        String longestWord = "";
 
-        for (String item: words) {
+        for (String item : words) {
             if (item.matches("^[a-zA-Z0-9]*$") && item.length() > longestWord.length()) {
                 longestWord = item;
             }
@@ -154,7 +154,7 @@ public class Main {
     protected Integer firstRecurringCharacter(int[] nums) {
         Map<Integer, Boolean> numsMap = new HashMap<>();
 
-        for (int num: nums) {
+        for (int num : nums) {
             if (numsMap.getOrDefault(num, false)) {
                 return num;
             }
@@ -162,6 +162,28 @@ public class Main {
         }
 
         return null;
+    }
+
+    // Google: write a function which will remove any given character from a String
+    protected String remove(String word, char unwanted) {
+        StringBuilder sb = new StringBuilder();
+        char[] letters = word.toCharArray();
+
+        for (char c : letters) {
+            if (c != unwanted) {
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+
+    protected String removeRecursive(String word, char ch) {
+        int index = word.indexOf(ch);
+        if (index == -1) {
+            return word;
+        }
+        return removeRecursive(word.substring(0, index) + word.substring(index + 1), ch);
     }
 
 }

@@ -1,12 +1,12 @@
 package array.string.udemy;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 public class MainTest {
 
@@ -60,7 +60,7 @@ public class MainTest {
     void twoSumBruteForce() {
         // Given
         Main main = new Main();
-        int[] array = {2,7,11,15};
+        int[] array = {2, 7, 11, 15};
         int target = 9;
         int[] expected = {0, 1};
         // When
@@ -112,7 +112,7 @@ public class MainTest {
     void twoSum() {
         // Given
         Main main = new Main();
-        int[] array = {2,7,11,15};
+        int[] array = {2, 7, 11, 15};
         int target = 9;
         int[] expected = {0, 1};
         // When
@@ -164,8 +164,8 @@ public class MainTest {
     void moveZeroes() {
         // Given
         Main main = new Main();
-        int[] array = {0,1,0,3,12};
-        int[] expected = {1,3,12,0,0};
+        int[] array = {0, 1, 0, 3, 12};
+        int[] expected = {1, 3, 12, 0, 0};
         // When
         int[] result = main.moveZeroes(array);
         // Then
@@ -188,9 +188,9 @@ public class MainTest {
     void hasDuplicates() {
         // Given
         Main main = new Main();
-        int[] array = {1,2,3,1};
+        int[] array = {1, 2, 3, 1};
         // When
-       boolean result = main.hasDuplicates(array);
+        boolean result = main.hasDuplicates(array);
         // Then
         assertTrue(result);
     }
@@ -199,7 +199,7 @@ public class MainTest {
     void hasDuplicatesReturnFalse() {
         // Given
         Main main = new Main();
-        int[] array = {1,2,3,4};
+        int[] array = {1, 2, 3, 4};
         // When
         boolean result = main.hasDuplicates(array);
         // Then
@@ -243,7 +243,7 @@ public class MainTest {
     void firstRecurringCharacter() {
         // Given
         Main main = new Main();
-        int[] array = {2,5,1,2,3,5,1,2,4};
+        int[] array = {2, 5, 1, 2, 3, 5, 1, 2, 4};
         // When
         Integer result = main.firstRecurringCharacter(array);
         // Then
@@ -254,7 +254,7 @@ public class MainTest {
     void firstRecurringCharacter1() {
         // Given
         Main main = new Main();
-        int[] array = {2,1,1,2,3,5,1,2,4};
+        int[] array = {2, 1, 1, 2, 3, 5, 1, 2, 4};
         // When
         Integer result = main.firstRecurringCharacter(array);
         // Then
@@ -265,7 +265,7 @@ public class MainTest {
     void firstRecurringCharacter2() {
         // Given
         Main main = new Main();
-        int[] array = {2,5,5,2,3,5,1,2,4};
+        int[] array = {2, 5, 5, 2, 3, 5, 1, 2, 4};
         // When
         Integer result = main.firstRecurringCharacter(array);
         // Then
@@ -276,11 +276,45 @@ public class MainTest {
     void firstRecurringCharacter3() {
         // Given
         Main main = new Main();
-        int[] array = {2,3,4,5};
+        int[] array = {2, 3, 4, 5};
         // When
         Integer result = main.firstRecurringCharacter(array);
         // Then
         assertNull(result);
+    }
+
+    @Test
+    public void removeAtBeginning() {
+        Main main = new Main();
+        assertEquals("bc", main.remove("abc", 'a'));
+        assertEquals("bc", main.removeRecursive("abc", 'a'));
+        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
+        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
+    }
+
+    @Test
+    public void removeAtMiddle() {
+        Main main = new Main();
+        assertEquals("abd", main.remove("abcd", 'c'));
+        assertEquals("abd", main.removeRecursive("abcd", 'c'));
+    }
+
+    @Test
+    public void removeAtEnd() {
+        Main main = new Main();
+        assertEquals("abc", main.remove("abcd", 'd'));
+        assertEquals("abc", main.removeRecursive("abcd", 'd'));
+    }
+
+    @Test
+    public void cornerCases() {
+        Main main = new Main();
+        // empty string test
+        assertEquals("", main.remove("", 'd'));
+        // all removable character test
+        assertEquals("", main.remove("aaaaaaaaaaaaaa", 'a'));
+        // all but one removable characters
+        assertEquals("b", main.remove("aaaaaaaaaaaaaab", 'a'));
     }
 
 }
