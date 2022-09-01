@@ -1,5 +1,8 @@
 package number;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Numbers {
 
     protected int subtract(int num1, int num2) {
@@ -27,8 +30,8 @@ public class Numbers {
         int value = 0;
 
         while (num1 > num2) {
-            num2 ++;
-            value ++;
+            num2++;
+            value++;
         }
 
         return value;
@@ -38,7 +41,7 @@ public class Numbers {
         int result = 0;
         while (num2 > 0) {
             result += num1;
-            num2 --;
+            num2--;
         }
         return result;
     }
@@ -46,7 +49,7 @@ public class Numbers {
     protected int division(int num1, int num2) {
         int result = 0;
         while (result * num2 != num1) {
-            result ++;
+            result++;
         }
         return result;
     }
@@ -54,7 +57,7 @@ public class Numbers {
     protected int division1(int num1, int num2) {
         int result = 0;
         while (num1 >= num2) {
-            result ++;
+            result++;
             num1 -= num2;
         }
         System.out.println("Rest: " + num1);
@@ -111,7 +114,7 @@ public class Numbers {
 
     protected boolean isPerfectNumber(int num) {
         int sum = 1;
-        for (int i = 2; i <= num/2; i++) {
+        for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) {
                 sum += i;
             }
@@ -122,12 +125,12 @@ public class Numbers {
     protected boolean isAmicableNumbers(int num, int num1) {
         int sum = 1;
         int sum1 = 1;
-        for (int i = 2; i <= num/2; i++) {
+        for (int i = 2; i <= num / 2; i++) {
             if (num % i == 0) {
                 sum += i;
             }
         }
-        for (int i = 2; i <= num1/2; i++) {
+        for (int i = 2; i <= num1 / 2; i++) {
             if (num1 % i == 0) {
                 sum1 += i;
             }
@@ -135,20 +138,20 @@ public class Numbers {
         return sum == num1 && sum1 == num;
     }
 
-    boolean isPrime(int number) {
+    protected boolean isPrime(int number) {
         boolean prime = true;
-        for (int i = 2; i <= number/2; i++) {
+        for (int i = 2; i <= number / 2; i++) {
             if (number % i == 0) {
                 prime = false;
                 break;
             }
         }
-       return prime;
+        return prime;
     }
 
-    boolean isCool(int number) {
+    protected boolean isCool(int number) {
         int sum = 1;
-        for (int i = 2; i < number/2; i++) {
+        for (int i = 2; i < number / 2; i++) {
             sum += i;
             if (number == sum) {
                 return true;
@@ -157,7 +160,7 @@ public class Numbers {
         return false;
     }
 
-    void calculateArrayValues(double[] array) {
+    protected void calculateArrayValues(double[] array) {
         double min = array[0];
         double max = array[0];
         double sum = 0;
@@ -177,7 +180,7 @@ public class Numbers {
         System.out.println("med: " + sum / array.length);
     }
 
-    void calculateArrayValues1(double[] array) {
+    protected void calculateArrayValues1(double[] array) {
         double min = array[0];
         double max = array[0];
         double sum = 0;
@@ -191,6 +194,50 @@ public class Numbers {
         System.out.println("min: " + min);
         System.out.println("max: " + max);
         System.out.println("med: " + sum / array.length);
+    }
+
+    // Input: s = "III"
+    // Output: 3
+    // Explanation: III = 3
+
+    // Input: s = "LVIII"
+    // Output: 58
+    // Explanation: L = 50, V= 5, III = 3
+
+    // Input: s = "MCMXCIV"
+    // Output: 1994
+    // Explanation: M = 1000, CM = 900, XC = 90 and IV = 4
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected int romanToInteger(String romanNumber) {
+        char[] romanItems = romanNumber.toCharArray();
+        Map<Character, Integer> map = new HashMap<>();
+        map.put('I', 1);
+        map.put('V', 5);
+        map.put('X', 10);
+        map.put('L', 50);
+        map.put('C', 100);
+        map.put('D', 500);
+        map.put('M', 1000);
+
+        int arrayLength = romanItems.length;
+        int result = 0;
+
+        for (int i = 0; i < arrayLength; i++) {
+            int next = 0;
+            int current = map.get(romanItems[i]);
+            int nextIndex = i + 1;
+            if (nextIndex < arrayLength) {
+                next = map.get(romanItems[nextIndex]);
+            }
+            if (current < next) {
+                result += next - current;
+                i++;
+            } else {
+                result += current;
+            }
+        }
+        return result;
     }
 
 }

@@ -1,9 +1,9 @@
 package number;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import org.junit.jupiter.api.Test;
 
 class NumbersTest {
 
@@ -146,5 +146,49 @@ class NumbersTest {
         numbers.calculateArrayValues(array);
         // Then
     }
+
+    @Test
+    void romanToInteger() {
+        // Given
+        Numbers numbers = new Numbers();
+        String romanNumber = "III";
+        // When
+        int result = numbers.romanToInteger(romanNumber);
+        // Then
+        assertEquals(result, 3);
+    }
+
+    @Test
+    void romanToInteger1() {
+        // Given
+        Numbers numbers = new Numbers();
+        String romanNumber = "LVIII";
+        // When
+        int result = numbers.romanToInteger(romanNumber);
+        // Then
+        assertEquals(result, 58);
+    }
+
+    @Test
+    void romanToInteger2() {
+        // Given
+        Numbers numbers = new Numbers();
+        String romanNumber = "MCMXCIV";
+        // When
+        int result = numbers.romanToInteger(romanNumber);
+        // Then
+        assertEquals(result, 1994);
+    }
+    @Test
+    void romanToInteger3() {
+        // Given
+        Numbers numbers = new Numbers();
+        String romanNumber = "MDCXCV";
+        // When
+        int result = numbers.romanToInteger(romanNumber);
+        // Then
+        assertEquals(result, 1695);
+    }
+
 
 }
