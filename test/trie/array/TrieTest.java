@@ -1,9 +1,10 @@
 package trie.array;
 
-import org.junit.jupiter.api.Test;
-import trie.array.Trie;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class TrieTest {
 
@@ -37,7 +38,7 @@ class TrieTest {
     }
 
     @Test
-    void search1() {
+    void searchReturnFalse() {
         // Given
         Trie trie = new Trie();
         // When
@@ -65,7 +66,7 @@ class TrieTest {
     }
 
     @Test
-    void startsWith1() {
+    void startsReturnFalse() {
         // Given
         Trie trie = new Trie();
         // When
@@ -77,5 +78,38 @@ class TrieTest {
         boolean result = trie.startsWith("book");
         assertFalse(result);
     }
+
+    @Test
+    void getLongestCommonPrefix() {
+        // Given
+        Trie trie = new Trie();
+        String[] input = {"flower","flow","flight"};
+        // When
+        String result = trie.longestCommonPrefix("fl", input);
+        // Then
+        assertEquals(result, "fl");
+    }
+    @Test
+    void getLongestCommonPrefix1() {
+        // Given
+        Trie trie = new Trie();
+        String[] input = {"cir", "car"};
+        // When
+        String result = trie.longestCommonPrefix("c", input);
+        // Then
+        assertEquals(result, "c");
+    }
+
+    @Test
+    void getLongestCommonPrefix2() {
+        // Given
+        Trie trie = new Trie();
+        String[] input = {"dog","racecar","car"};
+        // When
+        String result = trie.longestCommonPrefix("car", input);
+        // Then
+        assertEquals(result,  "");
+    }
+
 
 }

@@ -1,10 +1,12 @@
 package array.string.leetcode;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.text.ParseException;
-
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
 
 class MainStringTest {
 
@@ -501,6 +503,42 @@ class MainStringTest {
         int[] result = main.reverseArray(input);
         // Then
         assertArrayEquals(result, output);
+    }
+    @Test
+    void longestCommonPrefix() {
+        // Given
+        MainString main = new MainString();
+        String[] input = {"flower", "flow", "flight"};
+        String output = "fl";
+        // When
+        String result = main.longestCommonPrefix(input);
+        // Then
+        assertEquals(result, output);
+    }
+
+    @Test
+    void longestCommonPrefix1() {
+        // Given
+        MainString main = new MainString();
+        String[] input = {"cir", "car"};
+        String output = "c";
+        // When
+        String result = main.longestCommonPrefix(input);
+        // Then
+        assertEquals(result, output);
+    }
+
+
+    @Test
+    void longestCommonPrefixReturnEmpty() {
+        // Given
+        MainString main = new MainString();
+        String[] input = {"dog","racecar","car"};
+        String output = "";
+        // When
+        String result = main.longestCommonPrefix(input);
+        // Then
+        assertEquals(result, output);
     }
 
 }

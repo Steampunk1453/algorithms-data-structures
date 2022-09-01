@@ -1,6 +1,7 @@
 package array.string.leetcode;
 
-import javax.swing.text.MaskFormatter;
+import static java.lang.Math.min;
+
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -14,14 +15,12 @@ import java.util.Set;
 import java.util.Stack;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
-
-import static java.lang.Math.min;
+import javax.swing.text.MaskFormatter;
 
 public class MainString {
 
     // Write a function to find the longest common prefix string amongst an array of strings.
-    //
-    //If there is no common prefix, return an empty string "".
+    // If there is no common prefix, return an empty string "".
     // Example 1:
     //Input: strs = ["flower","flow","flight"]
     //Output: "fl"
@@ -33,7 +32,28 @@ public class MainString {
 
     // https://leetcode.com/problems/longest-common-prefix/
 
+    // Time complexity: O(n2)
+    // Space complexity: O(n)
+    protected String longestCommonPrefix(String[] strs) {
+        StringBuilder prefix = new StringBuilder(strs[0]);
+        for (int i = 1; i < strs.length; i++) {
+            char[] prefixChars = prefix.toString().toCharArray();
+            char[] chars = strs[i].toCharArray();
+            prefix = new StringBuilder();
+            for (int j = 0; j < prefixChars.length && j < chars.length; j++) {
+                if (prefixChars[j] == chars[j]) {
+                    prefix.append(chars[j]);
+                } else {
+                    break;
+                }
+            }
+        }
+        return prefix.toString();
+    }
+
     // Horizontal scanning
+    // Time complexity: O(s)
+    // Space complexity: O(1)
     protected String getLongestCommonPrefixHorizontal(String[] strs) {
         if (strs.length == 0) return "";
         String prefix = strs[0];
@@ -47,6 +67,8 @@ public class MainString {
     }
 
     // Vertical scanning
+    // Time complexity: O(s)
+    // Space complexity: O(1)
     protected String getLongestCommonPrefixVertical(String[] strs) {
         if (strs == null || strs.length == 0) return "";
         for (int i = 0; i < strs[0].length(); i++) {
@@ -751,7 +773,6 @@ public class MainString {
 
     // 1047. Remove All Adjacent Duplicates In String
     // 1544. Make The String Great
-
     // 387. First Unique Character in a String
     protected int firstUniqChar(String s) {
         Map<Character, Integer> map = new HashMap<>();

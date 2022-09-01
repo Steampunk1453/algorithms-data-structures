@@ -16,6 +16,7 @@ public class Trie {
     public static class TrieNode {
         TrieNode[] child;
         boolean isEnd;
+        private int size;
 
         public TrieNode() {
             child = new TrieNode[ALPHABET_SIZE];
@@ -32,6 +33,7 @@ public class Trie {
 
         private void put(char ch, TrieNode node) {
             child[ch -'a'] = node;
+            size++;
         }
 
         private void setEnd() {
@@ -69,6 +71,20 @@ public class Trie {
         return node != null;
     }
 
+    // Time complexity: O(S⋅logm)
+    // Space complexity: O(1)
+    public String longestCommonPrefix(String q, String[] strs) {
+        if (strs == null || strs.length == 0)
+            return "";
+        if (strs.length == 1)
+            return strs[0];
+        Trie trie = new Trie();
+        for (int i = 1; i < strs.length ; i++) {
+            trie.insert(strs[i]);
+        }
+        return trie.searchLongestPrefix(q);
+    }
+
     // search a prefix or whole key in trie and
     // returns the node where search ends
     private TrieNode searchPrefix(String word) {
@@ -82,6 +98,22 @@ public class Trie {
             }
         }
         return node;
+    }
+
+    private String searchLongestPrefix(String word) {
+        TrieNode node = root;
+        StringBuilder prefix = new StringBuilder();
+        for (int i = 0; i < word.length(); i++) {
+            char curLetter = word.charAt(i);
+            if (node.containsKey(curLetter) && (node.size == 1) && (!node.isEnd())) {
+                prefix.append(curLetter);
+                node = node.get(curLetter);
+            }
+            else
+                return prefix.toString();
+
+        }
+        return prefix.toString();
     }
 
 }
