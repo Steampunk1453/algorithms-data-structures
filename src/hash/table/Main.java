@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class HashTable {
+public class Main {
 
     // Write a function that returns the intersection of two arrays.
     // The intersection is a third array that contains all values contained with the first two arrays.

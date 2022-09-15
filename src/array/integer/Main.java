@@ -1,26 +1,41 @@
-package array.string.udemy;
+package array.integer;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class Main {
 
-    // Reverse a string
-    // Time complexity: O(n)
-    // Space complexity: O(n)
-    protected String reverse(String input) {
-        if (input == null || input.isEmpty()) {
-            return input;
+    // Given an integer array nums and an integer k, return the k most frequent elements. You may return the answer in any order
+    protected int[] topKFrequent(int[] nums, int k) {
+        // Write your code here
+        int[] result = new int[k];
+        int[] count = new int[nums.length];
+        for (int num : nums) {
+            count[num]++;
         }
-
-        char[] inputs = input.toCharArray();
-        StringBuilder output = new StringBuilder();
-
-        for (int i = inputs.length - 1; i >= 0; i--) {
-            output.append(inputs[i]);
+        for (int i = 0; i < k; i++) {
+            int max = 0;
+            int index = 0;
+            for (int j = 0; j < count.length; j++) {
+                if (count[j] > max) {
+                    max = count[j];
+                    index = j;
+                }
+            }
+            result[i] = index;
+            count[index] = 0;
         }
+        return result;
+    }
 
-        return output.toString();
+    // Book: create a new function to reverse an array that takes up just O(1) extra space.
+    protected int[] reverseArray(int[] array) {
+        for (int i = 0; i < array.length / 2; i++) {
+            int aux = array[(array.length -1) - i];
+            array[(array.length - 1) - i] = array[i];
+            array[i] = aux;
+        }
+        return array;
     }
 
     // Merge sorted arrays
@@ -132,22 +147,6 @@ public class Main {
         return false;
     }
 
-    // Longest Word
-    // Time complexity: O(n)
-    // Space complexity: O(n)
-    protected String getLongestWord(String word) {
-        String[] words = word.split(" ");
-        String longestWord = "";
-
-        for (String item : words) {
-            if (item.matches("^[a-zA-Z0-9]*$") && item.length() > longestWord.length()) {
-                longestWord = item;
-            }
-        }
-
-        return longestWord;
-    }
-
     // First Recurring Character
     // Time complexity: O(n)
     // Space complexity: O(n)
@@ -164,26 +163,34 @@ public class Main {
         return null;
     }
 
-    // Google: write a function which will remove any given character from a String
-    protected String remove(String word, char unwanted) {
-        StringBuilder sb = new StringBuilder();
-        char[] letters = word.toCharArray();
+    // 11. Container With Most Water
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    protected int maxArea(int[] height) {
+        if (height.length < 2) {
+            return 0;
+        }
+        int halfLength = height.length / 2;
+        int pointerLeft = 0;
+        int pointerRight = height.length - 1;
+        int maxValueLeft = 0;
+        int maxValueRight = 0;
 
-        for (char c : letters) {
-            if (c != unwanted) {
-                sb.append(c);
+        while (pointerLeft < halfLength && pointerRight >= halfLength) {
+            int valueLeft = height[pointerLeft];
+            int weightedValueLeft = valueLeft - pointerLeft;
+            if (weightedValueLeft > maxValueLeft) {
+                maxValueLeft = valueLeft;
             }
+            int valueRight = height[pointerRight];
+            int weightedValueRight = valueRight + pointerRight;
+            if (weightedValueRight > maxValueRight) {
+                maxValueRight = valueRight;
+            }
+            pointerLeft++;
+            pointerRight--;
         }
-
-        return sb.toString();
-    }
-
-    protected String removeRecursive(String word, char ch) {
-        int index = word.indexOf(ch);
-        if (index == -1) {
-            return word;
-        }
-        return removeRecursive(word.substring(0, index) + word.substring(index + 1), ch);
+        return maxValueLeft * maxValueRight;
     }
 
 }

@@ -1,9 +1,9 @@
-package number;
+package math;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class Numbers {
+public class Main {
 
     protected int subtract(int num1, int num2) {
         int higher;
@@ -238,6 +238,22 @@ public class Numbers {
             }
         }
         return result;
+    }
+
+    // TODO Review to understand algorithm
+    protected int sqrt(int x) {
+        int low = 1; // mid always >= 1;
+        int high = x;
+        int answer = 0; // skip loop when high is 0
+        while (low <= high) {
+            int mid = low + (high - low) / 2;
+            if (mid <= x / mid) {
+                low = mid + 1;
+                answer = mid;
+            } else
+                high = mid - 1;
+        }
+        return answer;
     }
 
 }

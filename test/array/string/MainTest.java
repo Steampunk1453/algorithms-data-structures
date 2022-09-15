@@ -1,6 +1,5 @@
-package array.string.leetcode;
+package array.string;
 
-import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
@@ -8,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.text.ParseException;
 import org.junit.jupiter.api.Test;
 
-class MainStringTest {
+class MainTest {
 
     @Test
     void getLongestCommonPrefix() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] input = {"flower","flow","flight"};
         // When
         String result = main.getLongestCommonPrefixHorizontal(input);
@@ -26,7 +25,7 @@ class MainStringTest {
     @Test
     void dontGetLongestCommonPrefix() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] input = {"dog","racecar","car"};
         // When
         String result = main.getLongestCommonPrefixHorizontal(input);
@@ -39,7 +38,7 @@ class MainStringTest {
     @Test
     void getLengthLastWord() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "Hello World Spanish";
         // When
         int result = main.getLengthLastWord(input);
@@ -50,7 +49,7 @@ class MainStringTest {
     @Test
     void dontExistLastWord() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "";
         // When
         int result = main.getLengthLastWord(input);
@@ -61,7 +60,7 @@ class MainStringTest {
     @Test
     void isValidPalindrome() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "A man, a plan, a canal: Panama";
         // When
         boolean result = main.isValidPalindrome(input);
@@ -72,7 +71,7 @@ class MainStringTest {
     @Test
     void isNotValidPalindrome() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "race a car";
         // When
         boolean result = main.isValidPalindrome(input);
@@ -84,7 +83,7 @@ class MainStringTest {
     @Test
     void isPalindrome() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "allivessevilla";
         // When
         boolean result = main.isPalindrome(input);
@@ -96,7 +95,7 @@ class MainStringTest {
     @Test
     void reverseVowels() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "hello";
         // When
         String result = main.reverseVowels(input);
@@ -107,7 +106,7 @@ class MainStringTest {
     @Test
     void detectCapital() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "USA";
         // When
         boolean result = main.detectCapital(input);
@@ -120,7 +119,7 @@ class MainStringTest {
     @Test
     void detectCapital1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "leetcode";
         // When
         boolean result = main.detectCapital(input);
@@ -133,7 +132,7 @@ class MainStringTest {
     @Test
     void detectCapital2() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "Google";
         // When
         boolean result = main.detectCapital(input);
@@ -147,7 +146,7 @@ class MainStringTest {
     @Test
     void isNotCapital() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "FlaG";
         // When
         boolean result = main.detectCapital(input);
@@ -160,7 +159,7 @@ class MainStringTest {
     @Test
     void runLengthEncoding() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "wwwwaaadexxxxxx";
         // When
         String result = main.runLengthEncoding(input);
@@ -173,7 +172,7 @@ class MainStringTest {
     @Test
     void runLengthEncoding1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "BBBBBBBBBBBBNBBBBBBBBBBBBNNNBBBBBBBBBBBBBBBBBBBBBBBBNBBBBBBBBBBBBBB";
         // When
         String result = main.lengthEncoding(input);
@@ -184,7 +183,7 @@ class MainStringTest {
     @Test
     void getStringCompression() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "aabcccccaaa";
         // When
         String result = main.getStringCompression(input);
@@ -195,7 +194,7 @@ class MainStringTest {
     @Test
     void getMostCommonWordWithOneBanned() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "Bob hit a ball, the hit BALL flew far after it was  hit.";
         String[] banned = {"hit"};
         // When
@@ -208,7 +207,7 @@ class MainStringTest {
     @Test
     void getMostCommonWordWithTwoBanned() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "Bob hit a ball, the hit BALL flew far after it was was hit.";
         String[] banned = {"hit", "ball"};
         // When
@@ -221,7 +220,7 @@ class MainStringTest {
     @Test
     void getConsecutiveCharacters() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "hooraaaaaaaaaaay";
         // When
         int result = main.getConsecutiveCharacters(input);
@@ -234,7 +233,7 @@ class MainStringTest {
     @Test
     void getConsecutiveCharacters1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "tourist";
         // When
         int result = main.getConsecutiveCharacters(input);
@@ -247,7 +246,7 @@ class MainStringTest {
     @Test
     void getThousandSeparator() throws ParseException {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         int input = 987;
         int input1 = 1234;
         int input2 = 123456789;
@@ -271,7 +270,7 @@ class MainStringTest {
     @Test
     void getTruePathCrossing() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         char[] path ={ 'N', 'E', 'S', 'W', 'W' };
         String paths = "NESWW";
         // When
@@ -287,7 +286,7 @@ class MainStringTest {
     @Test
     void getFalsePathCrossing() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         char[] path ={ 'N', 'E', 'S'};
         String paths = "NES";
         // When
@@ -303,7 +302,7 @@ class MainStringTest {
     @Test
     void isEquivalent() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] word = {"abc", "d", "defg"};
         String[] word1 = {"abcddefg"};
         // When
@@ -315,7 +314,7 @@ class MainStringTest {
     @Test
     void isNotEquivalent() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] word = {"a", "cb"};
         String[] word1 = {"ab", "c"};
         // When
@@ -327,7 +326,7 @@ class MainStringTest {
     @Test
     void getGoalParserInterpretation() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "G()(al)";
         String input1 = "G()()()()(al)";
         String input2 = "(al)G(al)()()G";
@@ -343,7 +342,7 @@ class MainStringTest {
 
     @Test
     void getReformatPhoneNumber() {
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "1-23-45 6";
         String input1 = "123 4-567";
         String input2 = "123 4-5678";
@@ -366,7 +365,7 @@ class MainStringTest {
     @Test
     void mergeStringsAlternately() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "abc";
         String input1 = "pqr";
         String input2 = "abcd";
@@ -386,7 +385,7 @@ class MainStringTest {
     @Test
     void getSecondLargestDigit() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "dfa12321afd";
         // When
         int result = main.getSecondLargestDigit(input);
@@ -397,7 +396,7 @@ class MainStringTest {
     @Test
     void getSecondLargestDigit1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "abc1111";
         // When
         int result = main.getSecondLargestDigit(input);
@@ -408,7 +407,7 @@ class MainStringTest {
     @Test
     void firstUniqChar() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "leetcode";
         // When
         int result = main.firstUniqChar(input);
@@ -419,7 +418,7 @@ class MainStringTest {
     @Test
     void firstUniqChar1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "loveleetcode";
         // When
         int result = main.firstUniqChar(input);
@@ -430,7 +429,7 @@ class MainStringTest {
     @Test
     void firstUniqChar2() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "aabb";
         // When
         int result = main.firstUniqChar(input);
@@ -441,7 +440,7 @@ class MainStringTest {
     @Test
     void isValidParentheses() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "()";
         // When
         boolean result = main.isValidParentheses(input);
@@ -452,7 +451,7 @@ class MainStringTest {
     @Test
     void isValidParentheses1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "()[]{}";
         // When
         boolean result = main.isValidParentheses(input);
@@ -463,7 +462,7 @@ class MainStringTest {
     @Test
     void isValidParentheses2() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "(]";
         // When
         boolean result = main.isValidParentheses(input);
@@ -474,7 +473,7 @@ class MainStringTest {
     @Test
     void isValidParentheses3() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "([)]";
         // When
         boolean result = main.isValidParentheses(input);
@@ -485,7 +484,7 @@ class MainStringTest {
     @Test
     void isValidParentheses4() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String input = "{[]}";
         // When
         boolean result = main.isValidParentheses(input);
@@ -494,20 +493,9 @@ class MainStringTest {
     }
 
     @Test
-    void reverseArray() {
-        // Given
-        MainString main = new MainString();
-        int[] input = {1, 2, 3, 4, 5, 6, 7, 8};
-        int[] output = {8, 7, 6, 5, 4, 3, 2, 1};
-        // When
-        int[] result = main.reverseArray(input);
-        // Then
-        assertArrayEquals(result, output);
-    }
-    @Test
     void longestCommonPrefix() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] input = {"flower", "flow", "flight"};
         String output = "fl";
         // When
@@ -519,7 +507,7 @@ class MainStringTest {
     @Test
     void longestCommonPrefix1() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] input = {"cir", "car"};
         String output = "c";
         // When
@@ -532,13 +520,99 @@ class MainStringTest {
     @Test
     void longestCommonPrefixReturnEmpty() {
         // Given
-        MainString main = new MainString();
+        Main main = new Main();
         String[] input = {"dog","racecar","car"};
         String output = "";
         // When
         String result = main.longestCommonPrefix(input);
         // Then
         assertEquals(result, output);
+    }
+
+    @Test
+    void reverseString() {
+        // Given
+        Main main = new Main();
+        // When
+        String result = main.reverse("Hello");
+        // Then
+        assertEquals(result, "olleH");
+    }
+
+    @Test
+    void reverseStringReturnEmpty() {
+        // Given
+        Main main = new Main();
+        // When
+        String result = main.reverse("");
+        // Then
+        assertEquals(result, "");
+    }
+    @Test
+    void getLongestWord() {
+        // Given
+        Main main = new Main();
+        String input = "I love dogs";
+        // When
+        String result = main.getLongestWord(input);
+        // Then
+        assertEquals(result, "love");
+    }
+
+    @Test
+    void getLongestWord1() {
+        // Given
+        Main main = new Main();
+        String input = "Hello world123 567";
+        // When
+        String result = main.getLongestWord(input);
+        // Then
+        assertEquals(result, "world123");
+    }
+
+    @Test
+    void getLongestWord2() {
+        // Given
+        Main main = new Main();
+        String input = "fun&!! time";
+        // When
+        String result = main.getLongestWord(input);
+        // Then
+        assertEquals(result, "time");
+    }
+
+    @Test
+    void removeAtBeginning() {
+        Main main = new Main();
+        assertEquals("bc", main.remove("abc", 'a'));
+        assertEquals("bc", main.removeRecursive("abc", 'a'));
+        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
+        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
+    }
+
+    @Test
+    void removeAtMiddle() {
+        Main main = new Main();
+        assertEquals("abd", main.remove("abcd", 'c'));
+        assertEquals("abd", main.removeRecursive("abcd", 'c'));
+    }
+
+    @Test
+    void removeAtEnd() {
+        Main main = new Main();
+        assertEquals("abc", main.remove("abcd", 'd'));
+        assertEquals("abc", main.removeRecursive("abcd", 'd'));
+    }
+
+    @Test
+    void cornerCases() {
+        Main main = new Main();
+        // empty string test
+        assertEquals("", main.remove("", 'd'));
+        // all removable character test
+        assertEquals("", main.remove("aaaaaaaaaaaaaa", 'a'));
+        // all but one removable characters
+        assertEquals("b", main.remove("aaaaaaaaaaaaaab", 'a'));
     }
 
 }

@@ -7,12 +7,12 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-class HashTableTest {
+class MainTest {
 
     @Test
     void getIntersection() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         int[] array1 = {1, 2, 3, 4, 5};
         int[] array2 = {0, 2, 4, 6, 8};
         // When
@@ -25,7 +25,7 @@ class HashTableTest {
     @Test
     void getFirstDuplicate() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String[] array = {"a", "b", "c", "d", "c", "e", "f"};
         // When
         String result = main.getFirstDuplicate(array);
@@ -36,7 +36,7 @@ class HashTableTest {
     @Test
     void getFirstDuplicateReturnNull() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String[] array = {"a", "b", "c", "d", "e", "f", "g"};
         // When
         String result = main.getFirstDuplicate(array);
@@ -47,7 +47,7 @@ class HashTableTest {
     @Test
     void getMissingLetter() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String input = "the quick brown box jumps over a lazy dog";
         // When
         String result = main.getMissingLetter(input);
@@ -58,7 +58,7 @@ class HashTableTest {
     @Test
     void getMissingLetterReturnNull() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String input = "the quick brown box jumps over a lazy dogf";
         // When
         String result = main.getMissingLetter(input);
@@ -69,7 +69,7 @@ class HashTableTest {
     @Test
     void getFirstNonDuplicatedCharacter() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String input = "minimum";
         // When
         String result = main.getFirstNonDuplicatedCharacter(input);
@@ -80,7 +80,7 @@ class HashTableTest {
     @Test
     void getFirstNonDuplicatedCharacterReturnNull() {
         // Given
-        HashTable main = new HashTable();
+        Main main = new Main();
         String input = "minnimumu";
         // When
         String result = main.getFirstNonDuplicatedCharacter(input);

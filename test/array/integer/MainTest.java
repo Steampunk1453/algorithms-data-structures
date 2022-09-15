@@ -1,4 +1,4 @@
-package array.string.udemy;
+package array.integer;
 
 import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -8,27 +8,35 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-public class MainTest {
+class MainTest {
 
     @Test
-    void reverseString() {
+    void topKFrequent() {
         // Given
         Main main = new Main();
+        int[] nums = {1,1,1,2,2,3};
+        int k = 2;
+        int[] expected = {1,2};
+
         // When
-        String result = main.reverse("Hello");
+        int[] actual = main.topKFrequent(nums, k);
+
         // Then
-        assertEquals(result, "olleH");
+        assertArrayEquals(expected, actual);
     }
 
     @Test
-    void reverseStringReturnEmpty() {
+    void reverseArray() {
         // Given
         Main main = new Main();
+        int[] input = {1, 2, 3, 4, 5, 6, 7, 8};
+        int[] output = {8, 7, 6, 5, 4, 3, 2, 1};
         // When
-        String result = main.reverse("");
+        int[] result = main.reverseArray(input);
         // Then
-        assertEquals(result, "");
+        assertArrayEquals(result, output);
     }
+
 
     @Test
     void mergeSortedArrays() {
@@ -207,39 +215,6 @@ public class MainTest {
     }
 
     @Test
-    void getLongestWord() {
-        // Given
-        Main main = new Main();
-        String input = "I love dogs";
-        // When
-        String result = main.getLongestWord(input);
-        // Then
-        assertEquals(result, "love");
-    }
-
-    @Test
-    void getLongestWord1() {
-        // Given
-        Main main = new Main();
-        String input = "Hello world123 567";
-        // When
-        String result = main.getLongestWord(input);
-        // Then
-        assertEquals(result, "world123");
-    }
-
-    @Test
-    void getLongestWord2() {
-        // Given
-        Main main = new Main();
-        String input = "fun&!! time";
-        // When
-        String result = main.getLongestWord(input);
-        // Then
-        assertEquals(result, "time");
-    }
-
-    @Test
     void firstRecurringCharacter() {
         // Given
         Main main = new Main();
@@ -284,37 +259,14 @@ public class MainTest {
     }
 
     @Test
-    public void removeAtBeginning() {
+    void maxArea() {
+        // Given
         Main main = new Main();
-        assertEquals("bc", main.remove("abc", 'a'));
-        assertEquals("bc", main.removeRecursive("abc", 'a'));
-        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
-        assertEquals("bcdefgh", main.removeRecursive("abcdefgh", 'a'));
-    }
-
-    @Test
-    public void removeAtMiddle() {
-        Main main = new Main();
-        assertEquals("abd", main.remove("abcd", 'c'));
-        assertEquals("abd", main.removeRecursive("abcd", 'c'));
-    }
-
-    @Test
-    public void removeAtEnd() {
-        Main main = new Main();
-        assertEquals("abc", main.remove("abcd", 'd'));
-        assertEquals("abc", main.removeRecursive("abcd", 'd'));
-    }
-
-    @Test
-    public void cornerCases() {
-        Main main = new Main();
-        // empty string test
-        assertEquals("", main.remove("", 'd'));
-        // all removable character test
-        assertEquals("", main.remove("aaaaaaaaaaaaaa", 'a'));
-        // all but one removable characters
-        assertEquals("b", main.remove("aaaaaaaaaaaaaab", 'a'));
+        int[] height = {1,8,6,2,5,4,8,3,7};
+        // When
+        int result = main.maxArea(height);
+        // Then
+        assertEquals(result, 49);
     }
 
 }

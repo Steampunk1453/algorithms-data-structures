@@ -1,4 +1,4 @@
-package array.string.leetcode;
+package array.string;
 
 import static java.lang.Math.min;
 
@@ -17,7 +17,7 @@ import java.util.TreeMap;
 import java.util.stream.Collectors;
 import javax.swing.text.MaskFormatter;
 
-public class MainString {
+public class Main {
 
     // Write a function to find the longest common prefix string amongst an array of strings.
     // If there is no common prefix, return an empty string "".
@@ -96,7 +96,6 @@ public class MainString {
     //
     //Input: s = " "
     //Output: 0
-
     protected int getLengthLastWord(String input) {
         String trimInput = input.trim();
         String[] words = trimInput.split(" ");
@@ -118,7 +117,6 @@ public class MainString {
     //Input: s = "race a car"
     //Output: false
     //Explanation: "raceacar" is not a palindrome.
-
     protected boolean isValidPalindrome(String input) {
         Stack<String> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
@@ -162,7 +160,6 @@ public class MainString {
     //
     //Input: s = "leetcode"
     //Output: "leotcede"
-
     protected String reverseVowels(String input) {
         int j = 0;
         // Storing the vowels separately
@@ -208,7 +205,6 @@ public class MainString {
     //
     //Input: word = "FlaG"
     //Output: false
-
     protected boolean detectCapital(String input) {
         String[] letters = input.split("");
         if (input.equals(input.toUpperCase())) {
@@ -305,7 +301,6 @@ public class MainString {
 
     // 1.6 String compression --> Geeks for Geeks --> easy
     // aabcccccaaa --> a2b1c5a3
-
     protected String getStringCompression(String input) {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < input.length(); i++) {
@@ -324,7 +319,6 @@ public class MainString {
     // 819. Most Common Word
     // Input: paragraph = "Bob hit a ball, the hit BALL flew far after it was hit.", banned = ["hit"]
     // Output: "ball"
-
     protected String getMostCommonWord(String paragraph, String[] banneds) {
         String normalizedStr = paragraph.toLowerCase();
         String[] words = normalizedStr.split("\\W+");
@@ -401,7 +395,6 @@ public class MainString {
     // Given a string s, the power of the string is the maximum length of a non-empty substring that contains only one unique character.
     //
     //Return the power of the string.
-
     protected int getConsecutiveCharacters(String input) {
         char[] charArray = input.toCharArray();
         Map<Character, Integer> map = new HashMap<>();
@@ -437,7 +430,6 @@ public class MainString {
 
     // 1556. Thousand Separator
     // Given an integer n, add a dot (".") as the thousands separator and return it in string format
-
     protected String getThousandSeparator(int input) throws ParseException {
         String value = String.valueOf(input);
         Map<Integer, String> map = new HashMap<>();
@@ -472,7 +464,6 @@ public class MainString {
     //
     //Return true if the path crosses itself at any point, that is, if at any time you are on a location you have previously visited.
     //Return false otherwise.
-
     protected boolean isPathCrossing(char[] path) {
         Map<String, Boolean> steps = new HashMap<>();
         String separator = "&";
@@ -573,7 +564,6 @@ public class MainString {
     // Given two string arrays word1 and word2, return true if the two arrays represent the same string, and false otherwise.
     //
     //A string is represented by an array if the array elements concatenated in order forms the string.
-
     protected boolean isEquivalent(String[] word, String[] word1) {
         StringBuilder first = new StringBuilder();
         StringBuilder second = new StringBuilder();
@@ -594,7 +584,6 @@ public class MainString {
     // You own a Goal Parser that can interpret a string command. The command consists of an alphabet of "G", "()" and/or "(al)" in some order. The Goal Parser will interpret "G" as the string "G", "()" as the string "o", and "(al)" as the string "al". The interpreted strings are then concatenated in the original order.
     //
     //Given the string command, return the Goal Parser's interpretation of command.
-
     protected String getGoalParserInterpretation(String input) {
         String result = input.split("")[0];
         String[] elements = input.split("");
@@ -729,7 +718,6 @@ public class MainString {
     // Given an alphanumeric string s, return the second largest numerical digit that appears in s, or -1 if it does not exist.
     //
     //An alphanumeric string is a string consisting of lowercase English letters and digits.
-
     protected int getSecondLargestDigit(String input) {
         String formatInput = input.replaceAll("[a-zA-Z]", "");
         Map<Character, Integer> map = new HashMap<>();
@@ -816,14 +804,60 @@ public class MainString {
         return stack.isEmpty();
     }
 
-    // Book: create a new function to reverse an array that takes up just O(1) extra space.
-    protected int[] reverseArray(int[] array) {
-        for (int i = 0; i < array.length / 2; i++) {
-            int aux = array[(array.length -1) - i];
-            array[(array.length - 1) - i] = array[i];
-            array[i] = aux;
+    // Reverse a string
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected String reverse(String input) {
+        if (input == null || input.isEmpty()) {
+            return input;
         }
-        return array;
+
+        char[] inputs = input.toCharArray();
+        StringBuilder output = new StringBuilder();
+
+        for (int i = inputs.length - 1; i >= 0; i--) {
+            output.append(inputs[i]);
+        }
+
+        return output.toString();
+    }
+
+    // Longest Word
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected String getLongestWord(String word) {
+        String[] words = word.split(" ");
+        String longestWord = "";
+
+        for (String item : words) {
+            if (item.matches("^[a-zA-Z0-9]*$") && item.length() > longestWord.length()) {
+                longestWord = item;
+            }
+        }
+
+        return longestWord;
+    }
+
+    // Google: write a function which will remove any given character from a String
+    protected String remove(String word, char unwanted) {
+        StringBuilder sb = new StringBuilder();
+        char[] letters = word.toCharArray();
+
+        for (char c : letters) {
+            if (c != unwanted) {
+                sb.append(c);
+            }
+        }
+
+        return sb.toString();
+    }
+
+    protected String removeRecursive(String word, char ch) {
+        int index = word.indexOf(ch);
+        if (index == -1) {
+            return word;
+        }
+        return removeRecursive(word.substring(0, index) + word.substring(index + 1), ch);
     }
 
 }

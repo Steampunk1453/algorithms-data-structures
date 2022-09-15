@@ -1,6 +1,6 @@
 package dynamic.programming;
 
-public class Dynamic {
+public class Main {
 
     protected int fibonacci(int x) {
         if (x == 1 || x == 2) {

@@ -1,18 +1,18 @@
-package number;
+package math;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
-class NumbersTest {
+class MainTest {
 
     @Test
     void subtract() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.subtract(10, 8);
+        int result = main.subtract(10, 8);
         // Then
         assertEquals(result, 2);
     }
@@ -20,9 +20,9 @@ class NumbersTest {
     @Test
     void multiply() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.multiply(5, 4);
+        int result = main.multiply(5, 4);
         // Then
         assertEquals(result, 20);
     }
@@ -30,9 +30,9 @@ class NumbersTest {
     @Test
     void division() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.division(10, 5);
+        int result = main.division(10, 5);
         // Then
         assertEquals(result, 2);
     }
@@ -40,9 +40,9 @@ class NumbersTest {
     @Test
     void division1() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.division1(10, 2);
+        int result = main.division1(10, 2);
         // Then
         assertEquals(result, 5);
     }
@@ -50,9 +50,9 @@ class NumbersTest {
     @Test
     void pow() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.pow(3, 6);
+        int result = main.pow(3, 6);
         // Then
         assertEquals(result, 729);
     }
@@ -60,9 +60,9 @@ class NumbersTest {
     @Test
     void pow1() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.pow1(3, 6);
+        int result = main.pow1(3, 6);
         // Then
         assertEquals(result, 729);
     }
@@ -70,9 +70,9 @@ class NumbersTest {
     @Test
     void factorial() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.factorial(3);
+        int result = main.factorial(3);
         // Then
         assertEquals(result, 6);
     }
@@ -80,9 +80,9 @@ class NumbersTest {
     @Test
     void factorial1() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.factorial1(7);
+        int result = main.factorial1(7);
         // Then
         assertEquals(result, 5040);
     }
@@ -90,9 +90,9 @@ class NumbersTest {
     @Test
     void factorial2() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        int result = numbers.factorial2(7);
+        int result = main.factorial2(7);
         // Then
         assertEquals(result, 5040);
     }
@@ -100,9 +100,9 @@ class NumbersTest {
     @Test
     void isPerfectNumber() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        boolean result = numbers.isPerfectNumber(28);
+        boolean result = main.isPerfectNumber(28);
         // Then
         assertTrue(result);
     }
@@ -110,9 +110,9 @@ class NumbersTest {
     @Test
     void isAmicableNumbers() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        boolean result = numbers.isAmicableNumbers(220, 284);
+        boolean result = main.isAmicableNumbers(220, 284);
         // Then
         assertTrue(result);
     }
@@ -120,9 +120,9 @@ class NumbersTest {
     @Test
     void isPrime() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        boolean result = numbers.isPrime(29);
+        boolean result = main.isPrime(29);
         // Then
         assertTrue(result);
     }
@@ -130,9 +130,9 @@ class NumbersTest {
     @Test
     void isCool() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         // When
-        boolean result = numbers.isCool(28);
+        boolean result = main.isCool(28);
         // Then
         assertTrue(result);
     }
@@ -140,20 +140,20 @@ class NumbersTest {
     @Test
     void calculateArrayValues() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         double[] array = {5.2, 2.2, 7.7, 4.0, 6.4};
         // When
-        numbers.calculateArrayValues(array);
+        main.calculateArrayValues(array);
         // Then
     }
 
     @Test
     void romanToInteger() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         String romanNumber = "III";
         // When
-        int result = numbers.romanToInteger(romanNumber);
+        int result = main.romanToInteger(romanNumber);
         // Then
         assertEquals(result, 3);
     }
@@ -161,10 +161,10 @@ class NumbersTest {
     @Test
     void romanToInteger1() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         String romanNumber = "LVIII";
         // When
-        int result = numbers.romanToInteger(romanNumber);
+        int result = main.romanToInteger(romanNumber);
         // Then
         assertEquals(result, 58);
     }
@@ -172,23 +172,32 @@ class NumbersTest {
     @Test
     void romanToInteger2() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         String romanNumber = "MCMXCIV";
         // When
-        int result = numbers.romanToInteger(romanNumber);
+        int result = main.romanToInteger(romanNumber);
         // Then
         assertEquals(result, 1994);
     }
     @Test
     void romanToInteger3() {
         // Given
-        Numbers numbers = new Numbers();
+        Main main = new Main();
         String romanNumber = "MDCXCV";
         // When
-        int result = numbers.romanToInteger(romanNumber);
+        int result = main.romanToInteger(romanNumber);
         // Then
         assertEquals(result, 1695);
     }
 
+    @Test
+    void sqrt() {
+        // Given
+        Main main = new Main();
+        // When
+        int result = main.sqrt(8);
+        // Then
+        assertEquals(result, 2);
+    }
 
 }
