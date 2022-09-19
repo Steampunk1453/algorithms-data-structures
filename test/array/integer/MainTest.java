@@ -335,16 +335,92 @@ class MainTest {
         assertEquals(result, 354);
     }
 
+    @Test
+    void maxAreaBruteForce() {
+        // Given
+        Main main = new Main();
+        int[] height = {1,8,6,2,5,4,8,3,7};
+        // When
+        int result = main.maxAreaBruteForce(height);
+        // Then
+        assertEquals(result, 49);
+    }
 
     @Test
-    void maxArea() {
+    void maxAreaBruteForce1() {
         // Given
         Main main = new Main();
         int[] height = {1,5,6,3,4,2};
         // When
-        int result = main.maxArea(height);
+        int result = main.maxAreaBruteForce(height);
+        // Then
+        assertEquals(result, 12);
+    }
+
+    @Test
+    void maxAreaBruteForce2() {
+        // Given
+        Main main = new Main();
+        int[] height = {6,9,3,4,5,8};
+        // When
+        int result = main.maxAreaBruteForce(height);
+        // Then
+        assertEquals(result, 32);
+    }
+
+    @Test
+    void maxAreaOptimal() {
+        // Given
+        Main main = new Main();
+        int[] height = {1,8,6,2,5,4,8,3,7};
+        // When
+        int result = main.maxAreaOptimal(height);
         // Then
         assertEquals(result, 49);
+    }
+
+    @Test
+    void maxAreaOptimal1() {
+        // Given
+        Main main = new Main();
+        int[] height = {1,5,6,3,4,2};
+        // When
+        int result = main.maxAreaOptimal(height);
+        // Then
+        assertEquals(result, 12);
+    }
+
+    @Test
+    void maxAreaOptimal2() {
+        // Given
+        Main main = new Main();
+        int[] height = {6,9,3,4,5,8};
+        // When
+        int result = main.maxAreaOptimal(height);
+        // Then
+        assertEquals(result, 32);
+    }
+
+    @Test
+    void maxAreaOptimal3() {
+        // Given
+        Main main = new Main();
+        int[] height = {4,8,1,2,3,9};
+        // When
+        int result = main.maxAreaOptimal(height);
+        // Then
+        assertEquals(result, 32);
+    }
+
+    @Test
+    void maxAreaOptimal4() {
+        // Given
+        Main main = new Main();
+        int[] array = {1};
+        // When
+        Integer result = main.maxAreaOptimal(array);
+        // Then
+        assertEquals(result, 0);
     }
 
 }

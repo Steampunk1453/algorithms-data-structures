@@ -187,6 +187,7 @@ public class Main {
         }
         return singleNum;
     }
+
     public int singleNumberOptimal(int[] nums) {
         int result = 0;
         //even occurence will nullify
@@ -196,35 +197,48 @@ public class Main {
         return result;
     }
 
-
     // 11. Container With Most Water
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
+    protected int maxAreaBruteForce(int[] heights) {
+        int maxArea = 0;
+        for (int i = 0; i < heights.length; i++) {
+            for (int j = i + 1; j < heights.length; j++) {
+                int minHeight = Math.min(heights[i], heights[j]);
+                int width = j - i;
+                int area = minHeight * width;
+                maxArea = Math.max(maxArea, area);
+            }
+        }
+        return maxArea;
+    }
+
     // Time complexity: O(n)
     // Space complexity: O(1)
-    protected int maxArea(int[] height) {
-        if (height.length < 2) {
-            return 0;
-        }
-        int halfLength = height.length / 2;
-        int pointerLeft = 0;
-        int pointerRight = height.length - 1;
-        int maxValueLeft = 0;
-        int maxValueRight = 0;
+    protected int maxAreaOptimal(int[] heights) {
+        int maxArea = 0;
+        int leftIndex = 0;
+        int rightIndex = heights.length -1;
 
-        while (pointerLeft < halfLength && pointerRight >= halfLength) {
-            int valueLeft = height[pointerLeft];
-            int weightedValueLeft = valueLeft - pointerLeft;
-            if (weightedValueLeft > maxValueLeft) {
-                maxValueLeft = valueLeft;
+        while (leftIndex < rightIndex) {
+            int leftHeight = heights[leftIndex];
+            int rightHeight = heights[rightIndex];
+            int height = Math.min(leftHeight, rightHeight);
+            int width = rightIndex - leftIndex;
+            int area = calculateArea(height, width);
+            maxArea = Math.max(maxArea, area);
+
+            if (leftHeight <= rightHeight) {
+                leftIndex++;
+            } else {
+                rightIndex--;
             }
-            int valueRight = height[pointerRight];
-            int weightedValueRight = valueRight + pointerRight;
-            if (weightedValueRight > maxValueRight) {
-                maxValueRight = valueRight;
-            }
-            pointerLeft++;
-            pointerRight--;
         }
-        return maxValueLeft * maxValueRight;
+        return maxArea;
+    }
+
+    private int calculateArea(int height, int width) {
+        return height * width;
     }
 
 }
