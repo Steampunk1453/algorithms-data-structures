@@ -31,7 +31,7 @@ public class Main {
     // Book: create a new function to reverse an array that takes up just O(1) extra space.
     protected int[] reverseArray(int[] array) {
         for (int i = 0; i < array.length / 2; i++) {
-            int aux = array[(array.length -1) - i];
+            int aux = array[(array.length - 1) - i];
             array[(array.length - 1) - i] = array[i];
             array[i] = aux;
         }
@@ -96,6 +96,8 @@ public class Main {
     // Two Sum
     // Time complexity: O(n)
     // Space complexity: O(n)
+    // Given an array of integers nums and an integer target,
+    // return indices of the two numbers such that they add up to target
     protected int[] twoSum(int[] nums, int target) {
         Map<Integer, Integer> indexMap = new HashMap<>();
 
@@ -162,6 +164,38 @@ public class Main {
 
         return null;
     }
+
+    // 136. Single Number
+    // Given a non-empty array of integers nums, every element appears twice except for one
+    // Find that single one
+    // You must implement a solution with a linear runtime complexity and use only constant extra space
+    public int singleNumber(int[] nums) {
+        // Solution not complete. it fails in the case of many numbers
+        int singleNum = nums[0];
+
+        for (int i = 1; i < nums.length; i++) {
+            int num = nums[i];
+            if (num == singleNum) {
+                int previous = nums[i - 1];
+                if (i + 1 < nums.length && num == previous) {
+                    singleNum = nums[i + 1];
+                    i++;
+                } else {
+                    singleNum = previous;
+                }
+            }
+        }
+        return singleNum;
+    }
+    public int singleNumberOptimal(int[] nums) {
+        int result = 0;
+        //even occurence will nullify
+        for (int num : nums) {
+            result ^= num;
+        }
+        return result;
+    }
+
 
     // 11. Container With Most Water
     // Time complexity: O(n)

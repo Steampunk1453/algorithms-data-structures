@@ -259,10 +259,88 @@ class MainTest {
     }
 
     @Test
+    void singleNumber() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,2,1};
+        // When
+        Integer result = main.singleNumber(array);
+        // Then
+        assertEquals(result, 1);
+    }
+
+    @Test
+    void singleNumber1() {
+        // Given
+        Main main = new Main();
+        int[] array = {4,1,2,1,2};
+        // When
+        Integer result = main.singleNumber(array);
+        // Then
+        assertEquals(result, 4);
+    }
+
+    @Test
+    void singleNumber2() {
+        // Given
+        Main main = new Main();
+        int[] array = {1};
+        // When
+        Integer result = main.singleNumber(array);
+        // Then
+        assertEquals(result, 1);
+    }
+
+    @Test
+    void singleNumberOptimal() {
+        // Given
+        Main main = new Main();
+        int[] array = {2,2,1};
+        // When
+        Integer result = main.singleNumberOptimal(array);
+        // Then
+        assertEquals(result, 1);
+    }
+
+    @Test
+    void singleNumberOptimal1() {
+        // Given
+        Main main = new Main();
+        int[] array = {4,1,2,1,2};
+        // When
+        Integer result = main.singleNumberOptimal(array);
+        // Then
+        assertEquals(result, 4);
+    }
+
+    @Test
+    void singleNumberOptimal2() {
+        // Given
+        Main main = new Main();
+        int[] array = {1};
+        // When
+        Integer result = main.singleNumberOptimal(array);
+        // Then
+        assertEquals(result, 1);
+    }
+
+    @Test
+    void singleNumberOptimal3() {
+        // Given
+        Main main = new Main();
+        int[] array = {-336,513,-560,-481,-174,101,-997,40,-527,-784,-283,-336,513,-560,-481,-174,101,-997,40,-527,-784,-283,354};
+        // When
+        Integer result = main.singleNumberOptimal(array);
+        // Then
+        assertEquals(result, 354);
+    }
+
+
+    @Test
     void maxArea() {
         // Given
         Main main = new Main();
-        int[] height = {1,8,6,2,5,4,8,3,7};
+        int[] height = {1,5,6,3,4,2};
         // When
         int result = main.maxArea(height);
         // Then
