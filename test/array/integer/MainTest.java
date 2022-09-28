@@ -336,12 +336,100 @@ class MainTest {
     }
 
     @Test
+    void majorityElement() {
+        // Given
+        Main main = new Main();
+        int[] nums = {1,2,3};
+        // When
+        int result = main.findMajorityOptimal(nums);
+        // Then
+        assertEquals(result, -1);
+    }
+
+    @Test
+    void majorityElement1() {
+        // Given
+        Main main = new Main();
+        int[] nums = {4,7,0,5,3,4,6,4};
+        // When
+        int result = main.findMajorityOptimal(nums);
+        // Then
+        assertEquals(result, -1);
+    }
+
+    @Test
+    void majorityElement2() {
+        // Given
+        Main main = new Main();
+        int[] nums = {2,2,1,1,1,2,2};
+        // When
+        int result = main.findMajorityOptimal(nums);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void majorityElement3() {
+        // Given
+        Main main = new Main();
+        int[] nums = {3,2,3};
+        // When
+        int result = main.findMajorityOptimal(nums);
+        // Then
+        assertEquals(result, 3);
+    }
+
+    @Test
+    void majorityElement4() {
+        // Given
+        Main main = new Main();
+        int[] nums = {2,2,1,1,1,2,2};
+        // When
+        int result = main.majorityElement(nums);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void majorityElement5() {
+        // Given
+        Main main = new Main();
+        int[] nums = {2,2,1,1,1,2,2};
+        // When
+        int result = main.majorityElement(nums);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
+    void majorityElementArraySort() {
+        // Given
+        Main main = new Main();
+        int[] nums = {3,2,3};
+        // When
+        int result = main.majorityElementArraySort(nums);
+        // Then
+        assertEquals(result, 3);
+    }
+
+    @Test
+    void majorityElementArraySort1() {
+        // Given
+        Main main = new Main();
+        int[] nums = {2,2,1,1,1,2,2};
+        // When
+        int result = main.majorityElementArraySort(nums);
+        // Then
+        assertEquals(result, 2);
+    }
+
+    @Test
     void maxAreaBruteForce() {
         // Given
         Main main = new Main();
-        int[] height = {1,8,6,2,5,4,8,3,7};
+        int[] heights = {1,8,6,2,5,4,8,3,7};
         // When
-        int result = main.maxAreaBruteForce(height);
+        int result = main.maxAreaBruteForce(heights);
         // Then
         assertEquals(result, 49);
     }
@@ -350,9 +438,9 @@ class MainTest {
     void maxAreaBruteForce1() {
         // Given
         Main main = new Main();
-        int[] height = {1,5,6,3,4,2};
+        int[] heights = {1,5,6,3,4,2};
         // When
-        int result = main.maxAreaBruteForce(height);
+        int result = main.maxAreaBruteForce(heights);
         // Then
         assertEquals(result, 12);
     }
@@ -361,9 +449,9 @@ class MainTest {
     void maxAreaBruteForce2() {
         // Given
         Main main = new Main();
-        int[] height = {6,9,3,4,5,8};
+        int[] heights = {6,9,3,4,5,8};
         // When
-        int result = main.maxAreaBruteForce(height);
+        int result = main.maxAreaBruteForce(heights);
         // Then
         assertEquals(result, 32);
     }
@@ -372,9 +460,9 @@ class MainTest {
     void maxAreaOptimal() {
         // Given
         Main main = new Main();
-        int[] height = {1,8,6,2,5,4,8,3,7};
+        int[] heights = {1,8,6,2,5,4,8,3,7};
         // When
-        int result = main.maxAreaOptimal(height);
+        int result = main.maxAreaOptimal(heights);
         // Then
         assertEquals(result, 49);
     }
@@ -383,9 +471,9 @@ class MainTest {
     void maxAreaOptimal1() {
         // Given
         Main main = new Main();
-        int[] height = {1,5,6,3,4,2};
+        int[] heights = {1,5,6,3,4,2};
         // When
-        int result = main.maxAreaOptimal(height);
+        int result = main.maxAreaOptimal(heights);
         // Then
         assertEquals(result, 12);
     }
@@ -394,9 +482,9 @@ class MainTest {
     void maxAreaOptimal2() {
         // Given
         Main main = new Main();
-        int[] height = {6,9,3,4,5,8};
+        int[] heights = {6,9,3,4,5,8};
         // When
-        int result = main.maxAreaOptimal(height);
+        int result = main.maxAreaOptimal(heights);
         // Then
         assertEquals(result, 32);
     }
@@ -405,9 +493,9 @@ class MainTest {
     void maxAreaOptimal3() {
         // Given
         Main main = new Main();
-        int[] height = {4,8,1,2,3,9};
+        int[] heights = {4,8,1,2,3,9};
         // When
-        int result = main.maxAreaOptimal(height);
+        int result = main.maxAreaOptimal(heights);
         // Then
         assertEquals(result, 32);
     }
@@ -416,11 +504,77 @@ class MainTest {
     void maxAreaOptimal4() {
         // Given
         Main main = new Main();
-        int[] array = {1};
+        int[] heights = {1};
         // When
-        Integer result = main.maxAreaOptimal(array);
+        Integer result = main.maxAreaOptimal(heights);
         // Then
         assertEquals(result, 0);
+    }
+
+    @Test
+    void trapBruteForce() {
+        // Given
+        Main main = new Main();
+        int[] heights = {4,2,0,3,2,5};
+        // When
+        Integer result = main.trapBruteForce(heights);
+        // Then
+        assertEquals(result, 9);
+    }
+
+    @Test
+    void trapBruteForce1() {
+        // Given
+        Main main = new Main();
+        int[] heights = {0,1,0,2,1,0,3,1,0,1,2};
+        // When
+        Integer result = main.trapBruteForce(heights);
+        // Then
+        assertEquals(result, 8);
+    }
+
+    @Test
+    void trapOptimal() {
+        // Given
+        Main main = new Main();
+        int[] heights = {4,2,0,3,2,5};
+        // When
+        Integer result = main.trapOptimal(heights);
+        // Then
+        assertEquals(result, 9);
+    }
+
+    @Test
+    void trapOptimal1() {
+        // Given
+        Main main = new Main();
+        int[] heights = {0,1,0,2,1,0,3,1,0,1,2};
+        // When
+        Integer result = main.trapOptimal(heights);
+        // Then
+        assertEquals(result, 8);
+    }
+
+    @Test
+    void trapOptimalOneWhile() {
+        // Given
+        Main main = new Main();
+        int[] heights = {4,2,0,3,2,5};
+        // When
+        Integer result = main.trapOptimalOneWhile(heights);
+        // Then
+        assertEquals(result, 9);
+    }
+
+    @Test
+    void trapOptimalOneWhile1() {
+        // Given
+        Main main = new Main();
+        int[] heights = {0,1,0,2,1,0,3,1,0,1,2};
+        // When
+        Integer result = main.trapOptimalOneWhile(heights);
+        // Then
+        assertEquals(result, 8);
     }
 
 }

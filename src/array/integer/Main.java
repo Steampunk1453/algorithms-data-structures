@@ -1,5 +1,6 @@
 package array.integer;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -197,7 +198,95 @@ public class Main {
         return result;
     }
 
+    // 169. Majority Element
+    // Given an array nums of size n, return the majority element
+    //The majority element is the element that appears more than ⌊n / 2⌋ times
+    // You may assume that the majority element always exists in the array
+    // TODO Check:
+    // https://www.geeksforgeeks.org/boyer-moore-majority-voting-algorithm/
+
+    // Boyer-Moore Voting Algorithm
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    protected int findMajorityOptimal(int[] nums) {
+        int count = 0;
+        int candidate = -1;
+
+        // Finding majority candidate
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+                count = 1;
+            } else {
+                if (num == candidate) {
+                    count++;
+                } else {
+                    count--;
+                }
+            }
+        }
+        // Checking if majority candidate occurs more than
+        // n/2 times
+        count = 0;
+        for (int num : nums) {
+            if (num == candidate) {
+                count++;
+            }
+        }
+        if (count > (nums.length / 2)) {
+            return candidate;
+        }
+
+        return -1;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    // Fails with {1,2,3} because it does not return -1
+    protected int majorityElement(int[] nums) {
+        int count = 0;
+        Integer candidate = null;
+
+        for (int num : nums) {
+            if (count == 0) {
+                candidate = num;
+            }
+            count += (num == candidate) ? 1 : -1;
+        }
+
+        return candidate;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    // Fails with {1,2,3} because it does not return -1
+    protected int majorityElement1(int[] nums) {
+        int sum = 1;
+        int major = nums[0];
+        for (int i = 1; i < nums.length - 1; i++) {
+            if (nums[i] == major) {
+                sum = sum + 1;
+            } else {
+                sum = sum - 1;
+            }
+            if (sum == 0) {
+                major = nums[i + 1];
+            }
+        }
+        return major;
+    }
+
+    // Time complexity: O(nlogn)
+    // Space complexity: O(1)
+    // Fails with {1,2,3} because it does not return -1
+    protected int majorityElementArraySort(int[] nums) {
+        Arrays.sort(nums);
+        int x = nums.length / 2;
+        return nums[x];
+    }
+
     // 11. Container With Most Water
+    // Medium
     // Time complexity: O(n^2)
     // Space complexity: O(1)
     protected int maxAreaBruteForce(int[] heights) {
@@ -218,7 +307,7 @@ public class Main {
     protected int maxAreaOptimal(int[] heights) {
         int maxArea = 0;
         int leftIndex = 0;
-        int rightIndex = heights.length -1;
+        int rightIndex = heights.length - 1;
 
         while (leftIndex < rightIndex) {
             int leftHeight = heights[leftIndex];
@@ -239,6 +328,92 @@ public class Main {
 
     private int calculateArea(int height, int width) {
         return height * width;
+    }
+
+    // 42. Trapping Rain Water
+    // Hard
+    // Given n non-negative integers representing an elevation map where the width of each bar is 1,
+    // compute how much water it can trap after raining.
+
+    // Time complexity: O(n^2)
+    // Space complexity: O(1)
+    protected int trapBruteForce(int[] heights) {
+        int waterTrap = 0;
+
+        for (int i = 0; i < heights.length; i++) {
+            int leftIndex = i - 1;
+            int rightIndex = i + 1;
+            int maxLeft = 0;
+            int maxRight = 0;
+            int firstPosition = 0;
+
+            while (leftIndex >= firstPosition) {
+                maxLeft = Math.max(maxLeft, heights[leftIndex--]);
+            }
+            while (rightIndex < heights.length) {
+                maxRight = Math.max(maxRight, heights[rightIndex++]);
+            }
+
+            int water = Math.min(maxLeft, maxRight) - heights[i];
+            waterTrap += Math.max(water, 0); // To avoid negative numbers
+        }
+
+        return waterTrap;
+    }
+
+    // It's O(N) you will traverse the whole array just once! Brilliant solution
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    protected int trapOptimal(int[] heights) {
+        int result = 0;
+        int start = 0;
+        int end = heights.length - 1;
+
+        while (start < end) {
+            if (heights[start] <= heights[end]) {
+                int current = heights[start];
+                while (heights[++start] < current) {
+                    result += current - heights[start];
+                }
+            } else {
+                int current = heights[end];
+                while (heights[--end] < current) {
+                    result += current - heights[end];
+                }
+            }
+        }
+        return result;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    protected int trapOptimalOneWhile(int[] heights) {
+        int totalWater = 0;
+        int left = 0;
+        int right = heights.length - 1;
+        int maxLeft = 0;
+        int maxRight = 0;
+
+        while (left < right) {
+
+            if (heights[left] <= heights[right]) {
+                if (heights[left] >= maxLeft) {
+                    maxLeft = heights[left];
+                } else {
+                    totalWater += maxLeft - heights[left];
+                }
+                left++;
+
+            } else {
+                if (heights[right] >= maxRight) {
+                    maxRight = heights[right];
+                } else {
+                    totalWater += maxRight - heights[right];
+                }
+                right--;
+            }
+        }
+        return totalWater;
     }
 
 }
