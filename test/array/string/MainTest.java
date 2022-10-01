@@ -615,4 +615,124 @@ class MainTest {
         assertEquals("b", main.remove("aaaaaaaaaaaaaab", 'a'));
     }
 
+    @Test
+    void backspaceCompareBruteForce() {
+        // Given
+        Main main = new Main();
+        String s = "ab#c";
+        String t = "ad#c";
+        // When
+        boolean result = main.backspaceCompareBruteForce(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareBruteForce1() {
+        // Given
+        Main main = new Main();
+        String s = "ab##";
+        String t = "c#d#";
+        // When
+        boolean result = main.backspaceCompareBruteForce(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareBruteForce2() {
+        // Given
+        Main main = new Main();
+        String s = "y#fo##f";
+        String t = "y#f#o##f";
+        // When
+        boolean result = main.backspaceCompareBruteForce(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareBruteForceReturnFalse() {
+        // Given
+        Main main = new Main();
+        String s = "a#c";
+        String t = "b";
+        // When
+        boolean result = main.backspaceCompareBruteForce(s, t);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void backspaceCompareBruteForceReturnFalse1() {
+        // Given
+        Main main = new Main();
+        String s = "Ab#z";
+        String t = "ab#z";
+        // When
+        boolean result = main.backspaceCompareBruteForce(s, t);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void backspaceCompareOptimal() {
+        // Given
+        Main main = new Main();
+        String s = "ab#c";
+        String t = "ad#c";
+        // When
+        boolean result = main.backspaceCompareOptimal(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareOptimal1() {
+        // Given
+        Main main = new Main();
+        String s = "ab##";
+        String t = "c#d#";
+        // When
+        boolean result = main.backspaceCompareOptimal(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareOptimal2() {
+        // Given
+        Main main = new Main();
+        String s = "y#fo##f";
+        String t = "y#f#o##f";
+        // When
+        boolean result = main.backspaceCompareOptimal(s, t);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void backspaceCompareOptimalReturnFalse() {
+        // Given
+        Main main = new Main();
+        String s = "a#c";
+        String t = "b";
+        // When
+        boolean result = main.backspaceCompareOptimal(s, t);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void backspaceCompareOptimalReturnFalse1() {
+        // Given
+        Main main = new Main();
+        String s = "Ab#z";
+        String t = "ab#z";
+        // When
+        boolean result = main.backspaceCompareOptimal(s, t);
+        // Then
+        assertFalse(result);
+    }
+
 }

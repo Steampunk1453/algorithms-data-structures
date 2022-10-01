@@ -55,12 +55,16 @@ public class Main {
     // Time complexity: O(s)
     // Space complexity: O(1)
     protected String getLongestCommonPrefixHorizontal(String[] strs) {
-        if (strs.length == 0) return "";
+        if (strs.length == 0) {
+            return "";
+        }
         String prefix = strs[0];
         for (int i = 1; i < strs.length; i++) {
             while (strs[i].indexOf(prefix) != 0) {
                 prefix = prefix.substring(0, prefix.length() - 1);
-                if (prefix.isEmpty()) return "";
+                if (prefix.isEmpty()) {
+                    return "";
+                }
             }
         }
         return prefix;
@@ -70,12 +74,15 @@ public class Main {
     // Time complexity: O(s)
     // Space complexity: O(1)
     protected String getLongestCommonPrefixVertical(String[] strs) {
-        if (strs == null || strs.length == 0) return "";
+        if (strs == null || strs.length == 0) {
+            return "";
+        }
         for (int i = 0; i < strs[0].length(); i++) {
             char c = strs[0].charAt(i);
             for (int j = 1; j < strs.length; j++) {
-                if (i == strs[j].length() || strs[j].charAt(i) != c)
+                if (i == strs[j].length() || strs[j].charAt(i) != c) {
                     return strs[0].substring(0, i);
+                }
             }
         }
         return strs[0];
@@ -136,11 +143,11 @@ public class Main {
     boolean isPalindrome(String word) {
         char[] charsWord = word.toCharArray();
         char[] compare = new char[charsWord.length];
-        int last = charsWord.length -1;
+        int last = charsWord.length - 1;
         int index = 0;
         for (int i = last; i >= 0; i--) {
             compare[index] = charsWord[i];
-            index ++;
+            index++;
             continue;
         }
         return Arrays.equals(charsWord, compare);
@@ -252,10 +259,15 @@ public class Main {
     protected boolean robotReturnOrigin(String moves) {
         int x = 0, y = 0;
         for (char move : moves.toCharArray()) {
-            if (move == 'U') y--;
-            else if (move == 'D') y++;
-            else if (move == 'L') x--;
-            else if (move == 'R') x++;
+            if (move == 'U') {
+                y--;
+            } else if (move == 'D') {
+                y++;
+            } else if (move == 'L') {
+                x--;
+            } else if (move == 'R') {
+                x++;
+            }
         }
         return x == 0 && y == 0;
     }
@@ -365,8 +377,9 @@ public class Main {
         Map<String, Integer> wordCount = new HashMap<>();
         // 3). count the appearance of each word, excluding the banned words
         for (String word : words) {
-            if (!bannedWords.contains(word))
+            if (!bannedWords.contains(word)) {
                 wordCount.put(word, wordCount.getOrDefault(word, 0) + 1);
+            }
         }
 
         // 4). return the word with the highest frequency
@@ -554,7 +567,9 @@ public class Main {
                     a[0]--;
             }
             temp.append(a[0]).append(",").append(a[1]);
-            if (set.contains(temp.toString())) return true;
+            if (set.contains(temp.toString())) {
+                return true;
+            }
             set.add(temp.toString());
         }
         return false;
@@ -644,8 +659,9 @@ public class Main {
         number = number.replace("-", "").replace(" ", "");
         int len = number.length();
 
-        if (len == 2 || len == 3)
+        if (len == 2 || len == 3) {
             return number;
+        }
         StringBuilder sb = new StringBuilder(number);
         int i = 3;
         while (len > 4) {
@@ -744,8 +760,9 @@ public class Main {
         List<Integer> nums = new ArrayList<>();
 
         for (int i = 0; i < len; i++) {
-            if (Character.isDigit(s.charAt(i)))
+            if (Character.isDigit(s.charAt(i))) {
                 nums.add(s.charAt(i) - '0');
+            }
         }
 
         int first = -1, second = -1;
@@ -753,8 +770,9 @@ public class Main {
             if (i > first) {
                 second = first;
                 first = i;
-            } else if (i > second && i != first)
+            } else if (i > second && i != first) {
                 second = i;
+            }
         }
         return second;
     }
@@ -776,7 +794,7 @@ public class Main {
             }
         }
 
-        return - 1;
+        return -1;
     }
 
     // 20. Valid Parentheses
@@ -784,16 +802,14 @@ public class Main {
     protected boolean isValidParentheses(String input) {
         char[] parentheses = input.toCharArray();
         Stack<Character> stack = new Stack<>();
-        for (Character cha: parentheses) {
+        for (Character cha : parentheses) {
             if (cha.equals('(')) {
                 stack.push(')');
-            }
-            else if (cha.equals('{')) {
+            } else if (cha.equals('{')) {
                 stack.push('}');
-            }
-            else if (cha.equals('[')) {
+            } else if (cha.equals('[')) {
                 stack.push(']');
-            }  else {
+            } else {
                 if (stack.isEmpty()) {
                     return false;
                 } else if (!cha.equals(stack.pop())) {
@@ -858,6 +874,52 @@ public class Main {
             return word;
         }
         return removeRecursive(word.substring(0, index) + word.substring(index + 1), ch);
+    }
+
+    // 844. Backspace String Compare
+    // Given two strings s and t, return true if they are equal when both are typed into empty text editors. '#' means a backspace character
+    // Note that after backspacing an empty text, the text will continue empty
+    // Time complexity: O(m + n) where M, NM,N are the lengths of S and T respectively
+    // Space complexity: O(m + n)
+    protected boolean backspaceCompareBruteForce(String s, String t) {
+        Stack<Character> stack1 = new Stack<>();
+        Stack<Character> stack2 = new Stack<>();
+        char[] chars1 = s.toCharArray();
+        char[] chars2 = t.toCharArray();
+
+        for (char ch : chars1) {
+            if (ch != '#') {
+                stack1.push(ch);
+            } else if (!stack1.isEmpty()) {
+                stack1.pop();
+            }
+        }
+
+        for (char ch : chars2) {
+            if (ch != '#') {
+                stack2.push(ch);
+            } else if (!stack2.isEmpty()) {
+                stack2.pop();
+            }
+        }
+
+        return stack1.equals(stack2);
+    }
+
+    // Time complexity: O(m + n) where M, NM,N are the lengths of S and T respectively
+    // Space complexity: O(1)
+    protected boolean backspaceCompareOptimal(String s, String t) {
+        while (s.indexOf('#') != -1) {
+            s = s.substring(0, getIndexByChar(s, '#')).concat(s.substring(s.indexOf('#') + 1));
+        }
+        while (t.indexOf('#') != -1) {
+            t = t.substring(0, getIndexByChar(t, '#')).concat(t.substring(t.indexOf('#') + 1));
+        }
+        return s.equals(t);
+    }
+
+    private int getIndexByChar(String str, char ch) {
+        return str.indexOf(ch) != 0 ? str.indexOf(ch) - 1 : 0;
     }
 
 }
