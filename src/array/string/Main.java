@@ -922,4 +922,87 @@ public class Main {
         return str.indexOf(ch) != 0 ? str.indexOf(ch) - 1 : 0;
     }
 
+    // 3. Longest Substring Without Repeating Characters
+    // Given a string s, find the length of the longest substring without repeating characters
+    // Time complexity: O(n^2)
+    // Space complexity: O(n)
+    protected int lengthOfLongestSubstringBruteForce(String s) {
+        int length = 0;
+        char[] chars = s.toCharArray();
+        for (int i = 0; i < chars.length; i++) {
+            StringBuilder sb = new StringBuilder(); // could be a map (char, boolean)
+            sb.append(chars[i]);
+            for (int j = i + 1; j < chars.length; j++) {
+                char ch = chars[j];
+                if (!containsCharacter(sb, ch)) {
+                    sb.append(ch);
+                } else {
+                    break;
+                }
+            }
+            length = Math.max(length, sb.length());
+            int distanceToEnd = chars.length - 1 - i;
+            if (length >= distanceToEnd) {
+                return length;
+            }
+        }
+        return length;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected int lengthOfLongestSubstringOptimal(String s) {
+        StringBuilder sb = new StringBuilder();
+        char[] chars = s.toCharArray();
+        int length = 0;
+        int pointer = 0;
+        int index = 0;
+
+        while (index < chars.length && pointer < chars.length) {
+            char ch = chars[pointer];
+            if (containsCharacter(sb, ch)) {
+                index++;
+                pointer = index;
+                sb = new StringBuilder();
+            } else {
+                sb.append(ch);
+                pointer++;
+                length = Math.max(length, sb.length());
+            }
+
+            int distanceToEnd = chars.length - 1 - index;
+            if (length > distanceToEnd) {
+                return length;
+            }
+
+
+        }
+
+        return length;
+    }
+
+    protected int lengthOfLongestSubString(String s) {
+        if (s.length() < 1) {
+            return 0;
+        }
+        if (s.length() == 1) {
+            return 1;
+        }
+        int leftPointer = 0, rightPointer = 0, max = 0;
+        Set<Character> set = new HashSet<>();
+        while (rightPointer < s.length()) {
+            if (!set.contains(s.charAt(rightPointer))) {
+                set.add(s.charAt(rightPointer++));
+                max = Math.max(max, set.size());
+            } else {
+                set.remove(s.charAt(leftPointer++));
+            }
+        }
+        return max;
+    }
+
+    private boolean containsCharacter(StringBuilder sb, char ch) {
+        return sb.indexOf(String.valueOf(ch)) != -1;
+    }
+
 }
