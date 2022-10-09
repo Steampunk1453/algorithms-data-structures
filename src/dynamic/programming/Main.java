@@ -113,8 +113,24 @@ public class Main {
     }
 
     // Time complexity: O(n)
+    // Space complexity: O(1)
+    protected int robOptimalTwoPointers(int[] nums) {
+        int prevMax = 0;
+        int currentMax = 0;
+
+        for (int num : nums) {
+            int temp = currentMax;
+            currentMax = Math.max(prevMax + num, currentMax);
+            prevMax = temp;
+        }
+
+        return currentMax;
+    }
+
+    // Time complexity: O(n)
     // Space complexity: O(n)
-    protected int robOptimal(int[] nums) {
+    // TODO check to understand
+    protected int robOptimalMemory(int[] nums) {
         int numsLength = nums.length;
 
         if (numsLength == 0) {
@@ -131,7 +147,9 @@ public class Main {
         for (int i = 2; i < numsLength; i++) {
             memory[i] = Math.max(nums[i] + memory[i - 2], memory[i - 1]);
         }
+
         return memory[numsLength - 1];
     }
+
 
 }

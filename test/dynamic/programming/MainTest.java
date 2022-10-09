@@ -157,37 +157,121 @@ class MainTest {
     }
 
     @Test
-    void robOptimal() {
+    void robOptimalTwoPointers() {
         // Given
         Main main = new Main();
         int[] actual = {1,2,3,1};
         int expected = 4;
         // When
-        int result = main.robOptimal(actual);
+        int result = main.robOptimalTwoPointers(actual);
         // Then
         assertEquals(result, expected);
     }
 
     @Test
-    void robOptimal1() {
+    void robOptimalTwoPointers1() {
         // Given
         Main main = new Main();
         int[] actual = {2,7,9,3,1};
         int expected = 12;
         // When
-        int result = main.robOptimal(actual);
+        int result = main.robOptimalTwoPointers(actual);
         // Then
         assertEquals(result, expected);
     }
 
     @Test
-    void robOptimal2() {
+    void robOptimalTwoPointers2() {
         // Given
         Main main = new Main();
         int[] actual = {6, 7, 1, 3, 8, 2, 4};
         int expected = 19;
         // When
-        int result = main.robOptimal(actual);
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalTwoPointersEmpty() {
+        // Given
+        Main main = new Main();
+        int[] actual = new int[2];
+        int expected = 0;
+        // When
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalTwoPointersDuplicate() {
+        // Given
+        Main main = new Main();
+        int[] actual = {1,1};
+        int expected = 1;
+        // When
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalTwoPointersTwoElements() {
+        // Given
+        Main main = new Main();
+        int[] actual = {1,2};
+        int expected = 2;
+        // When
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalTwoPointersThreeElements() {
+        // Given
+        Main main = new Main();
+        int[] actual = {1,3,1};
+        int expected = 3;
+        // When
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalTwoPointersFourElements() {
+        // Given
+        Main main = new Main();
+        int[] actual = {2,1,1,2};
+        int expected = 4;
+        // When
+        int result = main.robOptimalTwoPointers(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalMemory() {
+        // Given
+        Main main = new Main();
+        int[] actual = {1,2,3,1};
+        int expected = 4;
+        // When
+        int result = main.robOptimalMemory(actual);
+        // Then
+        assertEquals(result, expected);
+    }
+
+    @Test
+    void robOptimalMemory1() {
+        // Given
+        Main main = new Main();
+        int[] actual = {2,7,9,3,1};
+        int expected = 12;
+        // When
+        int result = main.robOptimalMemory(actual);
         // Then
         assertEquals(result, expected);
     }
