@@ -808,7 +808,7 @@ class MainTest {
         Main main = new Main();
         String s = "abcabcbb";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubstring(s);
         // Then
         assertEquals(result, 3);
     }
@@ -819,7 +819,7 @@ class MainTest {
         Main main = new Main();
         String s = "bbbbb";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubstring(s);
         // Then
         assertEquals(result, 1);
     }
@@ -830,7 +830,7 @@ class MainTest {
         Main main = new Main();
         String s = "pwwkew";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubstring(s);
         // Then
         assertEquals(result, 3);
     }
@@ -841,7 +841,7 @@ class MainTest {
         Main main = new Main();
         String s = "abcbda";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubStringSet(s);
         // Then
         assertEquals(result, 4);
     }
@@ -852,7 +852,7 @@ class MainTest {
         Main main = new Main();
         String s = "";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubstring(s);
         // Then
         assertEquals(result, 0);
     }
@@ -863,10 +863,20 @@ class MainTest {
         Main main = new Main();
         String s = "abcbdca";
         // When
-        int result = main.lengthOfLongestSubString(s);
+        int result = main.lengthOfLongestSubstring(s);
         // Then
         assertEquals(result, 4);
     }
 
+    @Test
+    void lengthOfLongestSubstringOptimal6() {
+        // Given
+        Main main = new Main();
+        String s = "abcabcbb";
+        // When
+        int result = main.lengthOfLongestSubstringOptimal(s);
+        // Then
+        assertEquals(result, 3);
+    }
 
 }

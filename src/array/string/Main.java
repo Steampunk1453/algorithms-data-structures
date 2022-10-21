@@ -951,43 +951,68 @@ public class Main {
 
     // Time complexity: O(n)
     // Space complexity: O(n)
-    protected int lengthOfLongestSubstringOptimal(String s) {
+    protected int lengthOfLongestSubstring(String s) {
         StringBuilder sb = new StringBuilder();
         char[] chars = s.toCharArray();
         int length = 0;
-        int pointer = 0;
-        int index = 0;
+        int leftWindow = 0;
+        int rightWindow = 0;
 
-        while (index < chars.length && pointer < chars.length) {
-            char ch = chars[pointer];
+        while (rightWindow < chars.length) {
+            char ch = chars[rightWindow];
             if (containsCharacter(sb, ch)) {
-                index++;
-                pointer = index;
+                leftWindow++;
+                rightWindow = leftWindow;
                 sb = new StringBuilder();
             } else {
                 sb.append(ch);
-                pointer++;
+                rightWindow++;
                 length = Math.max(length, sb.length());
             }
 
-            int distanceToEnd = chars.length - 1 - index;
+            int distanceToEnd = chars.length - 1 - leftWindow;
             if (length > distanceToEnd) {
                 return length;
             }
-
-
         }
 
         return length;
     }
 
-    protected int lengthOfLongestSubString(String s) {
-        if (s.length() < 1) {
-            return 0;
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected int lengthOfLongestSubstringOptimal(String s) {
+        if (s.length() <= 1) {
+            return s.length();
         }
-        if (s.length() == 1) {
-            return 1;
+
+        Map<Character, Integer> seen = new HashMap<>();
+        char[] chars = s.toCharArray();
+        int left = 0;
+        int longest = 0;
+
+        for (int right = 0; right < chars.length; right++) {
+            Character currentChar = chars[right];
+            int previouslySeenChar = seen.getOrDefault(currentChar, -1);
+
+            if (previouslySeenChar >= left) {
+                left = previouslySeenChar + 1;
+            }
+
+            seen.put(currentChar, right);
+
+            longest = Math.max(longest, right - left + 1);
         }
+
+        return longest;
+    }
+
+    // https://medium.com/@chyanpin/problem-solving-in-java-sliding-window-algorithm-f333d362478b
+    protected int lengthOfLongestSubStringSet(String s) {
+        if (s.length() <= 1) {
+            return s.length();
+        }
+
         int leftPointer = 0, rightPointer = 0, max = 0;
         Set<Character> set = new HashSet<>();
         while (rightPointer < s.length()) {
