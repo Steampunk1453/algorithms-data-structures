@@ -16,6 +16,7 @@ import java.util.Stack;
 import java.util.TreeMap;
 import java.util.stream.Collectors;
 import javax.swing.text.MaskFormatter;
+import org.jetbrains.annotations.NotNull;
 
 public class Main {
 
@@ -110,20 +111,19 @@ public class Main {
         return lastWord.length();
     }
 
+    // 125. Valid Palindrome
     // Given a string s, determine if it is a palindrome, considering only alphanumeric characters and ignoring cases.
-    //
-    //
-    //
     //Example 1:
-    //
     //Input: s = "A man, a plan, a canal: Panama"
     //Output: true
     //Explanation: "amanaplanacanalpanama" is a palindrome.
     //Example 2:
-    //
     //Input: s = "race a car"
     //Output: false
     //Explanation: "raceacar" is not a palindrome.
+
+    // Time complexity: O(n)
+    // Space complexity: O(m + n)
     protected boolean isValidPalindrome(String input) {
         Stack<String> stack = new Stack<>();
         StringBuilder sb = new StringBuilder();
@@ -139,18 +139,84 @@ public class Main {
         return alphanumeric.equals(sb.toString());
     }
 
-    // Given a string s, determine if it is a palindrome
-    boolean isPalindrome(String word) {
-        char[] charsWord = word.toCharArray();
-        char[] compare = new char[charsWord.length];
-        int last = charsWord.length - 1;
-        int index = 0;
-        for (int i = last; i >= 0; i--) {
-            compare[index] = charsWord[i];
-            index++;
-            continue;
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected boolean isPalindromeTwoPointersOutIn(String s) {
+        s = getAlphaNumericLower(s);
+        char[] chars = s.toCharArray();
+        int leftPointer = 0;
+        int rightPointer = chars.length - 1;
+
+        while (leftPointer < rightPointer) {
+            if (chars[leftPointer++] != chars[rightPointer--]){
+                return false;
+            }
         }
-        return Arrays.equals(charsWord, compare);
+        return true;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected boolean isPalindromeTwoPointersInOut(String s) {
+        s = getAlphaNumericLower(s);
+        char[] chars = s.toCharArray();
+        int length = chars.length;
+        int half = getHalf(length);
+        int aux = isEven(length) ? 1 : 2;
+        int leftPointer = half - aux;
+        int rightPointer = half;
+
+        while (rightPointer < length) {
+            if (chars[leftPointer--] != chars[rightPointer++]){
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected boolean isPalindromeComparingReverse(String s) {
+        s = getAlphaNumericLower(s);
+        char[] charsA = s.toCharArray();
+        char[] charsB = s.toCharArray();
+        int rightPointer = charsB.length - 1;
+
+        for (char ch : charsA) {
+            if (ch != charsB[rightPointer--]) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    // 680. Valid Palindrome II
+    // Given a string s, return true if the s can be palindrome after deleting at most one character from it
+    protected boolean isValidPalindromeAfterDeletingOneCharacter(String s) {
+        if (s.length() == 2) {
+            return true;
+        }
+
+        s = getAlphaNumericLower(s);
+        char[] chars = s.toCharArray();
+        int length = chars.length;
+        int half = getHalf(length);
+        int aux = isEven(length) ? 1 : 2;
+        int leftPointer = half - aux;
+        int rightPointer = half;
+        boolean result = true;
+
+        while (rightPointer < length) {
+            if (chars[leftPointer] != chars[rightPointer] && !result){
+                return false;
+            } else {
+                result = chars[leftPointer] == chars[rightPointer];
+            }
+            leftPointer--;
+            rightPointer++;
+        }
+
+        return result;
     }
 
     // Given a string s, reverse only all the vowels in the string and return it.
@@ -1028,6 +1094,19 @@ public class Main {
 
     private boolean containsCharacter(StringBuilder sb, char ch) {
         return sb.indexOf(String.valueOf(ch)) != -1;
+    }
+
+    @NotNull
+    private String getAlphaNumericLower(String s) {
+        return s.replaceAll("[^A-Za-z0-9]", "").toLowerCase();
+    }
+
+    private int getHalf(int length) {
+        return isEven(length) ? length / 2 : (length / 2) + 1;
+    }
+
+    private boolean isEven(int num) {
+        return num % 2 == 0;
     }
 
 }

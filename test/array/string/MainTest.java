@@ -86,11 +86,184 @@ class MainTest {
         Main main = new Main();
         String input = "allivessevilla";
         // When
-        boolean result = main.isPalindrome(input);
+        boolean result = main.isValidPalindrome(input);
         // Then
         assertTrue(result);
     }
 
+    @Test
+    void isPalindromeTwoPointers() {
+        // Given
+        Main main = new Main();
+        String s = "A man, a plan, a canal: Panama";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeTwoPointers1() {
+        // Given
+        Main main = new Main();
+        String s = "aabaa";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeTwoPointers2() {
+        // Given
+        Main main = new Main();
+        String s = "aabbaa";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertTrue(result);
+    }
+    @Test
+    void isPalindromeTwoPointers3() {
+        // Given
+        Main main = new Main();
+        String s = "a";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeTwoPointers4() {
+        // Given
+        Main main = new Main();
+        String s = "";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertTrue(result);
+    }
+    @Test
+    void isPalindromeTwoPointers1ReturnFalse() {
+        // Given
+        Main main = new Main();
+        String s = "race a car";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isPalindromeTwoPointers1ReturnFalse1() {
+        // Given
+        Main main = new Main();
+        String s = "abc";
+        // When
+        boolean result = main.isPalindromeTwoPointersOutIn(s);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter() {
+        // Given
+        Main main = new Main();
+        String s = "aba";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter1() {
+        // Given
+        Main main = new Main();
+        String s = "abca";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter2() {
+        // Given
+        Main main = new Main();
+        String s = "raceacar";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter3() {
+        // Given
+        Main main = new Main();
+        String s = "abccdba";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter4() {
+        // Given
+        Main main = new Main();
+        String s = "";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter5() {
+        // Given
+        Main main = new Main();
+        String s = "a";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacter6() {
+        // Given
+        Main main = new Main();
+        String s = "b";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacterReturnFalse() {
+        // Given
+        Main main = new Main();
+        String s = "abc";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isPalindromeAfterDeletingOneCharacterReturnFalse1() {
+        // Given
+        Main main = new Main();
+        String s = "abcdefdba";
+        // When
+        boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
+        // Then
+        assertFalse(result);
+    }
 
     @Test
     void reverseVowels() {
