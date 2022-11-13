@@ -148,7 +148,7 @@ public class Main {
         int rightPointer = chars.length - 1;
 
         while (leftPointer < rightPointer) {
-            if (chars[leftPointer++] != chars[rightPointer--]){
+            if (chars[leftPointer++] != chars[rightPointer--]) {
                 return false;
             }
         }
@@ -167,7 +167,7 @@ public class Main {
         int rightPointer = half;
 
         while (rightPointer < length) {
-            if (chars[leftPointer--] != chars[rightPointer++]){
+            if (chars[leftPointer--] != chars[rightPointer++]) {
                 return false;
             }
         }
@@ -192,33 +192,33 @@ public class Main {
 
     // 680. Valid Palindrome II
     // Given a string s, return true if the s can be palindrome after deleting at most one character from it
-    protected boolean isValidPalindromeAfterDeletingOneCharacter(String s) {
-        if (s.length() == 2) {
-            return true;
-        }
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    public boolean isValidPalindromeAfterDeletingOneCharacter(String s) {
+        int i = 0;
+        int j = s.length() - 1;
 
-        s = getAlphaNumericLower(s);
-        char[] chars = s.toCharArray();
-        int length = chars.length;
-        int half = getHalf(length);
-        int aux = isEven(length) ? 1 : 2;
-        int leftPointer = half - aux;
-        int rightPointer = half;
-        boolean result = true;
-
-        while (rightPointer < length) {
-            if (chars[leftPointer] != chars[rightPointer] && !result){
-                return false;
-            } else {
-                result = chars[leftPointer] == chars[rightPointer];
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return isPalindrome(s, i + 1, j) || isPalindrome(s, i, j - 1);
             }
-            leftPointer--;
-            rightPointer++;
+            i++;
+            j--;
         }
 
-        return result;
+        return true;
     }
+    private boolean isPalindrome(String s, int i, int j) {
+        while (i < j) {
+            if (s.charAt(i) != s.charAt(j)) {
+                return false;
+            }
+            i++;
+            j--;
+        }
 
+        return true;
+    }
     // Given a string s, reverse only all the vowels in the string and return it.
     //
     //The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.

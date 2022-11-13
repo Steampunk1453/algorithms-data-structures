@@ -170,7 +170,7 @@ class MainTest {
     void isPalindromeAfterDeletingOneCharacter() {
         // Given
         Main main = new Main();
-        String s = "aba";
+        String s = "deeee";
         // When
         boolean result = main.isValidPalindromeAfterDeletingOneCharacter(s);
         // Then
