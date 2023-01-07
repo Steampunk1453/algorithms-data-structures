@@ -1,13 +1,12 @@
 package linked.list.top;
 
-import org.jetbrains.annotations.NotNull;
-
 import java.util.HashSet;
 import java.util.Hashtable;
-import java.util.Stack;
-import java.util.Map;
 import java.util.IdentityHashMap;
+import java.util.Map;
 import java.util.Objects;
+import java.util.Stack;
+import org.jetbrains.annotations.NotNull;
 
 public class LinkedListExe {
 
@@ -17,6 +16,13 @@ public class LinkedListExe {
     static class Node {
         int data;
         Node next;
+
+        public Node(int data) {
+            this.data = data;
+        }
+
+        public Node() {
+        }
     }
 
     protected void appendElement(int val) {
@@ -265,7 +271,7 @@ public class LinkedListExe {
 
     // 206. Reverse Linked List
     // Given the head of a singly linked list, reverse the list, and return the reversed list.
-    protected Node reverseList(Node head) {
+    protected Node reverseFirst(Node head) {
         if (head != null) {
             Node current = head;
             Stack<Integer> stack = new Stack<>();
@@ -284,8 +290,28 @@ public class LinkedListExe {
         return head;
     }
 
+    protected Node reverseSecond(Node head) {
+        Node current = head;
+        Stack<Integer> stack = new Stack<>();
+
+        while (current != null) {
+            stack.push(current.data);
+            current = current.next;
+        }
+
+        head = new Node(stack.pop());
+        current = head;
+
+        while (!stack.isEmpty()) {
+            int data = stack.pop();
+            current.next = new Node(data);
+            current = current.next;
+        }
+        return head;
+    }
+
     // Iterative --> Review, it's too much complex solution
-    protected Node iterativeReverseList(Node head) {
+    protected Node iterativeReverseFirst(Node head) {
         if (head == null) return null;
         Node curr = head;
         Node temp = null;
@@ -300,8 +326,27 @@ public class LinkedListExe {
         return temp;
     }
 
+    // Set prev pointer to null
+    // Set curr pointer to head
+    // iterate over all the nodes 1 by 1 and point curr node to prev node
+    // return the prev because curr node is null
+    protected Node iterativeReverseSecond(Node head) {
+        Node current = head;
+        Node prev = null;
+
+        while (current != null) {
+            Node next = current.next;
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+
+        head = prev;
+        return head;
+    }
+
     // Recursive --> Review, it's too much complex solution
-    public Node recursiveReverseList(Node head) {
+    public Node recursiveReverseFirst(Node head) {
         if (head == null) return null;
         return solve(head, null, head.next);
     }
@@ -313,6 +358,23 @@ public class LinkedListExe {
         curr = next;
         next = (curr != null) ? curr.next : null;
         return solve(curr, temp, next);
+    }
+
+    // Go to the last node recursively to fetch the head node
+    // point current node's next node, next pointer to current node
+    // i.e. 2->3 where 2 is curr and three is next, point curr node next node means 3's next pointer to 2
+    // make the head next pointer null, for handling the 1st node scenario
+    // finally return the head pointer which we fetched recursively
+    public Node recursiveReverseSecond(Node head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        Node newHead = recursiveReverseSecond(head.next);
+        head.next.next = head;
+        head.next = null;
+
+        return newHead;
     }
 
     // 234. Palindrome Linked List

@@ -1,7 +1,5 @@
 package linked.list.top;
 
-import java.util.Stack;
-
 public class LinkedList {
 
     Node head;
@@ -73,63 +71,6 @@ public class LinkedList {
             current = current.next;
         }
         return current.data;
-    }
-
-    protected Node reverse(Node head) {
-        Node current = head;
-        Stack<Integer> stack = new Stack<>();
-
-        while (current != null) {
-            stack.push(current.data);
-            current = current.next;
-        }
-
-        head = new Node(stack.pop());
-        current = head;
-
-        while (!stack.isEmpty()) {
-            int data = stack.pop();
-            current.next = new Node(data);
-            current = current.next;
-        }
-        return head;
-    }
-
-    // Set prev pointer to null
-    // Set curr pointer to head
-    // iterate over all the nodes 1 by 1 and point curr node to prev node
-    // return the prev because curr node is null
-    protected Node reverseIterative(Node head) {
-        Node current = head;
-        Node prev = null;
-        Node next;
-
-        while (current != null) {
-            next = current.next;
-            current.next = prev;
-            prev = current;
-            current = next;
-        }
-
-        head = prev;
-        return head;
-    }
-
-    // Go to the last node recursively to fetch the head node
-    // point current node's next node, next pointer to current node
-    // i.e. 2->3 where 2 is curr and three is next, point curr node next node means 3's next pointer to 2
-    // make the head next pointer null, for handling the 1st node scenario
-    // finally return the head pointer which we fetched recursively
-    public Node reverseRecursive(Node head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        Node newHead = reverseRecursive(head.next);
-        head.next.next = head;
-        head.next = null;
-
-        return newHead;
     }
 
 }

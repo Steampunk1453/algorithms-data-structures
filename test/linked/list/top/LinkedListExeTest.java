@@ -1,11 +1,12 @@
 package linked.list.top;
 
-import org.junit.jupiter.api.Test;
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import linked.list.top.LinkedListExe.Node;
+import org.junit.jupiter.api.Test;
 
 class LinkedListExeTest {
 
@@ -92,8 +93,8 @@ class LinkedListExeTest {
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         // When
-        LinkedListExe.Node head = linkedList.head;
-        LinkedListExe.Node result = linkedList.removeDuplicatesFromSortedList(head);
+        Node head = linkedList.head;
+        Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 2);
         assertEquals(result.data, 1);
@@ -109,8 +110,8 @@ class LinkedListExeTest {
         linkedList.appendElement(3);
         linkedList.appendElement(3);
         // When
-        LinkedListExe.Node head = linkedList.head;
-        LinkedListExe.Node result = linkedList.removeDuplicatesFromSortedList(head);
+        Node head = linkedList.head;
+        Node result = linkedList.removeDuplicatesFromSortedList(head);
         // Then
         assertEquals(linkedList.size, 3);
         assertEquals(result.data, 1);
@@ -128,9 +129,9 @@ class LinkedListExeTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         linkedList.appendElement(6);
-        LinkedListExe.Node head = linkedList.head;
+        Node head = linkedList.head;
         // When
-        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 6);
+        Node result = linkedList.removeByNodeAndValue(head, 6);
         // Then
         assertEquals(linkedList.size, 5);
         assertEquals(result.data, 1);
@@ -140,9 +141,9 @@ class LinkedListExeTest {
     void deleteNodes1() {
         // Given
         LinkedListExe linkedList = new LinkedListExe();
-        LinkedListExe.Node head = linkedList.head;
+        Node head = linkedList.head;
         // When
-        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 1);
+        Node result = linkedList.removeByNodeAndValue(head, 1);
         // Then
         assertEquals(linkedList.size, 0);
         assertNull(result);
@@ -156,16 +157,16 @@ class LinkedListExeTest {
         linkedList.appendElement(7);
         linkedList.appendElement(7);
         linkedList.appendElement(7);
-        LinkedListExe.Node head = linkedList.head;
+        Node head = linkedList.head;
         // When
-        LinkedListExe.Node result = linkedList.removeByNodeAndValue(head, 7);
+        Node result = linkedList.removeByNodeAndValue(head, 7);
         // Then
         assertEquals(linkedList.size, 0);
         assertNull(result);
     }
 
     @Test
-    void reverseLinkedList() {
+    void reverseLinkedListFirst() {
         // Given
         LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
@@ -174,9 +175,24 @@ class LinkedListExeTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        linkedList.reverseList(linkedList.head);
+        Node result = linkedList.reverseFirst(linkedList.head);
         // Then
-        assertEquals(linkedList.head.data, 5);
+        assertEquals(result.data, 5);
+    }
+
+    @Test
+    void reverseLinkedListSecond() {
+        // Given
+        LinkedListExe linkedList = new LinkedListExe();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        // When
+        Node result = linkedList.reverseSecond(linkedList.head);
+        // Then
+        assertEquals(result.data, 5);
     }
 
     @Test
@@ -184,34 +200,60 @@ class LinkedListExeTest {
         // Given
         LinkedListExe linkedList = new LinkedListExe();
         // When
-        linkedList.reverseList(linkedList.head);
+        Node result = linkedList.reverseFirst(linkedList.head);
         // Then
         assertEquals(linkedList.size, 0);
-        assertNull(linkedList.head);
+        assertNull(result);
     }
 
     @Test
-    void iterativeReverseLinkedList() {
+    void iterativeReverseLinkedListFirst() {
         // Given
         LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         // When
-        LinkedListExe.Node result = linkedList.iterativeReverseList(linkedList.head);
+        Node result = linkedList.iterativeReverseFirst(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
 
     @Test
-    void recursiveReverseLinkedList() {
+    void iterativeReverseLinkedListSecond() {
         // Given
         LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(1);
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         // When
-        LinkedListExe.Node result = linkedList.recursiveReverseList(linkedList.head);
+        Node result = linkedList.iterativeReverseSecond(linkedList.head);
+        // Then
+        assertEquals(result.data, 3);
+    }
+
+    @Test
+    void recursiveReverseLinkedListFirst() {
+        // Given
+        LinkedListExe linkedList = new LinkedListExe();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        // When
+        Node result = linkedList.recursiveReverseFirst(linkedList.head);
+        // Then
+        assertEquals(result.data, 3);
+    }
+
+    @Test
+    void recursiveReverseLinkedListSecond() {
+        // Given
+        LinkedListExe linkedList = new LinkedListExe();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        // When
+        Node result = linkedList.recursiveReverseSecond(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -233,7 +275,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(4);
         linkedList1.appendElement(5);
         // When
-        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -252,7 +294,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(2);
         linkedList1.appendElement(4);
         // When
-        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 2);
     }
@@ -268,7 +310,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(1);
         linkedList1.appendElement(5);
         // When
-        LinkedListExe.Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
+        Node result = linkedList.getIntersectionNode(linkedList.head, linkedList1.head);
         // Then
         assertNull(result);
     }
@@ -285,7 +327,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(3);
         linkedList1.appendElement(4);
         // When
-        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -304,7 +346,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(11);
         linkedList1.appendElement(12);
         // When
-        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 5);
     }
@@ -323,7 +365,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(5);
         linkedList1.appendElement(7);
         // When
-        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -334,7 +376,7 @@ class LinkedListExeTest {
         LinkedListExe linkedList = new LinkedListExe();
         LinkedListExe linkedList1 = new LinkedListExe();
         // When
-        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertNull(result);
     }
@@ -346,7 +388,7 @@ class LinkedListExeTest {
         LinkedListExe linkedList1 = new LinkedListExe();
         linkedList1.appendElement(0);
         // When
-        LinkedListExe.Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
+        Node result = linkedList.mergeTwoLists(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 0);
     }
@@ -385,11 +427,11 @@ class LinkedListExeTest {
         linkedList.appendElement(5);
         linkedList.appendElement(1);
         linkedList.appendElement(9);
-        LinkedListExe.Node node = new LinkedListExe.Node();
+        Node node = new Node();
         node.data = 5;
 
         // When
-        LinkedListExe.Node result = linkedList.deleteNode(node);
+        Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 4);
     }
@@ -402,11 +444,11 @@ class LinkedListExeTest {
         linkedList.appendElement(5);
         linkedList.appendElement(1);
         linkedList.appendElement(9);
-        LinkedListExe.Node node = new LinkedListExe.Node();
+        Node node = new Node();
         node.data = 1;
 
         // When
-        LinkedListExe.Node result = linkedList.deleteNode(node);
+        Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 4);
     }
@@ -419,11 +461,11 @@ class LinkedListExeTest {
         linkedList.appendElement(2);
         linkedList.appendElement(3);
         linkedList.appendElement(4);
-        LinkedListExe.Node node = new LinkedListExe.Node();
+        Node node = new Node();
         node.data = 3;
 
         // When
-        LinkedListExe.Node result = linkedList.deleteNode(node);
+        Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 1);
     }
@@ -434,11 +476,11 @@ class LinkedListExeTest {
         LinkedListExe linkedList = new LinkedListExe();
         linkedList.appendElement(0);
         linkedList.appendElement(1);
-        LinkedListExe.Node node = new LinkedListExe.Node();
+        Node node = new Node();
         node.data = 0;
 
         // When
-        LinkedListExe.Node result = linkedList.deleteNode(node);
+        Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 1);
     }
@@ -450,11 +492,11 @@ class LinkedListExeTest {
         linkedList.appendElement(-3);
         linkedList.appendElement(5);
         linkedList.appendElement(-99);
-        LinkedListExe.Node node = new LinkedListExe.Node();
+        Node node = new Node();
         node.data = -3;
 
         // When
-        LinkedListExe.Node result = linkedList.deleteNode(node);
+        Node result = linkedList.deleteNode(node);
         // Then
         assertEquals(result.data, 5);
     }
@@ -469,7 +511,7 @@ class LinkedListExeTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        LinkedListExe.Node result = linkedList.middleNode(linkedList.head);
+        Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 3);
     }
@@ -485,7 +527,7 @@ class LinkedListExeTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         // When
-        LinkedListExe.Node result = linkedList.middleNode(linkedList.head);
+        Node result = linkedList.middleNode(linkedList.head);
         // Then
         assertEquals(result.data, 4);
     }
@@ -503,7 +545,7 @@ class LinkedListExeTest {
         linkedList.appendElement(4);
         linkedList.appendElement(5);
         // When
-        LinkedListExe.Node result = linkedList.deleteDups(linkedList.head);
+        Node result = linkedList.deleteDups(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -518,7 +560,7 @@ class LinkedListExeTest {
         linkedList.appendElement(3);
         linkedList.appendElement(2);
         // When
-        LinkedListExe.Node result = linkedList.deleteDups(linkedList.head);
+        Node result = linkedList.deleteDups(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -566,7 +608,7 @@ class LinkedListExeTest {
         linkedList.appendElement(5);
         linkedList.appendElement(6);
         // When
-        LinkedListExe.Node result = linkedList.deleteMiddleNode(linkedList.head);
+        Node result = linkedList.deleteMiddleNode(linkedList.head);
         // Then
         assertEquals(result.data, 1);
     }
@@ -583,7 +625,7 @@ class LinkedListExeTest {
         linkedList1.appendElement(9);
         linkedList1.appendElement(2);
         // When
-        LinkedListExe.Node result = linkedList.addTwoNumbers(linkedList.head, linkedList1.head);
+        Node result = linkedList.addTwoNumbers(linkedList.head, linkedList1.head);
         // Then
         assertEquals(result.data, 2);
     }
@@ -627,7 +669,7 @@ class LinkedListExeTest {
         linkedList.appendElement(5);
         linkedList.appendElement(9);
         // When
-        LinkedListExe.Node result = linkedList.getIntersectingNode(linkedList.head, linkedList.head.next.next);
+        Node result = linkedList.getIntersectingNode(linkedList.head, linkedList.head.next.next);
         // Then
         assertEquals(result.data, 6);
     }

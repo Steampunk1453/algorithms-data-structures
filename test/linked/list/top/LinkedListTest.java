@@ -1,9 +1,9 @@
 package linked.list.top;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class LinkedListTest {
 
@@ -70,47 +70,6 @@ class LinkedListTest {
         int result = linkedList.tail();
         // Then
         assertEquals(result, 3);
-    }
-    @Test
-    void reverse() {
-        // Given
-        LinkedList linkedList = new LinkedList();
-        linkedList.insert(0, 1);
-        linkedList.insert(1, 2);
-        linkedList.insert(2, 3);
-        linkedList.insert(3, 4);
-        // When
-        LinkedList.Node result = linkedList.reverse(linkedList.head);
-        // Then
-        Assertions.assertEquals(result.data, 4);
-    }
-
-    @Test
-    void reverseIterative() {
-        // Given
-        LinkedList linkedList = new LinkedList();
-        linkedList.insert(0, 1);
-        linkedList.insert(1, 2);
-        linkedList.insert(2, 3);
-        linkedList.insert(3, 4);
-        // When
-        LinkedList.Node result = linkedList.reverseIterative(linkedList.head);
-        // Then
-        Assertions.assertEquals(result.data, 4);
-    }
-
-    @Test
-    void reverseRecursive() {
-        // Given
-        LinkedList linkedList = new LinkedList();
-        linkedList.insert(0, 1);
-        linkedList.insert(1, 2);
-        linkedList.insert(2, 3);
-        linkedList.insert(3, 4);
-        // When
-        LinkedList.Node result = linkedList.reverseRecursive(linkedList.head);
-        // Then
-        Assertions.assertEquals(result.data, 4);
     }
 
 }
