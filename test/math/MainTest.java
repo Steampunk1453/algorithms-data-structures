@@ -28,6 +28,16 @@ class MainTest {
     }
 
     @Test
+    void multiplyRecursive() {
+        // Given
+        Main main = new Main();
+        // When
+        int result = main.multiplyRecursive(5, 7);
+        // Then
+        assertEquals(result, 35);
+    }
+
+    @Test
     void division() {
         // Given
         Main main = new Main();

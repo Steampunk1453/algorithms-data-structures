@@ -46,6 +46,15 @@ public class Main {
         return result;
     }
 
+    protected int multiplyRecursive(int num1, int num2) {
+        if (num2 == 0) {
+            return 0;
+        } else {
+            return num1 + multiplyRecursive(num1, num2 - 1);
+        }
+    }
+
+
     protected int division(int num1, int num2) {
         int result = 0;
         while (result * num2 != num1) {
