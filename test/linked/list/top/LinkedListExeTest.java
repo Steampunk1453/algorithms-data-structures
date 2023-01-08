@@ -117,6 +117,23 @@ class LinkedListExeTest {
         assertEquals(result.data, 1);
     }
 
+    @Test
+    void reverseBetween() {
+        // Given
+        LinkedListExe linkedList = new LinkedListExe();
+        linkedList.appendElement(1);
+        linkedList.appendElement(2);
+        linkedList.appendElement(3);
+        linkedList.appendElement(4);
+        linkedList.appendElement(5);
+        // When
+        Node head = linkedList.head;
+        Node result = linkedList.reverseBetween(head, 2, 4);
+        // Then
+        assertEquals(linkedList.size, 5);
+        assertEquals(result.next.data, 4);
+    }
+
     // 203. Remove Linked List Elements
     @Test
     void deleteNodes() {

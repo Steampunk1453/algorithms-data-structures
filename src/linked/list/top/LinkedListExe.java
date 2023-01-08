@@ -14,6 +14,7 @@ public class LinkedListExe {
     int size = 0;
 
     static class Node {
+
         int data;
         Node next;
 
@@ -151,12 +152,15 @@ public class LinkedListExe {
     }
 
     protected Node mergeTwoListsRecursive(Node l1, Node l2) {
-        if (l1 == null && l2 == null)
+        if (l1 == null && l2 == null) {
             return null;
-        if (l1 == null)
+        }
+        if (l1 == null) {
             return l2;
-        if (l2 == null)
+        }
+        if (l2 == null) {
             return l1;
+        }
 
         if (l1.data <= l2.data) {
             l1.next = mergeTwoListsRecursive(l1.next, l2);
@@ -170,7 +174,9 @@ public class LinkedListExe {
     // Given the head of a sorted linked list, delete all duplicates such that each element appears only once.
     // Return the linked list sorted as well.
     protected Node removeDuplicatesFromSortedList(Node head) {
-        if (head == null) return null;
+        if (head == null) {
+            return null;
+        }
 
         Node previous = head;
         Node current = head.next;
@@ -189,6 +195,49 @@ public class LinkedListExe {
         }
         previous.next = current;
         return head;
+    }
+
+    // 92. Reverse Linked List II
+    // Given the head of a singly linked list and two integers left and right where left <= right, reverse the nodes
+    // of the list from position left to position right, and return the reversed list
+    protected Node reverseBetween(Node head, int left, int right) {
+        int m = left, n = right;
+
+        /*  Corner Case */
+        if (head == null || head.next == null || m <= 0 || n <= 0 || m == n) {
+            return head;
+        }
+
+        // to store the head index, to return the final updated head at this index.
+        Node preHead = new Node(0);
+        preHead.next = head;
+
+        // Traverse the list till position m. Position m -> index m-1 => loop till 0 to m-2.
+        Node prev = preHead;
+
+        for (int i = 0; i <= m - 2; i++) {
+            prev = prev.next;
+        }
+
+        // Reverse the list from position m to n.
+        Node curr = prev.next;
+        Node temp;
+
+        Node reverseHead = null;
+
+        for (int i = 0; i <= n - m; i++) {
+            temp = curr.next;         // save next of current for next iteration
+            curr.next = reverseHead;  // reset current to point back not forward
+
+            reverseHead = curr;       // make current as head of new reverseHead list
+            curr = temp;              // move to next node
+        }
+
+        // Connect the reversed list with the prev node (position m-1)
+        prev.next.next = curr;
+        prev.next = reverseHead;
+
+        return preHead.next;
     }
 
     // 160. Intersection of Two Linked Lists
@@ -214,7 +263,9 @@ public class LinkedListExe {
     }
 
     protected Node getIntersectionNodeSolution(Node headA, Node headB) {
-        if (headA == null || headB == null) return null;
+        if (headA == null || headB == null) {
+            return null;
+        }
         Node A = headA;
         Node B = headB;
         while (A != B) {
@@ -312,7 +363,9 @@ public class LinkedListExe {
 
     // Iterative --> Review, it's too much complex solution
     protected Node iterativeReverseFirst(Node head) {
-        if (head == null) return null;
+        if (head == null) {
+            return null;
+        }
         Node curr = head;
         Node temp = null;
         Node next = curr.next;
@@ -347,12 +400,16 @@ public class LinkedListExe {
 
     // Recursive --> Review, it's too much complex solution
     public Node recursiveReverseFirst(Node head) {
-        if (head == null) return null;
+        if (head == null) {
+            return null;
+        }
         return solve(head, null, head.next);
     }
 
     private Node solve(Node curr, Node temp, Node next) {
-        if (curr == null) return temp;
+        if (curr == null) {
+            return temp;
+        }
         curr.next = temp;
         temp = curr;
         curr = next;
@@ -623,8 +680,12 @@ public class LinkedListExe {
             node.data = sum % 10;
             current.next = node;
             current = current.next;
-            if (l1 != null) l1 = l1.next;
-            if (l2 != null) l2 = l2.next;
+            if (l1 != null) {
+                l1 = l1.next;
+            }
+            if (l2 != null) {
+                l2 = l2.next;
+            }
         }
         if (carry > 0) {
             Node node = new Node();
@@ -647,7 +708,7 @@ public class LinkedListExe {
         current = node;
         while (current != null) {
             if (current.data != stack.pop()) {
-               return false;
+                return false;
             }
             current = current.next;
         }
