@@ -240,6 +240,48 @@ public class LinkedListExe {
         return preHead.next;
     }
 
+    // 141. Linked List Cycle
+    // Given head, the head of a linked list, determine if the linked list has a cycle in it
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    public boolean hasCycle(Node head) {
+        if (head == null || head.next == null) {
+            return false;
+        }
+        HashSet<Node> nodeSet = new HashSet<>();
+        while (head != null) {
+            if (nodeSet.contains(head))
+                return true;
+            nodeSet.add(head);
+            head = head.next;
+        }
+        return false;
+    }
+
+    // 142. Linked List Cycle II
+    // Given the head of a linked list, return the node where the cycle begins. If there is no cycle, return null
+    // Time complexity: O(n)
+    // Space complexity: O(1)
+    public Node detectCycle(Node head) {
+        Node slow = head;
+        Node fast = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) break;
+        }
+
+        if (fast == null || fast.next == null) return null;
+
+        while (head != slow) {
+            head = head.next;
+            slow = slow.next;
+        }
+
+        return head;
+    }
+
     // 160. Intersection of Two Linked Lists
     // Given the heads of two singly linked-lists headA and headB, return the node at which the two lists intersect.
     // If the two linked lists have no intersection at all, return null.
@@ -322,6 +364,8 @@ public class LinkedListExe {
 
     // 206. Reverse Linked List
     // Given the head of a singly linked list, reverse the list, and return the reversed list.
+    // Time complexity: O(n)
+    // Space complexity: O(n)
     protected Node reverseFirst(Node head) {
         if (head != null) {
             Node current = head;
@@ -362,6 +406,8 @@ public class LinkedListExe {
     }
 
     // Iterative --> Review, it's too much complex solution
+    // Time complexity: O(n)
+    // Space complexity: O(1)
     protected Node iterativeReverseFirst(Node head) {
         if (head == null) {
             return null;
@@ -383,6 +429,8 @@ public class LinkedListExe {
     // Set curr pointer to head
     // iterate over all the nodes 1 by 1 and point curr node to prev node
     // return the prev because curr node is null
+    // Time complexity: O(n)
+    // Space complexity: O(1)
     protected Node iterativeReverseSecond(Node head) {
         Node current = head;
         Node prev = null;
@@ -399,6 +447,8 @@ public class LinkedListExe {
     }
 
     // Recursive --> Review, it's too much complex solution
+    // Time complexity: O(n)
+    // Space complexity: O(n) ?
     public Node recursiveReverseFirst(Node head) {
         if (head == null) {
             return null;
@@ -422,6 +472,8 @@ public class LinkedListExe {
     // i.e. 2->3 where 2 is curr and three is next, point curr node next node means 3's next pointer to 2
     // make the head next pointer null, for handling the 1st node scenario
     // finally return the head pointer which we fetched recursively
+    // Time complexity: O(n)
+    // Space complexity: O(n) ?
     public Node recursiveReverseSecond(Node head) {
         if (head == null || head.next == null) {
             return head;
