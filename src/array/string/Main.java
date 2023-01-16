@@ -9,6 +9,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -208,6 +209,7 @@ public class Main {
 
         return true;
     }
+
     private boolean isPalindrome(String s, int i, int j) {
         while (i < j) {
             if (s.charAt(i) != s.charAt(j)) {
@@ -219,6 +221,7 @@ public class Main {
 
         return true;
     }
+
     // Given a string s, reverse only all the vowels in the string and return it.
     //
     //The vowels are 'a', 'e', 'i', 'o', and 'u', and they can appear in both cases.
@@ -863,29 +866,6 @@ public class Main {
         return -1;
     }
 
-    // 20. Valid Parentheses
-    // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
-    protected boolean isValidParentheses(String input) {
-        char[] parentheses = input.toCharArray();
-        Stack<Character> stack = new Stack<>();
-        for (Character cha : parentheses) {
-            if (cha.equals('(')) {
-                stack.push(')');
-            } else if (cha.equals('{')) {
-                stack.push('}');
-            } else if (cha.equals('[')) {
-                stack.push(']');
-            } else {
-                if (stack.isEmpty()) {
-                    return false;
-                } else if (!cha.equals(stack.pop())) {
-                    return false;
-                }
-            }
-        }
-        return stack.isEmpty();
-    }
-
     // Reverse a string
     // Time complexity: O(n)
     // Space complexity: O(n)
@@ -1052,7 +1032,7 @@ public class Main {
             return s.length();
         }
 
-        Map<Character, Integer> seen = new HashMap<>();
+        Map<Character, Integer> seen = new LinkedHashMap<>();
         char[] chars = s.toCharArray();
         int left = 0;
         int longest = 0;
@@ -1090,6 +1070,189 @@ public class Main {
             }
         }
         return max;
+    }
+
+    // 20. Valid Parentheses
+    // Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected boolean isValidParentheses(String s) {
+        if (s.isEmpty()) {
+            return true;
+        }
+
+        Stack<Character> characters = new Stack<>();
+        Map<Character, Character> parentheses = new HashMap<>();
+        parentheses.put(')', '(');
+        parentheses.put('}', '{');
+        parentheses.put(']', '[');
+
+        char[] chars = s.toCharArray();
+        characters.push(chars[0]);
+
+        for (int i = 1; i < chars.length; i++) {
+            Character cha = chars[i];
+            Character previous = characters.empty() ? '#' : characters.peek();
+            if (parentheses.get(cha) == previous) {
+                characters.pop();
+            } else {
+                characters.push(cha);
+            }
+        }
+
+        return characters.isEmpty();
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected boolean isValidParenthesesWithoutMap(String input) {
+        char[] parentheses = input.toCharArray();
+        Stack<Character> stack = new Stack<>();
+        for (Character cha : parentheses) {
+            if (cha.equals('(')) {
+                stack.push(')');
+            } else if (cha.equals('{')) {
+                stack.push('}');
+            } else if (cha.equals('[')) {
+                stack.push(']');
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else if (!cha.equals(stack.pop())) {
+                    return false;
+                }
+            }
+        }
+        return stack.isEmpty();
+    }
+
+    // 1249. Minimum Remove to Make Valid Parentheses
+    // Given a string s of '(' , ')' and lowercase English characters.
+    //Your task is to remove the minimum number of parentheses ( '(' or ')', in any positions )
+    // so that the resulting parentheses string is valid and return any valid string.
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected String minRemoveToMakeValid(String s) {
+        if (s.isEmpty()) {
+            return s;
+        }
+
+        Stack<Character> parenthesesFound = new Stack<>();
+        Stack<Integer> parenthesesIndices = new Stack<>();
+        Map<Character, Character> parentheses = new HashMap<>();
+        parentheses.put(')', '(');
+        parentheses.put('(', '-');
+
+        char[] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            Character cha = chars[i];
+            if (parentheses.containsKey(cha)) {
+                char top = parenthesesFound.empty() ? '#' : parenthesesFound.peek();
+                if (parentheses.get(cha) == top) {
+                    parenthesesFound.pop();
+                    parenthesesIndices.pop();
+                } else {
+                    parenthesesFound.push(cha);
+                    parenthesesIndices.push(i);
+                }
+            }
+        }
+
+        Map<Integer, Boolean> parenthesesIndicesToRemove = new HashMap<>();
+        while (!parenthesesIndices.isEmpty()) {
+            parenthesesIndicesToRemove.put(parenthesesIndices.pop(), true);
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (int i = 0; i < chars.length; i++) {
+            if (parenthesesIndicesToRemove.getOrDefault(i, false)) {
+                continue;
+            }
+            output.append(chars[i]);
+        }
+
+        return output.toString();
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    /*
+    Instead of using two stacks to store the parentheses and their indices, use a single stack to store the indices of
+    the open parentheses. This way, when a closing parenthesis is encountered, it can be matched with the most recent
+    open parenthesis on the stack instead of having to check if it matches the top of the stack.
+    Instead of using a separate map to store the indices of the parentheses that need to be removed, you can simply set
+    the corresponding element in the input string to a special character, such as '*'. This way, you can avoid creating
+    a separate map and iterating over it again.
+    Instead of using the getOrDefault() method to check if an index is present in the Parenthesis Indices To Remove map,
+    you can simply check if the corresponding element in the input string is equal to '*'.
+     */
+    protected String minRemoveToMakeValidOptimal(String s) {
+        if (s.isEmpty()) {
+            return s;
+        }
+
+        Stack<Integer> openParentheses = new Stack<>();
+        char[] chars = s.toCharArray();
+
+        for (int i = 0; i < chars.length; i++) {
+            if (chars[i] == '(') {
+                openParentheses.push(i);
+            } else if (chars[i] == ')') {
+                if (!openParentheses.isEmpty()) {
+                    openParentheses.pop();
+                } else {
+                    chars[i] = '*';
+                }
+            }
+        }
+
+        while (!openParentheses.isEmpty()) {
+            int index = openParentheses.pop();
+            chars[index] = '*';
+        }
+
+        StringBuilder output = new StringBuilder();
+        for (char c : chars) {
+            if (c != '*') {
+                output.append(c);
+            }
+        }
+
+        return output.toString();
+    }
+
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    public String minRemoveToMakeValid1(String s) {
+        Stack<Integer> stack = new Stack<>();
+        for (int i = 0; i < s.length(); i++) {
+            char ch = s.charAt(i);
+            if (Character.isAlphabetic(ch)) {
+                continue;
+            }
+            if (ch == '(') {
+                stack.push(i);
+            } else {
+                if (!stack.isEmpty() && s.charAt(stack.peek()) == '(') {
+                    stack.pop();
+                } else {
+                    stack.push(i);
+                }
+            }
+        }
+
+        // if(stack.size() == 0) return "";
+
+        StringBuilder result = new StringBuilder();
+        HashSet<Integer> set = new HashSet<>(stack);
+        for (int i = 0; i < s.length(); i++) {
+            if (!set.contains(i)) {
+                result.append(s.charAt(i));
+            }
+        }
+
+        return result.toString();
     }
 
     private boolean containsCharacter(StringBuilder sb, char ch) {

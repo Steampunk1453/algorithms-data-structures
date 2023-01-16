@@ -666,6 +666,60 @@ class MainTest {
     }
 
     @Test
+    void isValidParentheses5() {
+        // Given
+        Main main = new Main();
+        String input = "";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isValidParentheses6() {
+        // Given
+        Main main = new Main();
+        String input = "{([])}";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
+    void isValidParentheses7() {
+        // Given
+        Main main = new Main();
+        String input = "{([]";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertFalse(result);
+    }
+    @Test
+    void isValidParentheses8() {
+        // Given
+        Main main = new Main();
+        String input = "{[(])}";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertFalse(result);
+    }
+
+    @Test
+    void isValidParentheses9() {
+        // Given
+        Main main = new Main();
+        String input = "{[]()}";
+        // When
+        boolean result = main.isValidParentheses(input);
+        // Then
+        assertTrue(result);
+    }
+
+    @Test
     void longestCommonPrefix() {
         // Given
         Main main = new Main();
@@ -1050,6 +1104,38 @@ class MainTest {
         int result = main.lengthOfLongestSubstringOptimal(s);
         // Then
         assertEquals(result, 3);
+    }
+
+    @Test
+    void minRemoveToMakeValid() {
+        // Given
+        Main main = new Main();
+        String s = "lee(t(c)o)de)";
+        // When
+        String result = main.minRemoveToMakeValid(s);
+        // Then
+        assertEquals(result, "lee(t(c)o)de");
+    }
+
+    @Test
+    void minRemoveToMakeValid1() {
+        // Given
+        Main main = new Main();
+        String s = "a)b(c)d";
+        // When
+        String result = main.minRemoveToMakeValid(s);
+        // Then
+        assertEquals(result, "ab(c)d");
+    }
+    @Test
+    void minRemoveToMakeValid2() {
+        // Given
+        Main main = new Main();
+        String s = "))((";
+        // When
+        String result = main.minRemoveToMakeValid(s);
+        // Then
+        assertEquals(result, "");
     }
 
 }
