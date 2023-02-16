@@ -3,6 +3,7 @@ package recursion;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 
 public class Recursion {
 
@@ -22,10 +23,11 @@ public class Recursion {
     }
 
     protected long factorial1(int num) {
-        if (num >= 1)
+        if (num >= 1) {
             return num * factorial1(num - 1);
-        else
+        } else {
             return 1;
+        }
     }
 
     protected int findFactorialIterative(int number) {
@@ -188,7 +190,7 @@ public class Recursion {
         if (input.length() == 1) {
             return input;
         }
-        return input.substring(input.length() -1) + reverseStringRecursive(input.substring(0, input.length() -1));
+        return input.substring(input.length() - 1) + reverseStringRecursive(input.substring(0, input.length() - 1));
     }
 
     // Time complexity: O(n)
@@ -200,7 +202,51 @@ public class Recursion {
             sb.append(input.charAt(index));
             index--;
         }
-       return sb.toString();
+        return sb.toString();
+    }
+
+    // 215. Kth Largest Element in an Array
+    // Given an integer array nums and an integer k, return the kth largest element in the array
+    //Note that it is the kth largest element in the sorted order, not the kth distinct element
+    //You must solve it in O(n) time complexity
+    protected int findKthLargest(int[] nums, int k) {
+        return quickSelect(nums, 0, nums.length - 1, nums.length - k);
+    }
+
+    private int quickSelect(int[] nums, int left, int right, int k) {
+        if (left == right) {
+            return nums[left];
+        }
+
+        int pIndex = new Random().nextInt(right - left + 1) + left;
+        pIndex = partition(nums, left, right, pIndex);
+
+        if (pIndex == k) {
+            return nums[k];
+        } else if (pIndex < k) {
+            return quickSelect(nums, pIndex + 1, right, k);
+        }
+        return quickSelect(nums, left, pIndex - 1, k);
+    }
+
+    private int partition(int[] nums, int left, int right, int pIndex) {
+        int pivot = nums[pIndex];
+        swap(nums, pIndex, right);
+        pIndex = left;
+
+        for (int i = left; i <= right; i++) {
+            if (nums[i] <= pivot) {
+                swap(nums, i, pIndex++);
+            }
+        }
+
+        return pIndex - 1;
+    }
+
+    private void swap(int[] nums, int x, int y) {
+        int temp = nums[x];
+        nums[x] = nums[y];
+        nums[y] = temp;
     }
 
 }

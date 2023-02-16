@@ -216,4 +216,28 @@ class RecursionTest {
         assertEquals(result, "edcba");
     }
 
+    @Test
+    void findKthLargest() {
+        // Given
+        Recursion recursion = new Recursion();
+        int[] array = {3,2,1,5,6,4};
+        int k = 2;
+        // When
+        int result = recursion.findKthLargest(array, k);
+        // Then
+        assertEquals(result, 5);
+    }
+
+    @Test
+    void findKthLargest1() {
+        // Given
+        Recursion recursion = new Recursion();
+        int[] array = {3,2,3,1,2,4,5,5,6};
+        int k = 4;
+        // When
+        int result = recursion.findKthLargest(array, k);
+        // Then
+        assertEquals(result, 4);
+    }
+
 }
