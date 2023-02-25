@@ -5,6 +5,8 @@ import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
@@ -666,5 +668,49 @@ class BinaryTreeTest {
         // Then
         assertEquals(result, 9);
     }
+
+    @Test
+    void levelOrder() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(3);
+        binaryTree.add(9);
+        binaryTree.add(20);
+        binaryTree.add(15);
+        binaryTree.add(7);
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(List.of(3));
+        expectedOutput.add(List.of(9));
+        expectedOutput.add(Arrays.asList(7, 20));
+        expectedOutput.add(List.of(15));
+        // When
+        List<List<Integer>> result = binaryTree.levelOrder(binaryTree.root);
+        // Then
+        assertEquals(expectedOutput, result);
+    }
+
+    @Test
+    void levelOrder1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(1);
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(List.of(1));
+        // When
+        List<List<Integer>> result = binaryTree.levelOrder(binaryTree.root);
+        // Then
+        assertEquals(expectedOutput, result);
+    }
+    @Test
+    void levelOrder2() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        List<List<Integer>> expectedOutput = new ArrayList<>();
+        // When
+        List<List<Integer>> result = binaryTree.levelOrder(binaryTree.root);
+        // Then
+        assertEquals(expectedOutput, result);
+    }
+
 
 }

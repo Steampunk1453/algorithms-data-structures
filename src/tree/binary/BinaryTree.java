@@ -502,6 +502,8 @@ public class BinaryTree {
         return result <= 1;
     }
 
+    // Time complexity: O(n)
+    // Space complexity: O(n)
     protected int depth(Node root) {
         if (root == null) {
             return 0;
@@ -656,6 +658,35 @@ public class BinaryTree {
             return false;
         }
         return current.left == null && current.right == null;
+    }
+
+    // 102. Binary Tree Level Order Traversal
+    // Given the root of a binary tree, return the level order traversal of its nodes' values
+    // (i.e., from left to right, level by level)
+    // BFS solution
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    protected List<List<Integer>> levelOrder(Node root) {
+        Queue<Node> queue = new LinkedList<>();
+        queue.add(root);
+        List<List<Integer>> result = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            int queueSize = queue.size();
+            List<Integer> level = new ArrayList<>();
+            for (int i = 0; i < queueSize; i++) {
+                Node node = queue.poll();
+                if (node != null) {
+                    level.add(node.value);
+                    queue.add(node.left);
+                    queue.add(node.right);
+                }
+            }
+            if (!level.isEmpty()) {
+                result.add(level);
+            }
+        }
+        return result;
     }
 
 }
