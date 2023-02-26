@@ -712,5 +712,34 @@ class BinaryTreeTest {
         assertEquals(expectedOutput, result);
     }
 
+    @Test
+    void rightSideView() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(5);
+        binaryTree.add(3);
+        binaryTree.add(7);
+        binaryTree.add(1);
+        binaryTree.add(4);
+        binaryTree.add(6);
+        binaryTree.add(8);
+        List<Integer> expected = Arrays.asList(5, 7, 8);
+        // When
+        List<Integer> result = binaryTree.rightSideView(binaryTree.root);
+        // Then
+        assertEquals(expected, result);
+    }
+
+    @Test
+    void rightSideView1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        List<Integer> expected = new ArrayList<>();
+        // When
+        List<Integer> result = binaryTree.rightSideView(binaryTree.root);
+        // Then
+        assertEquals(expected, result);
+    }
+
 
 }

@@ -689,6 +689,32 @@ public class BinaryTree {
         return result;
     }
 
+    // 199. Binary Tree Right Side View
+    // Given the root of a binary tree, imagine yourself standing on the right side of it,
+    // return the values of the nodes you can see ordered from top to bottom
+    // BFS solution
+    // Time complexity: O(n)
+    // Space complexity: O(n)
+    public List<Integer> rightSideView(Node root) {
+        List<Integer> result = new LinkedList<>();
+        if(root == null) return result;
+        List<Node> candidates = new LinkedList<>();
+        candidates.add(root);
+
+        while(!candidates.isEmpty()) {
+            List<Node> temp = new LinkedList<>();
+            result.add(candidates.get(0).value);
+            for(Node curr : candidates) {
+                if(curr.right != null)
+                    temp.add(curr.right);
+                if(curr.left != null)
+                    temp.add(curr.left);
+            }
+            candidates = temp;
+        }
+        return result;
+    }
+
 }
 
 
