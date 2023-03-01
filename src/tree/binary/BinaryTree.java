@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Deque;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -695,7 +696,7 @@ public class BinaryTree {
     // BFS solution
     // Time complexity: O(n)
     // Space complexity: O(n)
-    public List<Integer> rightSideView(Node root) {
+    protected List<Integer> rightSideView(Node root) {
         List<Integer> result = new LinkedList<>();
         if(root == null) return result;
         List<Node> candidates = new LinkedList<>();
@@ -713,6 +714,33 @@ public class BinaryTree {
             candidates = temp;
         }
         return result;
+    }
+
+    // 222. Count Complete Tree Nodes
+
+    // Given the root of a complete binary tree, return the number of the nodes in the tree
+    // According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree,
+    // and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive
+    // at the last level h
+    // Design an algorithm that runs in less than O(n) time complexity
+    // Time complexity:
+    // Because the total number of steps equals to the height of the tree h, at each step,
+    // calculating the height will cost time O(h - current step) so the time complexity is
+    // h + (h - 1) + (h - 2) + ... + 1 = O(h^2) = O(log(n)^2) / O(log^2 N)
+    // Space complexity:  O(log n)
+    protected int countNodes(Node root) {
+        return root == null ? 0 : findLastIndex(root, 1);
+    }
+
+    private int findLastIndex(Node node, int currIndex) {
+        if (node.left == null && node.right == null) return currIndex;
+        if (lHeight(node.left, 1) == lHeight(node.right, 1))
+            return findLastIndex(node.right, currIndex * 2 + 1);
+        else return findLastIndex(Objects.requireNonNull(node.left), currIndex * 2);
+    }
+
+    private int lHeight(Node node, int count) {
+        return node == null ? count - 1 : lHeight(node.left, count + 1);
     }
 
 }

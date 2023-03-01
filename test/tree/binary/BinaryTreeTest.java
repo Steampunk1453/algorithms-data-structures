@@ -741,5 +741,42 @@ class BinaryTreeTest {
         assertEquals(expected, result);
     }
 
+    @Test
+    public void countNodes() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(4);
+        binaryTree.add(2);
+        binaryTree.add(1);
+        binaryTree.add(3);
+        binaryTree.add(6);
+        binaryTree.add(5);
+        binaryTree.add(7);
+        // When
+        int result = binaryTree.countNodes(binaryTree.root);
+        // Then
+        assertEquals(7, result);
+    }
+
+    @Test
+    public void countNodes1() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        // When
+        int result = binaryTree.countNodes(binaryTree.root);
+        // Then
+        assertEquals(0, result);
+    }
+    @Test
+    public void countNodes2() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(1);
+        // When
+        int result = binaryTree.countNodes(binaryTree.root);
+        // Then
+        assertEquals(1, result);
+    }
+
 
 }
