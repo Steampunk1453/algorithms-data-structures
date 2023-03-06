@@ -160,7 +160,6 @@ public class BinaryTree {
     // 94. Binary Tree Inorder Traversal
     // Given the root of a binary tree, return the inorder traversal of its nodes' values.
     // Follow up: Recursive solution is trivial, could you do it Iterative?
-
     // O(n)
     protected List<Integer> inOrderTraversalIterative(Node root) {
         List<Integer> values = new ArrayList<>();
@@ -717,7 +716,6 @@ public class BinaryTree {
     }
 
     // 222. Count Complete Tree Nodes
-
     // Given the root of a complete binary tree, return the number of the nodes in the tree
     // According to Wikipedia, every level, except possibly the last, is completely filled in a complete binary tree,
     // and all nodes in the last level are as far left as possible. It can have between 1 and 2h nodes inclusive
@@ -741,6 +739,52 @@ public class BinaryTree {
 
     private int lHeight(Node node, int count) {
         return node == null ? count - 1 : lHeight(node.left, count + 1);
+    }
+
+    // 230. Kth Smallest Element in a BST
+    // Given the root of a binary search tree, and an integer k, return the kth smallest value (1-indexed)
+    // of all the values of the nodes in the tree
+    protected int kthSmallest(Node root, int k) {
+        Stack<Node> stack = new Stack<>();
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if (--k == 0)
+                break;
+            root = root.right;
+        }
+        return root.value;
+    }
+    // 98. Validate Binary Search Tree
+    // Given the root of a binary tree, determine if it is a valid binary search tree (BST)
+    protected boolean isValidBST(Node root) {
+        if (root == null) return true;
+        Stack<Node> stack = new Stack<>();
+        Node pre = null;
+        while (root != null || !stack.isEmpty()) {
+            while (root != null) {
+                stack.push(root);
+                root = root.left;
+            }
+            root = stack.pop();
+            if(pre != null && root.value <= pre.value) return false;
+            pre = root;
+            root = root.right;
+        }
+        return true;
+    }
+
+    protected boolean isValidBSTRecursive(Node root) {
+        return isValid(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    private boolean isValid(Node root, long minVal, long maxVal) {
+        if (root == null) return true;
+        if (root.value >= maxVal || root.value <= minVal) return false;
+        return isValid(root.left, minVal, root.value) && isValid(root.right, root.value, maxVal);
     }
 
 }

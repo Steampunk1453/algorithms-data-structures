@@ -778,5 +778,33 @@ class BinaryTreeTest {
         assertEquals(1, result);
     }
 
+    @Test
+    public void kthSmallest() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(3);
+        binaryTree.add(1);
+        binaryTree.add(4);
+        binaryTree.add(2);
+        int k = 1;
+        int expected = 1;
+        // When
+        int actual = binaryTree.kthSmallest(binaryTree.root, k);
+        // Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void isValidBST() {
+        // Given
+        BinaryTree binaryTree = new BinaryTree();
+        binaryTree.add(2);
+        binaryTree.add(1);
+        binaryTree.add(3);
+        // When
+        boolean result = binaryTree.isValidBST(binaryTree.root);
+        // Then
+        assertTrue(result);
+    }
 
 }
