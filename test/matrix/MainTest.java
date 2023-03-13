@@ -1,5 +1,6 @@
 package matrix;
 
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
@@ -48,6 +49,7 @@ class MainTest {
         int expected = 4;
         // When
         int result = main.orangesRottingBFS(grid);
+        // Then
         assertEquals(expected, result);
     }
 
@@ -59,6 +61,7 @@ class MainTest {
         int expected = -1;
         // When
         int result = main.orangesRottingBFS(grid);
+        // Then
         assertEquals(expected, result);
     }
 
@@ -70,6 +73,7 @@ class MainTest {
         int expected = 0;
         // When
         int result = main.orangesRottingBFS(grid);
+        // Then
         assertEquals(expected, result);
     }
 
@@ -81,6 +85,7 @@ class MainTest {
         int expected = 4;
         // When
         int result = main.orangesRottingDFS(grid);
+        // Then
         assertEquals(expected, result);
     }
 
@@ -92,6 +97,7 @@ class MainTest {
         int expected = -1;
         // When
         int result = main.orangesRottingDFS(grid);
+        // Then
         assertEquals(expected, result);
     }
 
@@ -103,7 +109,52 @@ class MainTest {
         int expected = 0;
         // When
         int result = main.orangesRottingDFS(grid);
+        // Then
         assertEquals(expected, result);
+    }
+
+    @Test
+    public void testWallsAndGatesDFS() {
+        // Given
+        Main main = new Main();
+        int[][] rooms = {
+                {Integer.MAX_VALUE, -1, 0, Integer.MAX_VALUE},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, -1},
+                {Integer.MAX_VALUE, -1, Integer.MAX_VALUE, -1},
+                {0, -1, Integer.MAX_VALUE, Integer.MAX_VALUE}
+        };
+        int[][] expected = {
+                {3, -1, 0, 1},
+                {2, 2, 1, -1},
+                {1, -1, 2, -1},
+                {0, -1, 3, 4}
+        };
+        // When
+        main.wallsAndGatesDFS(rooms);
+        // Then
+        assertArrayEquals(expected, rooms);
+    }
+
+    @Test
+    public void testWallsAndGatesBFS() {
+        // Given
+        Main main = new Main();
+        int[][] rooms = {
+                {Integer.MAX_VALUE, -1, 0, Integer.MAX_VALUE},
+                {Integer.MAX_VALUE, Integer.MAX_VALUE, Integer.MAX_VALUE, -1},
+                {Integer.MAX_VALUE, -1, Integer.MAX_VALUE, -1},
+                {0, -1, Integer.MAX_VALUE, Integer.MAX_VALUE}
+        };
+        int[][] expected = {
+                {3, -1, 0, 1},
+                {2, 2, 1, -1},
+                {1, -1, 2, -1},
+                {0, -1, 3, 4}
+        };
+        // When
+        main.wallsAndGatesBFS(rooms);
+        // Then
+        assertArrayEquals(expected, rooms);
     }
 
 }
