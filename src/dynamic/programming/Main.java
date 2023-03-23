@@ -1,5 +1,8 @@
 package dynamic.programming;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class Main {
 
     protected int fibonacci(int x) {
@@ -151,5 +154,59 @@ public class Main {
         return memory[numsLength - 1];
     }
 
+    // 746. Min Cost Climbing Stairs
+    // You are given an integer array cost where cost[i] is the cost of ith step on a staircase
+    // Once you pay the cost, you can either climb one or two steps
+    // You can either start from the step with index 0, or the step with index 1
+    // Return the minimum cost to reach the top of the floor
+    protected int minCostClimbingStairs(int[] cost) {
+        int n = cost.length;
+        for (int i = 2; i < n; i++) {
+            cost[i] = Math.min(cost[i - 1], cost[i - 2]) + cost[i];
+        }
+        return Math.min(cost[n - 1], cost[n - 2]);
+    }
+
+    // 688. Knight Probability in Chessboard
+    // On an n x n chessboard, a knight starts at the cell (row, column) and attempts to make exactly k moves
+    // The rows and columns are 0-indexed, so the top-left cell is (0, 0), and the bottom-right cell is (n - 1, n - 1)
+    // A chess knight has eight possible moves it can make, as illustrated below
+    // Each move is two cells in a cardinal direction, then one cell in an orthogonal direction
+    protected double knightProbability(int N, int K, int r, int c) {
+        Map<String, Double> map = new HashMap<>();
+
+        // prob returns the total paths which stayed inside the board and then we divide it with total number of moves .
+        return prob(N, K, r, c, map) / Math.pow(8, K);
+    }
+
+    private double prob(int N, int K, int r, int c, Map<String, Double> map) {
+        // If the path is out of the board return 0 ;
+        if (r < 0 || r >= N || c < 0 || c >= N) {
+            return 0;
+        }
+
+        String key = K + "->" + r + "->" + c;
+        // If path is not out of the board and no moves left return 1;
+        if (K == 0) {
+            return 1;
+        }
+        if (map.containsKey(key)) {
+            return map.get(key);
+        }
+
+        // There are total of 8 possible moves and we are traversing all the possible paths.
+        double op1 = prob(N, K - 1, r + 2, c + 1, map);
+        double op2 = prob(N, K - 1, r + 2, c - 1, map);
+        double op3 = prob(N, K - 1, r - 2, c + 1, map);
+        double op4 = prob(N, K - 1, r - 2, c - 1, map);
+        double op5 = prob(N, K - 1, r - 1, c + 2, map);
+        double op6 = prob(N, K - 1, r + 1, c + 2, map);
+        double op7 = prob(N, K - 1, r + 1, c - 2, map);
+        double op8 = prob(N, K - 1, r - 1, c - 2, map);
+
+        double result = op1 + op2 + op3 + op4 + op5 + op6 + op7 + op8;
+        map.put(key, result);
+        return result;
+    }
 
 }

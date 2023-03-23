@@ -276,4 +276,36 @@ class MainTest {
         assertEquals(result, expected);
     }
 
+    @Test
+    public void minCostClimbingStairs() {
+        Main main = new Main();
+        int[] cost1 = {10, 15, 20};
+        assertEquals(15, main.minCostClimbingStairs(cost1));
+
+        int[] cost2 = {1, 100, 1, 1, 1, 100, 1, 1, 100, 1};
+        assertEquals(6, main.minCostClimbingStairs(cost2));
+
+        int[] cost3 = {0, 0, 0, 1};
+        assertEquals(0, main.minCostClimbingStairs(cost3));
+
+        int[] cost4 = {5, 1, 2, 4, 8, 6};
+        assertEquals(11, main.minCostClimbingStairs(cost4));
+    }
+
+    @Test
+    public void testKnightProbability() {
+        // Given
+        Main main = new Main();
+        int N = 3;
+        int K = 2;
+        int r = 0;
+        int c = 0;
+        // expected probability for given inputs is 0.0625
+        double expected = 0.0625;
+        // When
+        double probability = main.knightProbability(N, K, r, c);
+        // Then
+        assertEquals(expected, probability, 0.0001);
+    }
+
 }
