@@ -1,12 +1,13 @@
 package graph;
 
-import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import org.junit.jupiter.api.Test;
 
 class GraphTest {
 
@@ -103,7 +104,6 @@ class GraphTest {
         Graph.Vertex gina = new Graph.Vertex("Gina");
         Graph.Vertex helen = new Graph.Vertex("Helen");
         Graph.Vertex irena = new Graph.Vertex("Irena");
-        // When
         graph.root.addVertex(bob);
         graph.root.addVertex(candy);
         graph.root.addVertex(derek);
@@ -114,6 +114,59 @@ class GraphTest {
         derek.addVertex(elaine);
         derek.addVertex(gina);
         gina.addVertex(irena);
+    }
+    @Test
+     void numOfMinutes() {
+        // Given
+        Graph graph = new Graph();
+        int n = 6;
+        int headID = 2;
+        int[] manager = {2,2,-1,2,2,2};
+        int[] informTime = {0,0,1,0,0,0};
+        int expected = 1;
+        // When
+        int actual = graph.numOfMinutes(n, headID, manager, informTime);
+        // Then
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void canFinishBFS() {
+        Graph graph = new Graph();
+        int numCourses1 = 2;
+        int[][] prerequisites1 = {{1,0}};
+        assertTrue(graph.canFinishBFS(numCourses1, prerequisites1));
+
+        int numCourses2 = 2;
+        int[][] prerequisites2 = {{1,0},{0,1}};
+        assertFalse(graph.canFinishBFS(numCourses2, prerequisites2));
+
+        int numCourses3 = 4;
+        int[][] prerequisites3 = {{1,0},{2,1},{3,2}};
+        assertTrue(graph.canFinishBFS(numCourses3, prerequisites3));
+    }
+
+    @Test
+    public void canFinishDFS() {
+        Graph graph = new Graph();
+        int numCourses = 4;
+        int[][] prerequisites = {{1,0},{2,0},{3,1},{3,2}};
+        assertTrue(graph.canFinishDFS(numCourses, prerequisites));
+
+        prerequisites = new int[][]{{1, 0}, {0, 1}};
+        assertFalse(graph.canFinishDFS(numCourses, prerequisites));
+    }
+
+    @Test
+    public void networkDelayTime() {
+        // Given
+        Graph graph = new Graph();
+        int[][] times = {{2,1,1},{2,3,1},{3,4,1}};
+        int n = 4;
+        int k = 2;
+        int expected = 2;
+        // When & Then
+        assertEquals(expected, graph.networkDelayTime(times, n, k));
     }
 
 }
